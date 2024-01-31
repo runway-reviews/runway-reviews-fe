@@ -1,57 +1,53 @@
-#  runway-reviews
+<div align="center">
+  
+Rancid Tomatillos 
+![Tests](https://badgen.net/badge/tests/passing/green?icon=github)
 
-This template should help get you started developing with Vue 3 in Vite.
+## 💾 Technologies Used
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
+![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
+![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)
+![Cypress](https://img.shields.io/badge/Cypress-yellow
+)
 
-## Recommended IDE Setup
+## 👩‍💻 👩‍💻 👨‍💻 👩‍💻 Collaborators
+Front-End :
+[Emalee Poellot](https://github.com/em2396)  | 
+[Zen Mcmillan](https://github.com/zenmcmillan) 
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+Back-End:
+[Justin Lee](https://github.com/JustinSteel) |
+[Brendan Bondurant](https://github.com/brendan-bondurant) |
+[Blake Sergesketter](https://github.com/bserge13)
 
-## Customize configuration
+</div>
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+## 💭 Abstract
 
-## Project Setup
 
-```sh
-npm install
-```
+## 📝  Context
+We are a group of 2 front-end developers and 3 back-end developers who worked together remotely via Zoom and asynchronously through the GitHub project board to complete this application. This project was completed from week 1 to week 3 in Mod 4 at Turing School of Software & Design. 
 
-### Compile and Hot-Reload for Development
+## 🎥 Preview 
 
-```sh
-npm run dev
-```
 
-### Compile and Minify for Production
+## 🔌 Server Setup
+1. Clone the repository: Open a terminal window. Navigate to the directory where you want to clone the repository. Run the following command: git clone 
+2. Install the dependencies: Run the following command in the cloned repository directory: npm install
+3. Run the React app: Run the following command in the cloned repository directory:
+4. 
 
-```sh
-npm run build
-```
+## 📚 Learning Goals
 
-### Run Headed Component Tests with [Cypress Component Testing](https://on.cypress.io/component)
 
-```sh
-npm run test:unit:dev # or `npm run test:unit` for headless testing
-```
+## 🥇 Wins
+⭐ 
+⭐ 
+⭐ 
 
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
 
-```sh
-npm run test:e2e:dev
-```
-
-This runs the end-to-end tests against the Vite development server.
-It is much faster than the production build.
-
-But it's still recommended to test the production build with `test:e2e` before deploying (e.g. in CI environments):
-
-```sh
-npm run build
-npm run test:e2e
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+## 🚧 Challenges
+❗
+❗ 
