@@ -1,6 +1,6 @@
 <div align="center">
   
-Rancid Tomatillos 
+Runway Reviews
 ![Tests](https://badgen.net/badge/tests/passing/green?icon=github)
 
 ## 💾 Technologies Used
