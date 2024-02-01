@@ -1,9 +1,10 @@
 {
-  "name": " runway-reviews",
+  "name": "runway-reviews",
   "version": "0.0.0",
   "private": true,
   "type": "module",
   "scripts": {
+    "start": "npm run dev",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
@@ -13,7 +14,7 @@
     "test:unit:dev": "cypress open --component",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
     "format": "prettier --write src/",
-    "cypres": "cypress open"
+    "cypress": "cypress open"
   },
   "dependencies": {
     "vue": "^3.4.15",
