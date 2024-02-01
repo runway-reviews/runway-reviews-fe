@@ -10,7 +10,7 @@ jobs:
     steps:
       - checkout
       - cypress/run:
-          working_directory: ~/repo
+          working_directory: /runway-reviews/runway-reviews-fe
           start: npm start
           cypress-command: npx cypress run 
 
