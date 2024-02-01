@@ -1,0 +1,20 @@
+version: 2.1
+
+orbs:
+  cypress: cypress-io/cypress@3.1.1
+
+jobs:
+  cypress-run:
+    executor:
+      name: cypress/base-10
+    steps:
+      - checkout
+      - cypress/run:
+          working_directory: ~/repo
+          start: npm start
+          cypress-command: npx cypress run 
+
+workflows:
+  build:
+    jobs:
+      - cypress-run
