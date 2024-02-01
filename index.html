@@ -7,7 +7,14 @@
     <title>Vite App</title>
   </head>
   <body>
-    <div id="app"></div>
+    <!-- This is where main.js app.mount is connecting to:  -->
+    <div id="app">
+      <p>{{ title }} - {{ author}} - {{ age }} </p>
+
+      <button @click="age++">Increase Age</button>
+      <button @click="age--">Decrease Age</button>
+      <div @click="changeTitle"> change</div>
+    </div>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
