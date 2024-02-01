@@ -13,7 +13,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      # Install NPM dependencies, cache them correctly
+      # Install NPM dependencies and cache them
       - name: Install dependencies
         run: npm install
 
@@ -28,3 +28,4 @@ jobs:
       # Run Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v5.5.1
+
