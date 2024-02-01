@@ -9,20 +9,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
-      # Install NPM dependencies and cache them
-      - name: Install dependencies
-        run: npm install
-
-      # Build your Vue.js project
-      - name: Build
-        run: npm run build
-
-      # Start your Vue.js application
-      - name: Start App
-        run: npm run dev
-
-      # Run Cypress tests
+      # Install NPM dependencies, cache them correctly
+      # and run all Cypress tests
       - name: Cypress run
-        uses: cypress-io/github-action@v6
-
+        uses: cypress-io/github-action@v6.6.1 # use the explicit version number
+        with:
+          build: npm run build
+          start: npm start
