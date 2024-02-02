@@ -1,0 +1,18 @@
+#app {
+    text-align: center;
+}
+
+header {
+    font-size: 100px;
+    font-family: 'great vibes', 'sans-serif';
+    color: rgb(4, 8, 80);
+}
+
+#lottie-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; 
+  }
