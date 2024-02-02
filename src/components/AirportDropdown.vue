@@ -5,6 +5,6 @@
         <option>Dallas Fort Worth</option>
         <option>Los Angeles International Airport</option>
         <option>JFK Airport</option>
-        <option>Cancuun International Airport</option>
+        <option>Cancun International Airport</option>
     </select>
 </template>
