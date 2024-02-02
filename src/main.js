@@ -25,7 +25,7 @@ const router = createRouter({
 const app = createApp(App)
 
 
-// app.use(router)
+app.use(router)
 //An application instance won't render anything until its .mount() method is called. It expects a 'container' argument, which can either be an actual DOM element or a selector string. The app.mount('#app') below is connected to the html file.
 app.mount('#app')
 //The mount method should always be called after all app configurations and asset registrations are done. Also note that its return value, unlike the asset registration methods, is the root component instance instead of the application instance

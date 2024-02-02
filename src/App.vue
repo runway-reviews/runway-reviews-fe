@@ -1,8 +1,10 @@
-
 <template class="main">
-  <Header />
-  <AirportDropdown />
-  <AirportDetailsPage />
+  <div>
+    <!-- <Header /> -->
+    <router-view></router-view>
+     <AirportDropdown />
+    <!-- <AirportDetailsPage /> -->
+  </div>
 </template>
 
 
@@ -15,7 +17,7 @@
     components: {
       Header,
       AirportDropdown,
-      AirportDetailsPage,
+      AirportDetailsPage
     }
   }
 
