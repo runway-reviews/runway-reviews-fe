@@ -1,10 +1,23 @@
 //Every vue application starts by creating a new application instance with the createApp function:
 import './assets/styles.css'
 
-import { createApp } from 'vue'
-import App from './App.vue'
-// import router from './router'
+import { createApp } from 'vue';
+import { createRouter, createWebHistory } from 'vue-router';
+import App from './App.vue';
+import Header from './components/Header.vue';
+import AirportDropdown from './components/AirportDropdown.vue';
+import AirportDetailsPage from './components/AirportDetailsPage.vue';
 
+const router = createRouter({
+  history: createWebHistory(),
+  routes: [
+    {path: '/', component: Header},
+    { path: '/', component: AirportDropdown },
+    { path: '/:airportName', component: AirportDetailsPage}
+  ]
+})
+
+// import router from './router'
 
 //The object we are passing into createApp is in fact a component ('App' just like in react). Every app requires a 'root component' that can contain other components as its children.
 //If you are using single-file components (we are), we typically import the root component from another file (we do this on line 3)
