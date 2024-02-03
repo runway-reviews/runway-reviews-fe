@@ -11,6 +11,5 @@
 <script setup>
   import Header from './components/Header.vue'
   import AirportDropdown from './components/AirportDropdown.vue'
-  import AirportDetailsPage from './views/AirportDetailsPage.vue';
 
 </script>
