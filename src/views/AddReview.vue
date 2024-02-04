@@ -1,6 +1,9 @@
 <template>
   <div class="container">
     <form>
+      <router-link to="/">
+        <div class="home-button link">Home</div>
+    </router-link>
       <div class="item">
         <label class="review-label">Select a category:</label>
         <select class="login-selection">
@@ -36,7 +39,7 @@
     display: flex;
     justify-content: center;
     outline: 2px solid black;
-    height: 17em;
+    height: 20em;
     padding: 2em;
     margin: 2em 5em 0 5em;
   }
