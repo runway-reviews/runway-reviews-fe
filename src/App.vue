@@ -1,18 +1,23 @@
 <template class="main">
   <Header />
   <AirportDropdown />
+  <div id="nav">
+    <router-link :to="{name: airportName}"></router-link>
+  </div>
+  <router-view />
 </template>
 
 
-<script >
+<script setup>
   import Header from './components/Header.vue'
   import AirportDropdown from './components/AirportDropdown.vue'
-
-  export default {
-    components: {
-      Header,
-      AirportDropdown,
-    }
-  }
+  import AirportDetailsPage from './views/AirportDetailsPage.vue';
 
 </script>
+
+<!-- router-view is a tag where the component will be dynamically injected
+
+
+
+
+-->
