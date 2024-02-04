@@ -7,10 +7,13 @@ const app = createApp(App)
 app.use(router)
 app.mount('#app')
 
+// import router from './router'
 
 
 //ROUTER 
 //import router is step 2, use method imports the object in inex.js file 
+
+//An application instance won't render anything until its .mount() method is called. It expects a 'container' argument, which can either be an actual DOM element or a selector string. The app.mount('#app') below is connected to the html file.
 
 //The mount method should always be called after all app configurations and asset registrations are done. Also note that its return value, unlike the asset registration methods, is the root component instance instead of the application instance
 
