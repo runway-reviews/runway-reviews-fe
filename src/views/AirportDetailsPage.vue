@@ -2,10 +2,10 @@
     <h1>{{ $route.params.airportName }} </h1>
     <div class="details-container">
     <router-link to="/add-review">
-        <div id="add-review">Add Review</div>
+        <div class="link" id="add-review">Add Review</div>
     </router-link>
     <router-link to="/">
-        <div class="home-button">Home</div>
+        <div class="home-button link">Home</div>
     </router-link>
     <select class="details-dropdown-menu" v-model="categories" @change="filterByCategory">
         <option v-for="category in categories" :key="category" :value="category">
@@ -22,17 +22,21 @@ const categories = ['Security', 'Restaurants', 'General', 'Arrivals/Departures',
 </script>
 
 <style setup>
+  
   .details-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 5em;
+    height: 6em;
     justify-content: space-between;
-    outline: 2px solid black;
   }
 
   .details-dropdown-menu {
     width: 19em;
     height: 1.6em;
+  }
+
+  .link {
+    font-size: 1.2em;
   }
 </style>
