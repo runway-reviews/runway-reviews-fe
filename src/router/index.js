@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import App from '../App.vue'
 import AirportDetailsPage from '../views/AirportDetailsPage.vue'
 import Home from '../views/Home.vue'
+import Login from '../views/Login.vue'
+import AddReview from '../views/AddReview.vue'
 
 const router = createRouter({
   //creates web history to click forward and back to go to previous routes
@@ -16,6 +18,16 @@ const router = createRouter({
       path: '/airport/:airportName',
       name: 'airportName',
       component: AirportDetailsPage
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Login
+    },
+    {
+      path: '/add-review',
+      name: 'addReview',
+      component: AddReview
     }
   ]
 })

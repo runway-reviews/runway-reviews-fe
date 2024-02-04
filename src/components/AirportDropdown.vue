@@ -25,7 +25,7 @@
   
     const navigateToAirportDetails = () => {
       if (selectedAirport.value) {
-        console.log(selectedAirport.value)
+        // console.log(selectedAirport.value)
         router.push({ name: 'airportName', params: { airportName: selectedAirport.value } })
       }
     }
