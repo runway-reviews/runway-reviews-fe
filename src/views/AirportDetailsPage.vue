@@ -1,8 +1,10 @@
 <template>
     <h1>{{ $route.params.airportName }} </h1>
+
+    <div></div>
     <button id="add-review">Add Review</button>
     <router-link to="/">
-        <button>Back to Home</button>
+        <button class="home-button">Home</button>
     </router-link>
     <select v-model="categories" @change="filterByCategory">
         <option v-for="category in categories" :key="category" :value="category">
@@ -17,4 +19,8 @@ const categories = ['Security', 'Restaurants', 'General', 'Arrivals/Departures',
 
 </script>
 
-<!-- view folder is where all out routes files live -->
+<style setup>
+  .home-buton {
+    border: 0px;
+  }
+</style>

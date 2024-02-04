@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import App from '../App.vue'
 import AirportDetailsPage from '../views/AirportDetailsPage.vue'
-
+import Home from '../views/Home.vue'
 
 const router = createRouter({
   //creates web history to click forward and back to go to previous routes
@@ -10,7 +10,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: App
+      component: Home
     },
     {
       path: '/airport/:airportName',
@@ -22,8 +22,5 @@ const router = createRouter({
 
 export default router
 
-//this is where we setup all our different routes, so step 1 of setting up route
-//why doesthe guys have folders of View
 
-//Why are there duplicates on the home page?
 

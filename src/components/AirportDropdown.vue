@@ -20,8 +20,7 @@
       { code: 'DEN', name: 'Denver International Airport' },
       { code: 'DFW', name: 'Dallas Fort Worth International Airport' },
       { code: 'CUN', name: 'Cancun International International Airport' },
-      { code: 'LAX', name: 'Los Angeles International Airport' },
-      
+      { code: 'LAX', name: 'Los Angeles International Airport' } 
     ]
   
     const navigateToAirportDetails = () => {
