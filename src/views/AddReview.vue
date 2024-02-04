@@ -24,7 +24,7 @@
         </div>
         
         <router-link to="/">
-            <button>Submit Review</button>
+            <button class="submit-review">Submit</button>
         </router-link>
     </form>
   </div>
@@ -68,5 +68,15 @@
 
   .review-input {
     margin-top: 0.6em;
+  }
+
+  .submit-review {
+    padding:0.3em;
+    border-radius: 10px;
+    width: 9em;
+    height: 2em;
+    border: 0;
+    color: white;
+    background-color: green;
   }
 </style>
