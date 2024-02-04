@@ -1,24 +1,15 @@
 <template class="main">
-  <div>
-    <!-- <Header /> -->
-    <router-view></router-view>
-     <AirportDropdown />
-    <!-- <AirportDetailsPage /> -->
+  <Header />
+  <AirportDropdown />
+  <div id="nav">
+    <router-link :to="{name: airportName}"></router-link>
   </div>
+  <router-view />
 </template>
 
 
-<script >
-  import Header from './components/Header.vue';
-  import AirportDropdown from './components/AirportDropdown.vue';
-  import AirportDetailsPage from './components/AirportDetailsPage.vue';
-
-  export default {
-    components: {
-      Header,
-      AirportDropdown,
-      AirportDetailsPage
-    }
-  }
+<script setup>
+  import Header from './components/Header.vue'
+  import AirportDropdown from './components/AirportDropdown.vue'
 
 </script>
