@@ -1,18 +1,20 @@
 <template>
-    <h1>{{ $route.params.airportName }} </h1>
-    <div class="details-container">
-    <router-link to="/add-review">
-        <div class="link" id="add-review">Add Review</div>
-    </router-link>
-    <router-link to="/">
-        <div class="home-button link">Home</div>
-    </router-link>
-    <select class="details-dropdown-menu" v-model="categories" @change="filterByCategory">
-        <option v-for="category in categories" :key="category" :value="category">
-          {{ category }}
-        </option>
-      </select>
-  </div>
+    <div class="airport-details-page">
+        <h1 class="airport-name">{{ $route.params.airportName }} </h1>
+        <div class="details-container">
+            <router-link to="/add-review">
+                <button class="link" id="add-review">Add Review</button>
+            </router-link>
+            <router-link to="/">
+                <button class="home-button link">Home</button>
+            </router-link>
+            <select class="details-dropdown-menu" v-model="categories" @change="filterByCategory">
+                <option v-for="category in categories" :key="category" :value="category">
+                    {{ category }}
+                </option>
+            </select>
+        </div>
+    </div>
 </template>
 
 <script setup>

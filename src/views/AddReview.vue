@@ -1,8 +1,8 @@
 <template>
   <div class="container">
     <form>
-      <router-link to="/">
-        <div class="home-button link">Home</div>
+    <router-link to="/">
+        <button class="home-button link">Home</button>
     </router-link>
       <div class="item">
         <label class="review-label">Select a category:</label>
@@ -24,38 +24,41 @@
             name="review"
             id="review"
         />
-        </div>
-        
         <router-link to="/">
             <button class="submit-review">Submit</button>
         </router-link>
+        </div>
+        
     </form>
   </div>
 </template>
 
 <style>
   .container {
-    margin-top: 1em;
+    margin: 0;
+    /* height: 100vh; */
     display: flex;
+    align-items: center;
     justify-content: center;
-    outline: 2px solid black;
-    height: 20em;
-    padding: 2em;
-    margin: 2em 5em 0 5em;
+    background-color: white;
+    z-index: 10;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    outline: 3px solid black;
   }
+
   form {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 25%;
+    width: 60vw;
+    height: 50vh;
+    padding: 2em;
   }
 
-  .item {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-  }
-
+  .item,
   .item-1 {
     display: flex;
     flex-direction: column;
@@ -74,7 +77,8 @@
   }
 
   .submit-review {
-    padding:0.3em;
+    padding: 0.3em;
+    margin: 15px;
     border-radius: 10px;
     width: 9em;
     height: 2em;

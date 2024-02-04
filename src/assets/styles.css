@@ -1,10 +1,57 @@
-#app {
-    text-align: center;
+body, .airport-details-page {
+    margin: 0;
 }
 
-header {
-    font-size: 100px;
-    font-family: 'great vibes', 'sans-serif';
-    color: rgb(4, 8, 80);
+#app {
+    text-align: center;
+    position: relative; 
+    /* delete position later potentially */
+    background-image: url('public/leonardo-yip-rn-NLirHQPY-unsplash (3).jpg');
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
 }
+
+header{
+    /* margin: 20px; */
+    font-size: 100px;
+    padding-top: 70px;
+    padding-bottom: 50px;
+    font-family: 'great vibes', 'sans-serif';
+    color: rgb(255, 255, 255);
+}
+
+.airport-name {
+    font-size: 80px;
+    font-family: 'great vibes', 'sans-serif';
+    color: white;
+    margin: 0;
+    padding-top: 70px;
+    padding-bottom: 30px;
+}
+
+.login-button {
+    background-color: white;
+    border-radius: 5px;
+    border: none;
+    margin-top: 30px;
+    margin-right: 20px;
+    font-size: 15px;
+    color: black;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    height: 3.5vh;
+    width: 8vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .login-button:hover, a:hover {
+    background-color: green;
+    color: white;
+  }
 
