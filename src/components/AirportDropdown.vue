@@ -29,9 +29,6 @@
         console.log(selectedAirport.value)
         router.push({ name: 'airportName', params: { airportName: selectedAirport.value } })
       }
-
     }
-
-
 
   </script>
