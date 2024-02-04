@@ -1,16 +1,18 @@
 <template>
     <h1>{{ $route.params.airportName }} </h1>
+    <div class="details-container">
     <router-link to="/add-review">
-        <button id="add-review">Add Review</button>
+        <div class="link" id="add-review">Add Review</div>
     </router-link>
     <router-link to="/">
-        <button class="home-button">Home</button>
+        <div class="home-button link">Home</div>
     </router-link>
-    <select v-model="categories" @change="filterByCategory">
+    <select class="details-dropdown-menu" v-model="categories" @change="filterByCategory">
         <option v-for="category in categories" :key="category" :value="category">
           {{ category }}
         </option>
       </select>
+  </div>
 </template>
 
 <script setup>
@@ -20,7 +22,21 @@ const categories = ['Security', 'Restaurants', 'General', 'Arrivals/Departures',
 </script>
 
 <style setup>
-  .home-buton {
-    border: 0px;
+  
+  .details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 6em;
+    justify-content: space-between;
+  }
+
+  .details-dropdown-menu {
+    width: 19em;
+    height: 1.6em;
+  }
+
+  .link {
+    font-size: 1.2em;
   }
 </style>
