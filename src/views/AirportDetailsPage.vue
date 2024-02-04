@@ -1,8 +1,8 @@
 <template>
     <h1>{{ $route.params.airportName }} </h1>
-
-    <div></div>
-    <button id="add-review">Add Review</button>
+    <router-link to="/add-review">
+        <button id="add-review">Add Review</button>
+    </router-link>
     <router-link to="/">
         <button class="home-button">Home</button>
     </router-link>
