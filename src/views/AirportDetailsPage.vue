@@ -2,7 +2,7 @@
     <h1>{{ $route.params.airportName }} </h1>
     <div class="details-container">
     <router-link to="/add-review">
-        <b id="add-review">Add Review</b>
+        <div id="add-review">Add Review</div>
     </router-link>
     <router-link to="/">
         <div class="home-button">Home</div>
@@ -26,9 +26,13 @@ const categories = ['Security', 'Restaurants', 'General', 'Arrivals/Departures',
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 5em;
+    justify-content: space-between;
     outline: 2px solid black;
   }
+
   .details-dropdown-menu {
-    width: 200px;
+    width: 19em;
+    height: 1.6em;
   }
 </style>
