@@ -14,10 +14,3 @@
   import AirportDetailsPage from './views/AirportDetailsPage.vue';
 
 </script>
-
-<!-- router-view is a tag where the component will be dynamically injected
-
-
-
-
--->
