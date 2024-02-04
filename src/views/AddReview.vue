@@ -2,7 +2,7 @@
   <div class="container">
     <form>
       <div class="item">
-        <label>Select a category:</label>
+        <label class="review-label">Select a category:</label>
         <select class="login-selection">
             <option>Security</option>
             <option>Restaurants</option>
@@ -13,7 +13,7 @@
       </div>
 
         <div class="item-1">
-          <label>Write your review here:</label>
+          <label class="review-label">Write your review here:</label>
           <input 
             class="review-input"
             type="text"
@@ -31,15 +31,12 @@
 </template>
 
 <style>
-* {
-  font-size: 105%;
-}
   .container {
     margin-top: 1em;
     display: flex;
     justify-content: center;
     outline: 2px solid black;
-    height: 14em;
+    height: 17em;
     padding: 2em;
     margin: 2em 5em 0 5em;
   }
@@ -64,10 +61,13 @@
 
   .login-selection {
     margin-top: 0.6em;
+    font-size: 1.2em;
   }
 
   .review-input {
     margin-top: 0.6em;
+    font-size: 1.2em;
+    height: 5em;
   }
 
   .submit-review {
@@ -78,5 +78,10 @@
     border: 0;
     color: white;
     background-color: green;
+    font-size: 1.2em;
+  }
+
+  .review-label {
+    font-size: 1.2em;
   }
 </style>
