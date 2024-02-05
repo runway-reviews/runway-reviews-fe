@@ -1,6 +1,6 @@
 <template>
     <button v-if="!loginPressed" class="login-button">
-      <router-link to="/login" @click="handleLogin" :handleLogin="handleLogin" style="text-decoration: none;">Login</router-link>
+      <router-link to="/login" @click="handleLogin" :handleLogin="handleLogin" class="login-words">Login</router-link>
     </button>
     <AirportHeader />
     <AirportDropdown />

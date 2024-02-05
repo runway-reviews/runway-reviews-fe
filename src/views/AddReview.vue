@@ -2,7 +2,7 @@
   <div class="container">
     <form>
     <router-link to="/">
-        <button class="home-button link">Home</button>
+        <button class="close-button link">✖️</button>
     </router-link>
       <div class="item">
         <label class="review-label">Select a category:</label>
@@ -95,5 +95,11 @@
 
   .review-label {
     font-size: 1.2em;
+  }
+
+  .close-button {
+    background-color: white;
+    border:0;
+    font-size: 1.6em;
   }
 </style>
