@@ -17,11 +17,11 @@
             v-model="password"
             id="password"
         />
-        <button>Login</button>
+        <button @click="handleLogin">Login</button>
         <button>Create Account</button>
     </form>
     <router-link to="/">
-        <button @click="handleLogin">Back to Home</button>
+        <button>Back to Home</button>
     </router-link>
 </template>
 
@@ -30,13 +30,23 @@ import AirportHeader from '../components/AirportHeader.vue'
 import { ref } from 'vue'
 import { defineProps } from 'vue'
 
-const props = defineProps({
-    handleLogin: {
-        type: Function
-    }
-})
-
 const text = ref('')
 const password = ref('')
+const emit = defineEmits(['handleLogin'])
+
+const handleLogin = () => {
+    console.log('hello')
+    fetch('https://api.api-ninjas.com/v1/airports?name=Denver', {
+        method: 'GET',
+        headers: {
+            'X-Api-Key': 'JPmU5d23wQY1nxwdk73ZUVzBW8zoPxLqSDqax8f0',
+            'Content-Type': 'application/json'
+        },
+    })
+      .then(response => response.json()) 
+      .then(data => {
+        defineEmits('login', data)
+      })
+  }
 
 </script>
