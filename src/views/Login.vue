@@ -58,9 +58,8 @@ const password = ref('')
   form {
     display: flex;
     align-items: center;
-    outline: 2px solid red;
-   transform: translate(25%, -10%);
-   background-color: white;
+    transform: translate(25%, -7%);
+    background-color: white;
   }
 
   .home-login {
@@ -97,17 +96,15 @@ const password = ref('')
 .username-container {
   display: flex;
   justify-content: space-between;
-  outline: 2px solid red;
   width: 20em;
-  margin-top: -5em;
+  margin-top: -2em;
 }
 
 .password-container {
   display: flex;
   justify-content: space-between;
-  outline: 2px solid red;
   width: 20em;
-  margin-top: -5em;
+  margin-top: -4em;
 }
 
 .home-create-account-container {
@@ -118,7 +115,6 @@ const password = ref('')
 }
 
 .username-label-container {
- outline: 2px solid purple;
  display: flex;
  flex-direction: column;
  justify-content: center;
@@ -126,10 +122,24 @@ const password = ref('')
 
 .password-label-container {
   display: flex;
-  outline: 2px solid green;
   flex-direction: column;
   justify-content: center;
 }
 
+.login-on-page {
+  width:  10em;
+  font-size: 1.2em;
+  height: 2em;
+  color: white;
+  background-color: green;
+  text-decoration: underline;
+  border-radius: 6px;
+  border: 0;
+}
+
+.login-on-page:hover {
+  cursor: pointer;
+  transform:scale(1.3); 
+}
 
 </style>
