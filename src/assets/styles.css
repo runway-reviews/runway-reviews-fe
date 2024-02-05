@@ -23,8 +23,8 @@ header{
 }
 
 .airport-name {
-    font-size: 80px;
-    font-family: 'great vibes', 'sans-serif';
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 2.8em;
     color: white;
     margin: 0;
     padding-top: 70px;

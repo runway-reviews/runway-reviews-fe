@@ -60,4 +60,9 @@ const categories = ['Security', 'Restaurants', 'General', 'Arrivals/Departures',
   transform:scale(1.3); 
   text-decoration: underline;
 }
+
+/* .airport-name {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 3em;
+} */
 </style>
