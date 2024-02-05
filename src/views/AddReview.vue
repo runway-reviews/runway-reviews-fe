@@ -36,7 +36,6 @@
 <style>
   .container {
     margin: 0;
-    /* height: 100vh; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -46,7 +45,6 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    outline: 3px solid black;
   }
 
   form {
@@ -56,6 +54,7 @@
     width: 60vw;
     height: 50vh;
     padding: 2em;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
   }
 
   .item,
@@ -86,6 +85,12 @@
     color: white;
     background-color: green;
     font-size: 1.2em;
+  }
+
+  .submit-review:hover {
+      cursor: pointer;  
+      transform:scale(1.3); 
+      text-decoration: underline;
   }
 
   .review-label {
