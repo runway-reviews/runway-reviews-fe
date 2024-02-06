@@ -12,7 +12,7 @@
       </div>
       <input 
             type="text"
-            placeholder="JohnDoe316"
+            placeholder="username"
             name="username"
             v-model="text"
             id="username"

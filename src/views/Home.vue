@@ -1,5 +1,5 @@
 <template>
-    <button class="login-button" @click="showLoginForm = true">Login</button>
+    <button class="login-button" v-if="!showLoginForm" @click="showLoginForm = true">Login</button>
     <Login class="login-words" v-if="showLoginForm" @handleLogin="onHandleLogin" />
     <AirportHeader v-if="showAirportHeader" />
     <AirportDropdown v-if="showAirportDropdown" />
@@ -13,7 +13,6 @@ import { useToast } from 'vue-toastification'
 import 'vue-toastification/dist/index.css'
 import { ref, computed } from 'vue'
 
-const login = ref('');
 const showLoginForm = ref(false);
 const toast = useToast();
 let currentUser = ref({});
