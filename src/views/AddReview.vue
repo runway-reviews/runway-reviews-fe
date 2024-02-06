@@ -35,7 +35,7 @@
 
 <style>
   .container {
-    margin: 0;
+    /* margin: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -44,7 +44,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); */
   }
 
   form {
@@ -55,6 +55,7 @@
     height: 50vh;
     padding: 2em;
     font-family: 'M PLUS Rounded 1c', sans-serif;
+    transform: translate(30%, 30%);
   }
 
   .item,

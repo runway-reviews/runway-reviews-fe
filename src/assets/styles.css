@@ -60,7 +60,7 @@ header{
 
   /* Login.vue */
  
-  form {
+  /* form {
     display: flex;
     align-items: center;
     transform: translate(25%, -7%);
@@ -146,4 +146,4 @@ header{
   cursor: pointer;
   transform:scale(1.3); 
 }
-
+ 
