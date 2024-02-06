@@ -1,10 +1,10 @@
 <template>
     <form>
       <div class="home-create-account-container">
-        <router-link to="/">
-          <button @click="login" class="home-login">Home</button>
-        </router-link>
     <button class="create-account">Create Account</button>
+     <router-link to="/" class="close-login-router">
+      <button @click="login" class="close-login">✖️</button>
+    </router-link>
       </div>
     <div class="username-container">
       <div class="username-label-container">
@@ -83,14 +83,19 @@ const createAccount = () => {
     outline: 2px solid black;
   }
 
-  .home-login {
+  .close-login {
     display: flex;
-    font-size: 1.2em;
+    font-size: 1.6em;
     height: 2em;
-    width: 4em;
+    width: 2em;
     background-color: white;
     border: 0;
-    text-decoration: underline;
+    text-decoration: none;
+    margin-left: 500%;
+  }
+
+  .close-login-router {
+    text-decoration: none;
   }
 
   .create-account {
@@ -99,13 +104,11 @@ const createAccount = () => {
     background-color: white;
     text-decoration: underline;
     font-size: 1.2em;
+    margin-left: 48%;
   }
 
-  .home-login:hover, .create-account:hover {
+  .close-login:hover, .create-account:hover {
     cursor: pointer;
-    color: white;
-    background-color: green;
-    text-decoration: underline;
     transform:scale(1.3); 
   }
 
@@ -131,8 +134,8 @@ const createAccount = () => {
 .home-create-account-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  width: 16em;
+  width: 100%;
+  text-decoration: none;
 }
 
 .username-label-container {
