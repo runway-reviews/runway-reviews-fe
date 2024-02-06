@@ -34,18 +34,6 @@
 </template>
 
 <style>
-  .container {
-    /* margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-    z-index: 10;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); */
-  }
 
   form {
     display: flex;

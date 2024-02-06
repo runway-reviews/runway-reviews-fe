@@ -1,10 +1,9 @@
 <template>
-    <AirportHeader />
     <form>
       <div class="home-create-account-container">
-        <!-- <router-link to="/">
+        <router-link to="/">
           <button @click="login" class="home-login">Home</button>
-        </router-link> -->
+        </router-link>
     <button class="create-account">Create Account</button>
       </div>
     <div class="username-container">
@@ -34,12 +33,11 @@
             class="input-box"
         />
     </div>
-        <button @click.prevent="login" class="login-on-page">Login</button>
+        <button @click.prevent="login" class="login-on-page">Log In</button>
     </form>
 </template>
 
 <script setup>
-import AirportHeader from './AirportHeader.vue'
 import { ref, defineEmits } from 'vue'
 import { useToast } from 'vue-toastification'
 import 'vue-toastification/dist/index.css'
@@ -81,11 +79,11 @@ const createAccount = () => {
   form {
     display: flex;
     align-items: center;
-    transform: translate(25%, -7%);
     background-color: white;
+    outline: 2px solid black;
   }
 
-  /* .home-login {
+  .home-login {
     display: flex;
     font-size: 1.2em;
     height: 2em;
@@ -93,7 +91,7 @@ const createAccount = () => {
     background-color: white;
     border: 0;
     text-decoration: underline;
-  } */
+  }
 
   .create-account {
     display: flex;
@@ -164,6 +162,5 @@ const createAccount = () => {
   cursor: pointer;
   transform:scale(1.3); 
 }
-
 
 </style>
