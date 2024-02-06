@@ -1,28 +1,41 @@
 <template>
     <AirportHeader />
     <form>
-        <label>Username</label>
-        <input 
+      <div class="home-create-account-container">
+        <!-- <router-link to="/">
+          <button @click="login" class="home-login">Home</button>
+        </router-link> -->
+    <button class="create-account">Create Account</button>
+      </div>
+    <div class="username-container">
+      <div class="username-label-container">
+        <label class="username-label">Username</label>
+      </div>
+      <input 
             type="text"
             placeholder="JohnDoe316"
             name="username"
             v-model="text"
             id="username"
+            class="input-box"
         />
+    </div>
+    <div class="password-container">
+      <div class="password-label-container">
         <label>Password</label>
+      </div>
+      
         <input 
             type="text"
-            placeholder="******"
+            placeholder="**********************"
             name="password"
             v-model="password"
             id="password"
+            class="input-box"
         />
-        <button @click.prevent="login">Login</button>
-        <button>Create Account</button>
+    </div>
+        <button @click.prevent="login" class="login-on-page">Login</button>
     </form>
-    <router-link to="/">
-        <button>Back to Home</button>
-    </router-link>
 </template>
 
 <script setup>
@@ -30,7 +43,6 @@ import AirportHeader from './AirportHeader.vue'
 import { ref, defineEmits } from 'vue'
 import { useToast } from 'vue-toastification'
 import 'vue-toastification/dist/index.css'
-// import { defineProps } from 'vue'
 
 const text = ref('')
 const password = ref('')
@@ -38,10 +50,6 @@ const emit = defineEmits(['handleLogin']);
 const toast = useToast();
 
 const login = () => {
-    // if(!text.value || !password.value) {
-    //     console.log('should be toasting')
-    //     toast.error('Both fields must be filled')
-    // }
 
     const userInputtedValues = {
         text: text.value,
