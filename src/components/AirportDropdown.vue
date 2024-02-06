@@ -19,7 +19,7 @@
       { code: 'JFK', name: 'John F. Kennedy International Airport' },
       { code: 'DEN', name: 'Denver International Airport' },
       { code: 'DFW', name: 'Dallas Fort Worth International Airport' },
-      { code: 'CUN', name: 'Cancun International International Airport' },
+      { code: 'CUN', name: 'Cancun International Airport' },
       { code: 'LAX', name: 'Los Angeles International Airport' } 
     ]
   

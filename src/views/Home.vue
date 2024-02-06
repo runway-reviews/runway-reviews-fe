@@ -1,6 +1,6 @@
 <template>
     <button class="login-button" @click="showLoginForm = true">Login</button>
-    <Login class="login-form" v-if="showLoginForm" @handleLogin="onHandleLogin"/>
+    <Login class="login-words" v-if="showLoginForm" @handleLogin="onHandleLogin" />
     <AirportHeader />
     <AirportDropdown />
   </template>
@@ -45,3 +45,4 @@
         });
 }
 </script>
+

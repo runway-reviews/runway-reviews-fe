@@ -2,7 +2,7 @@
   <div class="container">
     <form>
     <router-link to="/">
-        <button class="home-button link">Home</button>
+        <button class="close-button link">✖️</button>
     </router-link>
       <div class="item">
         <label class="review-label">Select a category:</label>
@@ -36,7 +36,6 @@
 <style>
   .container {
     margin: 0;
-    /* height: 100vh; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -46,7 +45,6 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    outline: 3px solid black;
   }
 
   form {
@@ -56,6 +54,7 @@
     width: 60vw;
     height: 50vh;
     padding: 2em;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
   }
 
   .item,
@@ -88,7 +87,19 @@
     font-size: 1.2em;
   }
 
+  .submit-review:hover {
+      cursor: pointer;  
+      transform:scale(1.3); 
+      text-decoration: underline;
+  }
+
   .review-label {
     font-size: 1.2em;
+  }
+
+  .close-button {
+    background-color: white;
+    border:0;
+    font-size: 1.6em;
   }
 </style>
