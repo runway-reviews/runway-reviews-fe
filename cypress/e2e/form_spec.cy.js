@@ -35,5 +35,32 @@ describe('Runway Reviews', () => {
   it('should navigate back to the home page', () => {
     cy.visit('http://127.0.0.1:5174/airport/Cancun%20International%20Airport')
     cy.get('button[class="home-button-details-page link"]').click()
+
+    cy.get('header').contains('Runway Reviews')
+    cy.get('button[class="login-button"]').contains("Login")
+
+   cy.get('select')
+    .get('option[value="John F. Kennedy International Airport"]').contains("John F. Kennedy International Airport")
+    .get('option[value="Denver International Airport"]').contains("Denver International Airport")
+    .get('option[value="Dallas Fort Worth International Airport"]').contains("Dallas Fort Worth International Airport")
+    .get('option[value="Cancun International Airport"]').contains("Cancun International Airport")
+    .get('option[value="Los Angeles International Airport"]').contains("Los Angeles International Airport")
+  })
+  it('should navigate to the Add Review page', () => {
+    cy.visit('http://127.0.0.1:5174/airport/Cancun%20International%20Airport')
+    cy.get('button[class="link add-review"]').click()
+    cy.get('h1[class="airport-name"]').contains('Cancun International Airport')
+    cy.get('label').contains('Select a category')
+
+    cy.get('select')
+    .get('option').contains('Security')
+    .get('option').contains('Restaurants')
+    .get('option').contains("Arrivals/Departures")
+    .get('option').contains("Amenities")
+    .get('option').contains("Accessibility")
+
+    cy.get('label').contains('Write your review here:')
+    cy.get('input[class="review-input"]').should('exist')
+    cy.get('button').contains('Submit')
   })
 })
