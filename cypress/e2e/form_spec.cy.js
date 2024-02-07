@@ -32,4 +32,8 @@ describe('Runway Reviews', () => {
     .get('option[value="Ammenities"]').contains("Ammenities")
     .get('option[value="Accessibility"]').contains("Accessibility")
   })
+  it('should navigate back to the home page', () => {
+    cy.visit('http://127.0.0.1:5174/airport/Cancun%20International%20Airport')
+    cy.get('button[class="home-button-details-page link"]').click()
+  })
 })
