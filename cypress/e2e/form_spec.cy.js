@@ -46,7 +46,7 @@ describe('Runway Reviews', () => {
     .get('option[value="Cancun International Airport"]').contains("Cancun International Airport")
     .get('option[value="Los Angeles International Airport"]').contains("Los Angeles International Airport")
   })
-  it('should navigate to the Add Review page', () => {
+  it('should show Add Review form when that button is clicked', () => {
     cy.visit('http://127.0.0.1:5174/airport/Cancun%20International%20Airport')
     cy.get('button[class="link add-review"]').click()
     cy.get('h1[class="airport-name"]').contains('Cancun International Airport')
@@ -62,5 +62,23 @@ describe('Runway Reviews', () => {
     cy.get('label').contains('Write your review here:')
     cy.get('input[class="review-input"]').should('exist')
     cy.get('button').contains('Submit')
+  })
+  it('should take me back to the airport details page when x button is clicked', () => {
+    cy.visit('http://127.0.0.1:5174/airport/Cancun%20International%20Airport')
+
+     cy.get('button').contains('Add Review').click()
+     cy.get('button').contains('✖️').click()
+
+      cy.get('h1').contains('Cancun International Airport')
+      cy.get('button').contains('Add Review')
+      cy.get('button').contains('Home')
+
+      cy.get('select')
+    .get('option[value="Security"]').contains('Security')
+    .get('option[value="Restaurants"]').contains('Restaurants')
+    .get('option[value="General"]').contains("General")
+    .get('option[value="Arrivals/Departures"]').contains("Arrivals/Departures")
+    .get('option[value="Ammenities"]').contains("Ammenities")
+    .get('option[value="Accessibility"]').contains("Accessibility")
   })
 })
