@@ -1,11 +1,10 @@
 <template>
-    <AirportHeader />
     <form>
       <div class="home-create-account-container">
-        <!-- <router-link to="/">
-          <button @click="login" class="home-login">Home</button>
-        </router-link> -->
     <button class="create-account">Create Account</button>
+     <router-link to="/" class="close-login-router">
+      <button @click="login" class="close-login">✖️</button>
+    </router-link>
       </div>
     <div class="username-container">
       <div class="username-label-container">
@@ -13,7 +12,7 @@
       </div>
       <input 
             type="text"
-            placeholder="JohnDoe316"
+            placeholder="username"
             name="username"
             v-model="text"
             id="username"
@@ -34,12 +33,11 @@
             class="input-box"
         />
     </div>
-        <button @click.prevent="login" class="login-on-page">Login</button>
+        <button @click.prevent="login" class="login-on-page">Log In</button>
     </form>
 </template>
 
 <script setup>
-import AirportHeader from './AirportHeader.vue'
 import { ref, defineEmits } from 'vue'
 import { useToast } from 'vue-toastification'
 import 'vue-toastification/dist/index.css'
@@ -76,3 +74,96 @@ const createAccount = () => {
 }
 
 </script>
+
+<style>
+  form {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    outline: 2px solid black;
+  }
+
+  .close-login {
+    display: flex;
+    font-size: 1.6em;
+    height: 2em;
+    width: 2em;
+    background-color: white;
+    border: 0;
+    text-decoration: none;
+    margin-left: 500%;
+  }
+
+  .close-login-router {
+    text-decoration: none;
+  }
+
+  .create-account {
+    display: flex;
+    border: 0;
+    background-color: white;
+    text-decoration: underline;
+    font-size: 1.2em;
+    margin-left: 48%;
+  }
+
+  .close-login:hover, .create-account:hover {
+    cursor: pointer;
+    transform:scale(1.3); 
+  }
+
+ .input-box {
+  width: 15em;
+  height: 2em;
+ }
+
+.username-container {
+  display: flex;
+  justify-content: space-between;
+  width: 20em;
+  margin-top: -2em;
+}
+
+.password-container {
+  display: flex;
+  justify-content: space-between;
+  width: 20em;
+  margin-top: -4em;
+}
+
+.home-create-account-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  text-decoration: none;
+}
+
+.username-label-container {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+}
+
+.password-label-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-on-page {
+  width:  10em;
+  font-size: 1.2em;
+  height: 2em;
+  color: white;
+  background-color: green;
+  text-decoration: underline;
+  border-radius: 6px;
+  border: 0;
+}
+
+.login-on-page:hover {
+  cursor: pointer;
+  transform:scale(1.3); 
+}
+
+</style>

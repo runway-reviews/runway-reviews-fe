@@ -4,7 +4,7 @@
         <div class="details-container">
           <div class="buttons-container">
             <router-link to="/add-review">
-                <button class="link add-review" id="add-review">Add Review</button>
+                <button class="link add-review" id="add-review" @click="showAddReview = true">Add Review</button>
             </router-link>
             <router-link to="/">
                 <button class="home-button-details-page link">Home</button>
