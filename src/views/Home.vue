@@ -1,6 +1,6 @@
 <template>
-    <button class="login-button" v-if="!showLoginForm" @click="showLoginForm = true">Login</button>
-    <Login class="login-words" v-if="showLoginForm" @handleLogin="onHandleLogin" />
+    <button class="login-button" v-if="!showLoginForm" @click="showLoginForm = true" :showLoginForm="showLoginForm" style="text-decoration: none;">Login</button>
+    <Login class="login-words" v-if="showLoginForm" @handleLogin="onHandleLogin" @close="closeLoginForm" />
     <AirportHeader v-if="showAirportHeader" />
     <AirportDropdown v-if="showAirportDropdown" />
 </template>
@@ -24,6 +24,7 @@ const onHandleLogin = (userInputtedValues) => {
     return fetch('https://7deb554e-bb6e-4022-abe6-7d23f9c611bc.mock.pstmn.io/api/v0/users')
         .then(response => response.json())
         .then(data => {
+          console.log(data, 'this is data')
             const userAndPasswordStorage = data.data;
             if (userInputtedValues.text === '' || userInputtedValues.password === '') {
                 toast.error('Both inputs must be filled out');
@@ -44,4 +45,9 @@ const onHandleLogin = (userInputtedValues) => {
             }
         });
 }
+
+const closeLoginForm = () => {
+  showLoginForm.value = false
+}
+
 </script>

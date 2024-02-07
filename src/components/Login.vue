@@ -1,9 +1,9 @@
 <template>
     <form>
       <div class="home-create-account-container">
-    <button class="create-account">Create Account</button>
+    <!-- <button class="create-account">Create Account</button> -->
      <router-link to="/" class="close-login-router">
-      <button @click="login" class="close-login">✖️</button>
+      <button @click="closeLogin" class="close-login">✖️</button>
     </router-link>
       </div>
     <div class="username-container">
@@ -38,17 +38,23 @@
 </template>
 
 <script setup>
-import { ref, defineEmits } from 'vue'
+import { ref, defineEmits, defineProps } from 'vue'
 import { useToast } from 'vue-toastification'
 import 'vue-toastification/dist/index.css'
 
 const text = ref('')
 const password = ref('')
-const emit = defineEmits(['handleLogin']);
+const emit = defineEmits(['handleLogin', 'close']);
 const toast = useToast();
 
-const login = () => {
+const props = defineProps({
+    showLoginForm: {
+        type: Boolean,
+        required: true
+    }
+})
 
+const login = () => {
     const userInputtedValues = {
         text: text.value,
         password: password.value
@@ -73,6 +79,12 @@ const createAccount = () => {
     .then(data, console.log(data))
 }
 
+
+const closeLogin = () => {
+    // console.log(props.showLoginForm)
+    emit('close')
+}
+
 </script>
 
 <style>
@@ -84,14 +96,15 @@ const createAccount = () => {
   }
 
   .close-login {
-    display: flex;
+    position: absolute;
+    top: 10px; 
+    right: 10px; 
     font-size: 1.6em;
     height: 2em;
     width: 2em;
     background-color: white;
     border: 0;
     text-decoration: none;
-    margin-left: 500%;
   }
 
   .close-login-router {
