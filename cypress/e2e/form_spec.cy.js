@@ -14,4 +14,22 @@ describe('Runway Reviews', () => {
     .get('option[value="Cancun International Airport"]').contains("Cancun International Airport")
     .get('option[value="Los Angeles International Airport"]').contains("Los Angeles International Airport")
   })
+  it('Visits an airport details page', () => {
+
+    cy.get('select').select('Cancun International Airport');
+
+    cy.get('h1[class="airport-name"]').contains("Cancun International Airport");
+
+    cy.get('button[class="link add-review"]').contains('Add Review');
+
+    cy.get('button[class="home-button-details-page link"]').contains('Home');
+
+    cy.get('select')
+    .get('option[value="Security"]').contains('Security')
+    .get('option[value="Restaurants"]').contains('Restaurants')
+    .get('option[value="General"]').contains("General")
+    .get('option[value="Arrivals/Departures"]').contains("Arrivals/Departures")
+    .get('option[value="Ammenities"]').contains("Ammenities")
+    .get('option[value="Accessibility"]').contains("Accessibility")
+  })
 })
