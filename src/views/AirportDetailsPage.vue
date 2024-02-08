@@ -1,9 +1,10 @@
 <template>
     <div class="airport-details-page">
         <h1 class="airport-name">{{ $route.params.airportName }} </h1>
+        <p v-if="currentUser">Current User: {{ currentUser.attributes.username }}</p>
         <div class="details-container" :style="{height: showReviewForm ? '0vh' : '5em' }">
           <div class="buttons-container" v-if="!showReviewForm" >
-            <button class="link add-review" id="add-review" style="text-decoration: none;" @click="showReviewForm = true" >Add Review</button>
+            <button class="link add-review" id="add-review" style="text-decoration: none;" @click="handleAddReview"  >Add Review</button>
             <router-link to="/">
                 <button class="home-button-details-page link" style="text-decoration: none;">Home</button>
             </router-link>
@@ -21,13 +22,27 @@
 <script setup>
 import AddReview from './AddReview.vue';
 import { ref } from 'vue'
+import { useToast } from 'vue-toastification'
+
 
 
 const categories = ['Security', 'Restaurants', 'General', 'Arrivals/Departures', 'Ammenities', 'Accessibility']
 const showReviewForm = ref(false);
+const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+const toast = useToast();
+
+
 
 const closeReviewForm = () => {
     showReviewForm.value = false
+}
+
+const handleAddReview = () => {
+    if (currentUser) {
+        showReviewForm.value = true;
+    } else {
+        toast.warning('You must be logged in to add a review!');
+    }
 }
 
 </script>

@@ -1,19 +1,34 @@
 <template>
-    <div>
-      <select v-model="selectedAirport" @change="navigateToAirportDetails">
-        <option v-for="airport in airports" :key="airport.code" :value="airport.name">
-          {{ airport.name }}
-        </option>
-      </select>
-    </div>
-  </template>
+  <div>
+    <select v-model="selectedAirport" @change="navigateToAirportDetails">
+      <option v-for="airport in airports" :key="airport.code" :value="airport.name">
+        {{ airport.name }}
+      </option>
+    </select>
+  </div>
+</template>
   
   <script setup>
-    import { ref } from 'vue'
+    import { ref, defineProps } from 'vue'
     import { useRouter } from 'vue-router'
   
     const selectedAirport = ref('')
     const router = useRouter()
+    const props = defineProps({
+        currentUser: {
+            type: Object,
+            required: false
+        }
+    })
+
+    function checkUser() {
+        if(props.currentUser) {
+            console.log(props.currentUser, 'current inside airport dropdown')
+        } else {
+            console.log('made it here')
+        }
+    }
+    checkUser();
   
     const airports = [
       { code: 'JFK', name: 'John F. Kennedy International Airport' },
@@ -24,11 +39,12 @@
     ]
   
     const navigateToAirportDetails = () => {
-      if (selectedAirport.value) {
-        // console.log(selectedAirport.value)
-        router.push({ name: 'airportName', params: { airportName: selectedAirport.value } })
-      }
-    }
+  if (selectedAirport.value) {
+    localStorage.setItem('currentUser', JSON.stringify(props.currentUser)); 
+    router.push({ name: 'airportName', params: { airportName: selectedAirport.value } });
+  }
+}
+
 
   </script>
 
