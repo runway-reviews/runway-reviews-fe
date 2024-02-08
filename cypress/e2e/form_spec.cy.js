@@ -99,4 +99,14 @@ describe('Runway Reviews', () => {
     .get('option[value="Cancun International Airport"]').contains("Cancun International Airport")
     .get('option[value="Los Angeles International Airport"]').contains("Los Angeles International Airport")
   })
+
+  it('should navigate to the login form when the login button is clicked on the home page', () => {
+    cy.get('button').contains('Login').click()
+
+    cy.get('label').contains('Username')
+    cy.get('input[placeholder="username"]').should('exist')
+    cy.get('label').contains('Password')
+    cy.get('input[name="password"]').should('exist')
+    cy.get('button[class="login-on-page"]').should('exist')
+  })
 })
