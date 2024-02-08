@@ -2,7 +2,8 @@
   <AirportHeader  />
     <button class="login-button" v-if="!showLoginForm" @click="showLoginForm = true" :showLoginForm="showLoginForm" style="text-decoration: none;">Login</button>
     <Login class="login-words" v-if="showLoginForm" @handleLogin="onHandleLogin" @close="closeLoginForm" />
-    <AirportDropdown v-if="showAirportDropdown" />
+    <!-- <AirportDropdown v-if="showAirportDropdown" :currentUser="currentUser"/> -->
+    <AirportDropdown v-if="showAirportDropdown" :currentUser="currentUser && Object.keys(currentUser).length > 0 ? currentUser : null"/>
 </template>
 
 <script setup>
@@ -16,6 +17,7 @@ import { ref, computed } from 'vue'
 const showLoginForm = ref(false);
 const toast = useToast();
 let currentUser = ref({});
+
 
 const showAirportHeader = computed(() => !showLoginForm.value);
 const showAirportDropdown = computed(() => !showLoginForm.value);
@@ -31,10 +33,10 @@ const onHandleLogin = (userInputtedValues) => {
             } else {
                 let loggedIn = false; 
                 userAndPasswordStorage.forEach(element => {
-                    if (element.attributes.username === userInputtedValues.text && element.attributes.password === userInputtedValues.password) {
+                    if (element.attributes.username === userInputtedValues.text && element.attributes.password_digest === userInputtedValues.password) {
                         currentUser = element;
                         loggedIn = true;
-                        console.log(currentUser)
+                        console.log(currentUser, 'current userrrr')
                     }
                 });
                 if (loggedIn) {
