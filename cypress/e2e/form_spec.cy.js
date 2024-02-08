@@ -109,4 +109,13 @@ describe('Runway Reviews', () => {
     cy.get('input[name="password"]').should('exist')
     cy.get('button[class="login-on-page"]').should('exist')
   })
+  it('should give a message when the login is clicked without entering a username or password', () => {
+
+     cy.get('button').contains('Login').click()
+
+     cy.get('button').contains('Log In').click()
+
+      cy.get('div').contains('Both inputs must be filled out')
+
+  })
 })
