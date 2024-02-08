@@ -112,8 +112,7 @@ const closeReview = () => {
 
   .submit-review:hover {
       cursor: pointer;  
-      transform:scale(1.3); 
-      text-decoration: underline;
+      transform:scale(1.1);
   }
 
   .review-label {

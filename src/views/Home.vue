@@ -1,7 +1,7 @@
 <template>
+  <AirportHeader  />
     <button class="login-button" v-if="!showLoginForm" @click="showLoginForm = true" :showLoginForm="showLoginForm" style="text-decoration: none;">Login</button>
     <Login class="login-words" v-if="showLoginForm" @handleLogin="onHandleLogin" @close="closeLoginForm" />
-    <AirportHeader v-if="showAirportHeader" />
     <AirportDropdown v-if="showAirportDropdown" />
 </template>
 
@@ -21,7 +21,7 @@ const showAirportHeader = computed(() => !showLoginForm.value);
 const showAirportDropdown = computed(() => !showLoginForm.value);
 
 const onHandleLogin = (userInputtedValues) => {
-    return fetch('https://7deb554e-bb6e-4022-abe6-7d23f9c611bc.mock.pstmn.io/api/v0/users')
+    return fetch('https://vast-fortress-94917-3cbbdce45a90.herokuapp.com/api/v1/users')
         .then(response => response.json())
         .then(data => {
           console.log(data, 'this is data')
