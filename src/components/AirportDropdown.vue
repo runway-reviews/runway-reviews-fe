@@ -44,7 +44,7 @@ const navigateToAirportDetails = async () => {
         const airportObject = airports.value.find(airport => airport.name === selectedAirport.value);
         console.log(airportObject, 'airport object');
         localStorage.setItem('currentUser', JSON.stringify(props.currentUser)); 
-        router.push({ name: 'airportName', params: { airportName: airportObject } });
+        router.push({ name: 'airportName', params: { airportName: selectedAirport.value }, query: { id: airportObject.id } });
     }
 }
 

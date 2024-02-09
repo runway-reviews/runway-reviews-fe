@@ -1,6 +1,7 @@
 <template>
     <div class="airport-details-page">
-        <h1 class="airport-name">{{ airportName }} </h1>
+        <h1 class="airport-name">{{ $route.params.airportName }} </h1>
+        <!-- <h2>{{ $route.query.id }}</h2> -->
         <p v-if="currentUser">Current User: {{ currentUser.attributes.username }}</p>
         <div class="details-container" :style="{height: showReviewForm ? '0vh' : '5em' }">
           <div class="buttons-container" v-if="!showReviewForm" >
@@ -16,44 +17,71 @@
             </select>
         </div>
         <AddReview v-if="showReviewForm" @close="closeReviewForm"/>
+        <div v-if="reviewRender">
+            <p v-for="data in reviewData" :key="data.id">{{ data.comment }}</p>
+        </div>
     </div>
 </template>
 
-<script setup>
+<script>
 import AddReview from './AddReview.vue';
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useToast } from 'vue-toastification'
 import { useRouter } from 'vue-router'
-
-const router = useRouter();
-
-
-
-const categories = ['Security', 'Restaurants', 'General', 'Arrivals/Departures', 'Ammenities', 'Accessibility']
-const showReviewForm = ref(false);
-const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-const toast = useToast();
-const airportName = ref('')
-
-function check() {
-    
-    airportName.value = router.currentRoute.value.params.airportName
-    console.log(airportName, 'value')
-}
-check();
-
-const closeReviewForm = () => {
-    showReviewForm.value = false
-}
-
-const handleAddReview = () => {
-    if (currentUser) {
-        showReviewForm.value = true;
-    } else {
-        toast.warning('You must be logged in to add a review!');
+export default {
+    components : {
+        AddReview
+    },
+    setup() {
+        const router = useRouter();
+        
+        
+        
+        const categories = ['Security', 'Restaurants', 'General', 'Arrivals/Departures', 'Ammenities', 'Accessibility']
+        const showReviewForm = ref(false);
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        const toast = useToast();
+        // const currentAirport = ref('')
+        const currentAirportId = ref(null);
+        const reviewData = ref([])
+        const reviewRender = ref(false)
+        
+        
+        
+        
+        const closeReviewForm = () => {
+            showReviewForm.value = false
+        }
+        
+        const handleAddReview = () => {
+            if (currentUser) {
+                showReviewForm.value = true;
+            } else {
+                toast.warning('You must be logged in to add a review!');
+            }
+        }
+        
+        onMounted(() => { 
+            currentAirportId.value = router.currentRoute.value.query.id
+            console.log(currentAirportId.value, 'current airport id')
+            fetch('https://vast-fortress-94917-3cbbdce45a90.herokuapp.com/api/v1/reviews')
+                .then(response => {
+                    if(!response.ok) {
+                        console.log('error')
+                    }
+                    return response.json()
+                })
+                .then(data => {
+                    reviewData.value = data.data.filter(element => element.attributes.airport_id == currentAirportId.value)
+                    reviewRender.value = true
+                    console.log(reviewData, 'review data')
+            })
+        })
+        return {
+            reviewData, reviewRender, currentUser, showReviewForm, categories, closeReviewForm, handleAddReview
+        }
     }
 }
-
 </script>
 
 <style setup>
