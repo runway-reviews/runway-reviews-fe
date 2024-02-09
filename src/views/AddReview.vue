@@ -40,7 +40,7 @@ const props = defineProps({
         type: Boolean,
         required: true
     },
-    currentAirportId: {
+    passToAdd: {
         type: Number,
         required: true
     },
@@ -59,7 +59,7 @@ const closeReview = () => {
 
 const addNewReview = () => {
     console.log(props.currentUser, 'current user in add review')
-    console.log(props.currentAirportId, 'airportId')
+    console.log(props.passToAdd, 'airportId')
     // const newReview = {
     //     id: Date.now(),
     //     type: "review",
@@ -81,21 +81,21 @@ const addNewReview = () => {
 }
 
 
-const submitReview = (newReview) => {
-    return fetch('https://vast-fortress-94917-3cbbdce45a90.herokuapp.com/api/v1/reviews', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(newReview)
-    })
-    .then(response => {
-        if(!response.ok) {
-            console.log('err')
-        }
-        return response.json()
-    })
-}
+// const submitReview = (newReview) => {
+//     return fetch('https://vast-fortress-94917-3cbbdce45a90.herokuapp.com/api/v1/reviews', {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify(newReview)
+//     })
+//     .then(response => {
+//         if(!response.ok) {
+//             console.log('err')
+//         }
+//         return response.json()
+//     })
+// }
 
 
 </script>
