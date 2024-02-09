@@ -1,6 +1,6 @@
 <template>
     <div class="login-container">
-        <form >
+        <form>
             <router-link to="/" class="close-login-router">
                 <button @click="closeLogin" class="close-login" style="text-decoration: none;" >✖️</button>
             </router-link>
@@ -79,7 +79,6 @@ const closeLogin = () => {
     display: flex;
     align-items: center;
     background-color: white;
-    outline: 2px solid black;
   }
 
   .close-login {
@@ -152,4 +151,23 @@ const closeLogin = () => {
   transform:scale(1.1); 
 }
 
+@media screen and (max-width: 540px) {
+  .username-container {
+    display: flex;
+    justify-content: space-between;
+    width: 115%;
+  }
+
+  form {
+    width: 70%;
+  } 
+
+  .password-container {
+    width: 115%;
+  }
+
+  .input-box {
+    width: 60%;
+  }
+}
 </style>
