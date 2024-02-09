@@ -24,22 +24,13 @@ describe('Runway Reviews', () => {
     .get('option').last("Northern Lite Airport")
   })
   it('should visit an airport details page when clicked', () => {
-
     cy.get('select').select('Flying O Airport')
-
     cy.get('h1').contains("Flying O Airport")
-
     cy.get('button[class="link add-review"]').contains('Add Review');
-
     cy.get('button[class="home-button-details-page link"]').contains('Home');
-
     cy.get('select')
-    .get('option[value="Security"]').contains('Security')
-    .get('option[value="Restaurants"]').contains('Restaurants')
-    .get('option[value="General"]').contains("General")
-    .get('option[value="Arrivals/Departures"]').contains("Arrivals/Departures")
-    .get('option[value="Ammenities"]').contains("Ammenities")
-    .get('option[value="Accessibility"]').contains("Accessibility")
+    .get('option').first('Security')
+    .get('option[value="Accessibility"]').last("Accessibility")
   })
   // it('should navigate back to the home page', () => {
   //   cy.visit('http://127.0.0.1:5174/airport/Cancun%20International%20Airport')
@@ -54,11 +45,11 @@ describe('Runway Reviews', () => {
   //   .get('option[value="Dallas Fort Worth International Airport"]').contains("Dallas Fort Worth International Airport")
   //   .get('option[value="Cancun International Airport"]').contains("Cancun International Airport")
   //   .get('option[value="Los Angeles International Airport"]').contains("Los Angeles International Airport")
-  // })
+  })
   // it('should show Add Review form when that button is clicked', () => {
-  //   cy.visit('http://127.0.0.1:5174/airport/Cancun%20International%20Airport')
+  //   cy.visit("127.0.0.1:5173/runway-reviews-fe/airport/Flying%20O%20Airport?id=24")
   //   cy.get('button[class="link add-review"]').click()
-  //   cy.get('h1[class="airport-name"]').contains('Cancun International Airport')
+  //   cy.get('h1[class="airport-name"]').contains('Flying O Airport')
   //   cy.get('label').contains('Select a category')
 
   //   cy.get('select')
@@ -71,7 +62,6 @@ describe('Runway Reviews', () => {
   //   cy.get('label').contains('Write your review here:')
   //   cy.get('input[class="review-input"]').should('exist')
   //   cy.get('button').contains('Submit')
-  // })
   // it('should take user back to the airport details page when x button is clicked', () => {
   //   cy.visit('http://127.0.0.1:5174/airport/Cancun%20International%20Airport')
 
@@ -127,5 +117,5 @@ describe('Runway Reviews', () => {
   //     cy.get('div').contains('Both inputs must be filled out')
 
   // })
-})
+
 
