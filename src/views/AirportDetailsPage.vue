@@ -1,7 +1,6 @@
 <template>
     <div class="airport-details-page">
         <h1 class="airport-name">{{ $route.params.airportName }} </h1>
-        <!-- <h2>{{ $route.query.id }}</h2> -->
         <p v-if="currentUser">Current User: {{ currentUser.attributes.username }}</p>
         <div class="details-container" :style="{height: showReviewForm ? '0vh' : '5em' }">
           <div class="buttons-container" v-if="!showReviewForm" >
@@ -17,8 +16,8 @@
             </select>
         </div>
         <AddReview v-if="showReviewForm" @close="closeReviewForm"/>
-        <div v-if="reviewRender">
-            <p v-for="data in reviewData" :key="data.id">{{ data.comment }}</p>
+        <div class="airport-reviews" v-if="reviewRender">
+            <p v-for="data in reviewData" :key="data.id">{{ data.attributes.category }} : {{ data.attributes.comment }}</p>
         </div>
     </div>
 </template>
@@ -34,21 +33,15 @@ export default {
     },
     setup() {
         const router = useRouter();
-        
-        
-        
+    
         const categories = ['Security', 'Restaurants', 'General', 'Arrivals/Departures', 'Ammenities', 'Accessibility']
         const showReviewForm = ref(false);
         const currentUser = JSON.parse(localStorage.getItem('currentUser'));
         const toast = useToast();
-        // const currentAirport = ref('')
         const currentAirportId = ref(null);
         const reviewData = ref([])
         const reviewRender = ref(false)
-        
-        
-        
-        
+            
         const closeReviewForm = () => {
             showReviewForm.value = false
         }
@@ -74,7 +67,6 @@ export default {
                 .then(data => {
                     reviewData.value = data.data.filter(element => element.attributes.airport_id == currentAirportId.value)
                     reviewRender.value = true
-                    console.log(reviewData, 'review data')
             })
         })
         return {
@@ -119,6 +111,19 @@ export default {
   cursor: pointer;  
   transform:scale(1.3); 
   text-decoration: underline;
+}
+
+.airport-reviews {
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    background-color: white;
+    width: 80vw;
+    margin: auto;
+    margin-top: 40px;
+    height: 50vh;
+    opacity: .5;
+    
 }
 
 </style>
