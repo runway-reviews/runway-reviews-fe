@@ -60,24 +60,6 @@ const login = () => {
     emit('handleLogin', userInputtedValues)
   }
 
-// const createAccount = () => {
-//     return fetch('https://7deb554e-bb6e-4022-abe6-7d23f9c611bc.mock.pstmn.io/api/v0/users', {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify(newUser)
-//     })
-//     .then(response => {
-//         if(!response.ok) {
-//             console.log('error')
-//         } 
-//         return response.json()
-//     })
-//     .then(data, console.log(data))
-// }
-
-
 const closeLogin = () => {
     emit('close')
 }

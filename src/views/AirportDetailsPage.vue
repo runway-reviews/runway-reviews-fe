@@ -15,7 +15,7 @@
                 </option>
             </select>
         </div>
-        <AddReview v-if="showReviewForm" @close="closeReviewForm"/>
+        <AddReview v-if="showReviewForm" @close="closeReviewForm" :currentAirportId="currentAirportId" :currentUser="currentUser && Object.keys(currentUser).length > 0 ? currentUser : null" />
         <div class="airport-reviews" v-if="reviewRender">
             <p v-for="data in reviewData" :key="data.id">{{ data.attributes.category }} : {{ data.attributes.comment }}</p>
         </div>
@@ -27,6 +27,7 @@ import AddReview from './AddReview.vue';
 import { ref, onMounted } from 'vue'
 import { useToast } from 'vue-toastification'
 import { useRouter } from 'vue-router'
+
 export default {
     components : {
         AddReview

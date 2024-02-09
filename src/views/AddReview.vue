@@ -23,7 +23,7 @@
             id="review"
         />
         <router-link to="/">
-            <button class="submit-review" style="text-decoration: none;">Submit</button>
+            <button class="submit-review" style="text-decoration: none;" @click="addNewReview">Submit</button>
         </router-link>
         </div>
         
@@ -33,19 +33,68 @@
 
 
 <script setup>
-import { defineEmits, defineProps } from 'vue'
+import { defineEmits, defineProps, ref } from 'vue'
 
 const props = defineProps({
     showReviewForm: {
         type: Boolean,
         required: true
+    },
+    currentAirportId: {
+        type: Number,
+        required: true
+    },
+    currentUser : {
+        type: Object,
+        required: false
     }
 })
 
+const review = ref('')
 const emit = defineEmits(['close'])
 
 const closeReview = () => {
     emit('close')
+}
+
+const addNewReview = () => {
+    console.log(props.currentUser, 'current user in add review')
+    console.log(props.currentAirportId, 'airportId')
+    // const newReview = {
+    //     id: Date.now(),
+    //     type: "review",
+    //     attributes: {
+    //         user_id: currentUser.id,
+    //         airport_id: currentAirport.id,
+    //         comment: review.value,
+    //         category
+    //     },
+    //     relationships: {
+    //         user: {
+    //             data: {
+    //                 id: currentUser.id,
+    //                 type: 'user'
+    //             }
+    //         }
+    //     }
+    // }
+}
+
+
+const submitReview = (newReview) => {
+    return fetch('https://vast-fortress-94917-3cbbdce45a90.herokuapp.com/api/v1/reviews', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newReview)
+    })
+    .then(response => {
+        if(!response.ok) {
+            console.log('err')
+        }
+        return response.json()
+    })
 }
 
 
