@@ -14,11 +14,13 @@ body, .airport-details-page {
 }
 
 header{
-    font-size: 100px;
+  
+    font-size: 3em;
     padding-top: 70px;
     padding-bottom: 50px;
     font-family: 'great vibes', 'sans-serif';
     color: rgb(255, 255, 255);
+    width: 100%;
 }
 
 .airport-name {
@@ -47,6 +49,7 @@ header{
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 3em;
   }
 
 .login-button:hover {
