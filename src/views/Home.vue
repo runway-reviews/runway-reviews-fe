@@ -26,7 +26,7 @@ const onHandleLogin = (userInputtedValues) => {
     return fetch('https://vast-fortress-94917-3cbbdce45a90.herokuapp.com/api/v1/users')
         .then(response => response.json())
         .then(data => {
-          console.log(data, 'this is data')
+          // console.log(data, 'this is data')
             const userAndPasswordStorage = data.data;
             if (userInputtedValues.text === '' || userInputtedValues.password === '') {
                 toast.error('Both inputs must be filled out');
@@ -36,7 +36,7 @@ const onHandleLogin = (userInputtedValues) => {
                     if (element.attributes.username === userInputtedValues.text && element.attributes.password_digest === userInputtedValues.password) {
                         currentUser = element;
                         loggedIn = true;
-                        console.log(currentUser, 'current userrrr')
+                        // console.log(currentUser, 'current userrrr')
                     }
                 });
                 if (loggedIn) {

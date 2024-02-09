@@ -1,6 +1,6 @@
 <template>
     <div class="airport-details-page">
-        <h1 class="airport-name">{{ $route.params.airportName }} </h1>
+        <h1 class="airport-name">{{ airportName }} </h1>
         <p v-if="currentUser">Current User: {{ currentUser.attributes.username }}</p>
         <div class="details-container" :style="{height: showReviewForm ? '0vh' : '5em' }">
           <div class="buttons-container" v-if="!showReviewForm" >
@@ -23,6 +23,9 @@
 import AddReview from './AddReview.vue';
 import { ref } from 'vue'
 import { useToast } from 'vue-toastification'
+import { useRouter } from 'vue-router'
+
+const router = useRouter();
 
 
 
@@ -30,8 +33,14 @@ const categories = ['Security', 'Restaurants', 'General', 'Arrivals/Departures',
 const showReviewForm = ref(false);
 const currentUser = JSON.parse(localStorage.getItem('currentUser'));
 const toast = useToast();
+const airportName = ref('')
 
-
+function check() {
+    
+    airportName.value = router.currentRoute.value.params.airportName
+    console.log(airportName, 'value')
+}
+check();
 
 const closeReviewForm = () => {
     showReviewForm.value = false
