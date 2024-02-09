@@ -23,11 +23,11 @@ describe('Runway Reviews', () => {
     .get('option').first("Lowell Field")
     .get('option').last("Northern Lite Airport")
   })
-  it('Visits an airport details page', () => {
+  it('should visit an airport details page when clicked', () => {
 
     cy.get('select').select('Flying O Airport')
 
-    cy.get('h1').contains("Flying O Airport ")
+    cy.get('h1').contains("Flying O Airport")
 
     cy.get('button[class="link add-review"]').contains('Add Review');
 
