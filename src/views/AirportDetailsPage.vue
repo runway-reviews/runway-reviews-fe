@@ -122,8 +122,21 @@ export default {
     margin: auto;
     margin-top: 40px;
     height: 50vh;
-    opacity: .5;
-    
+    opacity: .5;   
+}
+
+@media  screen and (max-width: 375px) {
+  .airport-reviews {
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    background-color: white;
+    width: 80vw;
+    margin: auto;
+    margin-top: 40px;
+    height: 100%;
+    opacity: .5;   
+  }
 }
 
 </style>
