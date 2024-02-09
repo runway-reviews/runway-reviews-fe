@@ -1,7 +1,7 @@
 <template>
   <div>
     <select v-model="selectedAirport" @change="navigateToAirportDetails">
-      <option v-for="airport in airports" :key="airport.code" :value="airport.name">
+      <option v-for="airport in airports" :key="airport.id" :value="airport.name">
         {{ airport.name }}
       </option>
     </select>
@@ -9,11 +9,12 @@
 </template>
   
   <script setup>
-    import { ref, defineProps } from 'vue'
-    import { useRouter } from 'vue-router'
+    import { ref, defineProps, onMounted } from 'vue';
+    import { useRouter } from 'vue-router';
   
-    const selectedAirport = ref('')
-    const router = useRouter()
+    const airports = ref([]);
+    const selectedAirport = ref('');
+    const router = useRouter();
     const props = defineProps({
         currentUser: {
             type: Object,
@@ -21,31 +22,34 @@
         }
     })
 
-    function checkUser() {
-        if(props.currentUser) {
-            console.log(props.currentUser, 'current inside airport dropdown')
-        } else {
-            console.log('made it here')
+
+const fetchAirports = async () => {
+    try {
+        const response = await fetch('https://vast-fortress-94917-3cbbdce45a90.herokuapp.com/airports');
+        if (!response.ok) {
+            console.log('Error fetching airports data');
+            return;
         }
+        const data = await response.json();
+        airports.value = data.data.map(element => element.attributes);
+        // console.log(airports.value);
+    } catch (error) {
+        console.error('Error fetching airports data:', error);
     }
-    checkUser();
-  
-    const airports = [
-      { code: 'JFK', name: 'John F. Kennedy International Airport' },
-      { code: 'DEN', name: 'Denver International Airport' },
-      { code: 'DFW', name: 'Dallas Fort Worth International Airport' },
-      { code: 'CUN', name: 'Cancun International Airport' },
-      { code: 'LAX', name: 'Los Angeles International Airport' } 
-    ]
-  
-    const navigateToAirportDetails = () => {
-  if (selectedAirport.value) {
-    localStorage.setItem('currentUser', JSON.stringify(props.currentUser)); 
-    router.push({ name: 'airportName', params: { airportName: selectedAirport.value } });
-  }
+}
+
+const navigateToAirportDetails = async () => {
+    await fetchAirports(); 
+    if (selectedAirport.value) {
+        const airportObject = airports.value.find(airport => airport.name === selectedAirport.value);
+        console.log(airportObject, 'airport object');
+        localStorage.setItem('currentUser', JSON.stringify(props.currentUser)); 
+        router.push({ name: 'airportName', params: { airportName: selectedAirport.value }, query: { id: airportObject.id } });
+    }
 }
 
 
+onMounted(fetchAirports);
   </script>
 
 <style>

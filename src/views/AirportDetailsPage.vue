@@ -16,35 +16,64 @@
             </select>
         </div>
         <AddReview v-if="showReviewForm" @close="closeReviewForm"/>
+        <div class="airport-reviews" v-if="reviewRender">
+            <p v-for="data in reviewData" :key="data.id">{{ data.attributes.category }} : {{ data.attributes.comment }}</p>
+        </div>
     </div>
 </template>
 
-<script setup>
+<script>
 import AddReview from './AddReview.vue';
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useToast } from 'vue-toastification'
-
-
-
-const categories = ['Security', 'Restaurants', 'General', 'Arrivals/Departures', 'Ammenities', 'Accessibility']
-const showReviewForm = ref(false);
-const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-const toast = useToast();
-
-
-
-const closeReviewForm = () => {
-    showReviewForm.value = false
-}
-
-const handleAddReview = () => {
-    if (currentUser) {
-        showReviewForm.value = true;
-    } else {
-        toast.warning('You must be logged in to add a review!');
+import { useRouter } from 'vue-router'
+export default {
+    components : {
+        AddReview
+    },
+    setup() {
+        const router = useRouter();
+    
+        const categories = ['Security', 'Restaurants', 'General', 'Arrivals/Departures', 'Ammenities', 'Accessibility']
+        const showReviewForm = ref(false);
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        const toast = useToast();
+        const currentAirportId = ref(null);
+        const reviewData = ref([])
+        const reviewRender = ref(false)
+            
+        const closeReviewForm = () => {
+            showReviewForm.value = false
+        }
+        
+        const handleAddReview = () => {
+            if (currentUser) {
+                showReviewForm.value = true;
+            } else {
+                toast.warning('You must be logged in to add a review!');
+            }
+        }
+        
+        onMounted(() => { 
+            currentAirportId.value = router.currentRoute.value.query.id
+            console.log(currentAirportId.value, 'current airport id')
+            fetch('https://vast-fortress-94917-3cbbdce45a90.herokuapp.com/api/v1/reviews')
+                .then(response => {
+                    if(!response.ok) {
+                        console.log('error')
+                    }
+                    return response.json()
+                })
+                .then(data => {
+                    reviewData.value = data.data.filter(element => element.attributes.airport_id == currentAirportId.value)
+                    reviewRender.value = true
+            })
+        })
+        return {
+            reviewData, reviewRender, currentUser, showReviewForm, categories, closeReviewForm, handleAddReview
+        }
     }
 }
-
 </script>
 
 <style setup>
@@ -82,6 +111,19 @@ const handleAddReview = () => {
   cursor: pointer;  
   transform:scale(1.3); 
   text-decoration: underline;
+}
+
+.airport-reviews {
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    background-color: white;
+    width: 80vw;
+    margin: auto;
+    margin-top: 40px;
+    height: 50vh;
+    opacity: .5;
+    
 }
 
 </style>
