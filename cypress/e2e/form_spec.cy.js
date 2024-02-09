@@ -32,19 +32,14 @@ describe('Runway Reviews', () => {
     .get('option').first('Security')
     .get('option[value="Accessibility"]').last("Accessibility")
   })
-  // it('should navigate back to the home page', () => {
-  //   cy.visit('http://127.0.0.1:5174/airport/Cancun%20International%20Airport')
-  //   cy.get('button[class="home-button-details-page link"]').click()
-
-  //   cy.get('header').contains('Runway Reviews')
-  //   cy.get('button[class="login-button"]').contains("Login")
-
-  //  cy.get('select')
-  //   .get('option[value="John F. Kennedy International Airport"]').contains("John F. Kennedy International Airport")
-  //   .get('option[value="Denver International Airport"]').contains("Denver International Airport")
-  //   .get('option[value="Dallas Fort Worth International Airport"]').contains("Dallas Fort Worth International Airport")
-  //   .get('option[value="Cancun International Airport"]').contains("Cancun International Airport")
-  //   .get('option[value="Los Angeles International Airport"]').contains("Los Angeles International Airport")
+  it('should navigate back to the home page', () => {
+    cy.visit('http://127.0.0.1:5173/runway-reviews-fe/airport/Flying%20O%20Airport?id=24')
+    cy.get('button[class="home-button-details-page link"]').click()
+    cy.get('header').contains('Runway Reviews')
+    cy.get('button[class="login-button"]').contains("Login")
+    cy.get('header').contains('Runway Reviews')
+    cy.get('button[class="login-button"]').contains('Login')
+    cy.get('select').get('option').first('Lowell Field').get('option').last('Northern Lite Airport')
   })
   // it('should show Add Review form when that button is clicked', () => {
   //   cy.visit("127.0.0.1:5173/runway-reviews-fe/airport/Flying%20O%20Airport?id=24")
@@ -117,5 +112,4 @@ describe('Runway Reviews', () => {
   //     cy.get('div').contains('Both inputs must be filled out')
 
   // })
-
-
+})
