@@ -15,7 +15,7 @@
                 </option>
             </select>
         </div>
-        <AddReview v-if="showReviewForm && currentAirportId" @close="closeReviewForm" :passToAdd="passToAdd.value >= 1 ? passToAdd : null" :currentUser="currentUser && Object.keys(currentUser).length > 0 ? currentUser : null" />
+        <AddReview v-if="showReviewForm" @close="closeReviewForm" :currentAirportId="currentAirportId" :currentUser="currentUser && Object.keys(currentUser).length > 0 ? currentUser : null" />
         <div class="airport-reviews" v-if="reviewRender">
             <p v-for="data in reviewData" :key="data.id">{{ data.attributes.category }} : {{ data.attributes.comment }}</p>
         </div>
@@ -42,7 +42,6 @@ export default {
         const currentAirportId = ref(null);
         const reviewData = ref([])
         const reviewRender = ref(false)
-        const passToAdd = ref(0)
             
         const closeReviewForm = () => {
             showReviewForm.value = false
@@ -50,8 +49,6 @@ export default {
         
         const handleAddReview = () => {
             if (currentUser && currentAirportId) {
-                console.log(parseInt(currentAirportId.value), 'h')
-                console.log(typeof(currentAirportId, 'after parseint'))
                 showReviewForm.value = true;
             } else {
                 toast.warning('You must be logged in to add a review!');
@@ -60,9 +57,6 @@ export default {
         
         onMounted(() => { 
             currentAirportId.value = router.currentRoute.value.query.id
-            passToAdd.value = parseInt(currentAirportId.value)
-            console.log(typeof(passToAdd.value), 'pass to add ')
-            console.log(currentAirportId.value, 'current airport id')
             fetch('https://vast-fortress-94917-3cbbdce45a90.herokuapp.com/api/v1/reviews')
                 .then(response => {
                     if(!response.ok) {
@@ -76,7 +70,7 @@ export default {
             })
         })
         return {
-            reviewData, reviewRender, currentUser, showReviewForm, categories, closeReviewForm, handleAddReview
+            reviewData, reviewRender, currentUser, showReviewForm, categories, closeReviewForm, handleAddReview, currentAirportId
         }
     }
 }
