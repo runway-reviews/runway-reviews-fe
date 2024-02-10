@@ -1,0 +1,11 @@
+{
+"id": "1",
+"type": "review",
+"attributes": {
+"user_id": 4,
+"airport_id": 9,
+"comment": "Food was great",
+"category": "restaurants"
+  }
+}
+
