@@ -55,6 +55,10 @@ describe('Runway Reviews', () => {
     cy.get('input[name="password"]').should('exist')
     cy.get('button[class="login-on-page"]').should('exist')
   })
+  it('should be able to close the login form and be taken back to the home page', () => {
+    cy.get('button').contains('Login').click()
+    cy.get('button').contains('✖️').click()
+  })
   it('it should log a user in', () => {
     cy.get('button').contains('Login').click()
     cy.get('input[name="username"]').type('Isadore Bell')
