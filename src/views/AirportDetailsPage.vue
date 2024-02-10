@@ -2,7 +2,7 @@
     <AirportHeader />
     <div class="airport-details-page">
         <h1 class="airport-name">{{ $route.params.airportName }} </h1>
-        <div class="user-info">
+        <div v-if="currentUser" class="user-info">
             <div class="user-logo">
                 <img src="/public/user.png" alt="User Logo" />
             </div>
@@ -25,7 +25,7 @@
         <AddReview v-if="showReviewForm" @close="closeReviewForm" :currentAirportId="currentAirportId" :currentUser="currentUser && Object.keys(currentUser).length > 0 ? currentUser : null" />
         <div class="airport-reviews" v-if="reviewRender">
             <p v-for="data in reviewData" :key="data.id" class="review-item">
-                <span class="category">{{ data.attributes.category }}</span>
+                <span class="category" >{{ data.attributes.category }}</span>
                 {{ data.attributes.comment }}
             </p>
         </div>
