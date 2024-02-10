@@ -8,7 +8,7 @@ const app = createApp(App)
 app.use(router)
 app.use(Toast, {
     // Setting the global default position
-    position: POSITION.TOP_LEFT
+    position: POSITION.BOTTOM_LEFT
 });
 app.mount('#app')
 

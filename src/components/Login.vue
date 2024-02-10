@@ -79,6 +79,7 @@ const closeLogin = () => {
     display: flex;
     align-items: center;
     background-color: white;
+    margin-top: 150px;
   }
 
   .close-login {
@@ -116,13 +117,6 @@ const closeLogin = () => {
   width: 20em;
   margin-top: -4em;
 }
-
-/* .home-create-account-container {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  text-decoration: none;
-} */
 
 .username-label-container {
  display: flex;

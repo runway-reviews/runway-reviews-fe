@@ -39,6 +39,7 @@ const onHandleLogin = (userInputtedValues) => {
                 });
                 if (loggedIn) {
                     toast.success('Successfully logged in!');
+                    localStorage.setItem('currentUser', JSON.stringify(currentUser.value));
                 } else {
                     toast.error('Username or Password is incorrect');
                 }
