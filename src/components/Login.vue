@@ -60,7 +60,6 @@ const login = () => {
     emit('handleLogin', userInputtedValues)
   }
 
-
 const closeLogin = () => {
     emit('close')
 }

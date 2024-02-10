@@ -4,26 +4,28 @@
         <button class="close-button link" style="text-decoration: none;" @click="closeReview">✖️</button>
       <div class="item">
         <label class="review-label">Select a category:</label>
-        <select class="login-selection">
-            <option>Security</option>
-            <option>Restaurants</option>
-            <option>Arrivals/Departures</option>
-            <option>Amenities</option>
-            <option>Accessibility</option>
+        <select class="login-selection" v-model="selectedCategory">
+            <option>security</option>
+            <option>restaurants</option>
+            <option>bathrooms</option>
+            <option>amenities</option>
+            <option>accessibility</option>
+            <option>general</option>
         </select>
       </div>
 
         <div class="item-1">
           <label class="review-label">Write your review here:</label>
           <input 
-            class="review-input"
-            type="text"
-            placeholder="review"
-            name="review"
-            id="review"
+          class="review-input"
+          type="review"
+          placeholder="review"
+          name="review"
+          id="review"
+          v-model="reviewValue"
         />
         <router-link to="/">
-            <button class="submit-review" style="text-decoration: none;">Submit</button>
+            <button class="submit-review" style="text-decoration: none;" @click="addNewReview">Submit</button>
         </router-link>
         </div>
         
@@ -33,19 +35,60 @@
 
 
 <script setup>
-import { defineEmits, defineProps } from 'vue'
+import { defineEmits, defineProps, ref } from 'vue'
 
 const props = defineProps({
     showReviewForm: {
         type: Boolean,
         required: true
+    },
+    currentAirportId: {
+        type: String,
+        required: true
+    },
+    currentUser : {
+        type: Object,
+        required: false
     }
 })
 
+const reviewValue = ref('')
+const selectedCategory = ref('')
 const emit = defineEmits(['close'])
 
 const closeReview = () => {
     emit('close')
+}
+
+const addNewReview = () => {
+    console.log(props.currentUser, 'current user in add review')
+    console.log(props.currentAirportId, 'airportId')
+    const newReview = {
+    "review": {
+        "user_id": props.currentUser.id,
+        "airport_id": props.currentAirportId,
+        "comment": review.value,
+        "category": selectedCategory.value
+  }
+}
+    submitReview(newReview)
+}
+
+
+const submitReview = (newReview) => {
+    return fetch('https://vast-fortress-94917-3cbbdce45a90.herokuapp.com/api/v1/reviews', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newReview)
+    })
+    .then(response => {
+        if(!response.ok) {
+            console.log('err')
+        }
+        return response.json()
+    })
 }
 
 

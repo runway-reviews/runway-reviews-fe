@@ -4,7 +4,7 @@
         <p v-if="currentUser">Current User: {{ currentUser.attributes.username }}</p>
         <div class="details-container" :style="{height: showReviewForm ? '0vh' : '5em' }">
           <div class="buttons-container" v-if="!showReviewForm" >
-            <button class="link add-review" id="add-review" style="text-decoration: none;" @click="handleAddReview"  >Add Review</button>
+            <button class="link add-review" id="add-review" style="text-decoration: none;" @click="handleAddReview" >Add Review</button>
             <router-link to="/">
                 <button class="home-button-details-page link" style="text-decoration: none;">Home</button>
             </router-link>
@@ -15,7 +15,7 @@
                 </option>
             </select>
         </div>
-        <AddReview v-if="showReviewForm" @close="closeReviewForm"/>
+        <AddReview v-if="showReviewForm" @close="closeReviewForm" :currentAirportId="currentAirportId" :currentUser="currentUser && Object.keys(currentUser).length > 0 ? currentUser : null" />
         <div class="airport-reviews" v-if="reviewRender">
             <p v-for="data in reviewData" :key="data.id">{{ data.attributes.category }} : {{ data.attributes.comment }}</p>
         </div>
@@ -27,6 +27,7 @@ import AddReview from './AddReview.vue';
 import { ref, onMounted } from 'vue'
 import { useToast } from 'vue-toastification'
 import { useRouter } from 'vue-router'
+
 export default {
     components : {
         AddReview
@@ -47,7 +48,7 @@ export default {
         }
         
         const handleAddReview = () => {
-            if (currentUser) {
+            if (currentUser && currentAirportId) {
                 showReviewForm.value = true;
             } else {
                 toast.warning('You must be logged in to add a review!');
@@ -56,7 +57,6 @@ export default {
         
         onMounted(() => { 
             currentAirportId.value = router.currentRoute.value.query.id
-            console.log(currentAirportId.value, 'current airport id')
             fetch('https://vast-fortress-94917-3cbbdce45a90.herokuapp.com/api/v1/reviews')
                 .then(response => {
                     if(!response.ok) {
@@ -70,7 +70,7 @@ export default {
             })
         })
         return {
-            reviewData, reviewRender, currentUser, showReviewForm, categories, closeReviewForm, handleAddReview
+            reviewData, reviewRender, currentUser, showReviewForm, categories, closeReviewForm, handleAddReview, currentAirportId
         }
     }
 }
