@@ -21,7 +21,7 @@ describe('Runway Reviews', () => {
 
     cy.get('select').get('option').first('Lowell Field').get('option').last('Northern Lite Airport')
   })
-  it('should visit an airport details page when clicked', () => {
+  it('should navigate user to an airport details page when clicked', () => {
     cy.get('select').select('Flying O Airport')
     cy.get('h1').contains('Flying O Airport')
     cy.get('button[class="link add-review"]').contains('Add Review')
@@ -29,20 +29,14 @@ describe('Runway Reviews', () => {
     cy.get('button').contains('Add Review').click()
     cy.contains('div', 'You must be logged in to add a review!').should('be.visible')
   })
-  // it('should post a message when user tries to add review when they are not logged in', () => {
-  //   cy.get('select').select('Flying O Airport')
-  //   cy.get('h1').contains('Flying O Airport')
-  //   cy.get('button[class="link add-review"]').contains('Add Review')
-  //   cy.get('button[class="home-button-details-page link"]').contains('Home')
-  //   cy.get('select')
-  //     .get('option')
-  //     .first('Security')
-  //     .get('option[value="Accessibility"]')
-  //     .last('Accessibility')
-
-  //   cy.get('button').contains('Add Review').click()
-  //   cy.contains('div', 'You must be logged in to add a review!').should('be.visible')
-  // })
+  it('should post a message when user tries to add review when they are not logged in', () => {
+    cy.get('select').select('Flying O Airport')
+    cy.get('h1').contains('Flying O Airport')
+    cy.get('button[class="link add-review"]').contains('Add Review')
+    cy.get('button').contains('Home')
+    cy.get('button').contains('Add Review').click()
+    cy.contains('div', 'You must be logged in to add a review!').should('be.visible')
+  })
   // it('should navigate back to the home page', () => {
   //   cy.visit('http://127.0.0.1:5173/runway-reviews-fe/airport/Flying%20O%20Airport?id=24')
   //   cy.get('button[class="home-button-details-page link"]').click()
