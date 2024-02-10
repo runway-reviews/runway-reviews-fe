@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite'
-import { Vue } from 'vue'
+
 
 export default defineConfig({
   build: {
