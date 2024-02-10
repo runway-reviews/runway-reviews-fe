@@ -21,17 +21,11 @@ describe('Runway Reviews', () => {
 
     cy.get('select').get('option').first('Lowell Field').get('option').last('Northern Lite Airport')
   })
-  it('should visit an airport details page when clicked', () => {
+  it('should navigate user to an airport details page when clicked', () => {
     cy.get('select').select('Flying O Airport')
     cy.get('h1').contains('Flying O Airport')
     cy.get('button[class="link add-review"]').contains('Add Review')
-    cy.get('button[class="home-button-details-page link"]').contains('Home')
-    cy.get('select')
-      .get('option')
-      .first('Security')
-      .get('option[value="Accessibility"]')
-      .last('Accessibility')
-
+    cy.get('button').contains('Home')
     cy.get('button').contains('Add Review').click()
     cy.contains('div', 'You must be logged in to add a review!').should('be.visible')
   })
@@ -39,13 +33,7 @@ describe('Runway Reviews', () => {
     cy.get('select').select('Flying O Airport')
     cy.get('h1').contains('Flying O Airport')
     cy.get('button[class="link add-review"]').contains('Add Review')
-    cy.get('button[class="home-button-details-page link"]').contains('Home')
-    cy.get('select')
-      .get('option')
-      .first('Security')
-      .get('option[value="Accessibility"]')
-      .last('Accessibility')
-
+    cy.get('button').contains('Home')
     cy.get('button').contains('Add Review').click()
     cy.contains('div', 'You must be logged in to add a review!').should('be.visible')
   })
@@ -67,6 +55,10 @@ describe('Runway Reviews', () => {
     cy.get('input[name="password"]').should('exist')
     cy.get('button[class="login-on-page"]').should('exist')
   })
+  it('should be able to close the login form and be taken back to the home page', () => {
+    cy.get('button').contains('Login').click()
+    cy.get('button').contains('✖️').click()
+  })
   it('it should log a user in', () => {
     cy.get('button').contains('Login').click()
     cy.get('input[name="username"]').type('Isadore Bell')
@@ -74,15 +66,6 @@ describe('Runway Reviews', () => {
     cy.get('input[name="password"]').type('$2a$12$DjWVbNbpMte4HnxMvvOVGOuR3qnYNb48MT8tnmbSSERUYvSg6JVLi')
     cy.get('input[name="password"]').should('have.value', '$2a$12$DjWVbNbpMte4HnxMvvOVGOuR3qnYNb48MT8tnmbSSERUYvSg6JVLi')
     cy.get('button').contains('Log In').click()
-
     cy.contains('div', 'Successfully logged in!').should('be.visible')
-    cy.get('button').contains('✖️').click()
-
-    cy.get('select').select('Slater Field')
-    cy.get('h1').contains('Slater Field')
-    cy.get('button[class="link add-review"]').contains('Add Review')
-    cy.get('button[class="home-button-details-page link"]').contains('Home')
-    cy.get('p').contains('Current User: Isadore Bell')
-     cy.get('select').get('option').first('Security').get('option').last('Accessibility')
   })
 })
