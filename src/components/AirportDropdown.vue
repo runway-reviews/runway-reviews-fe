@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <select v-model="selectedAirport" @change="navigateToAirportDetails">
+  <div class="airport-dropdown">
+    <select v-model="selectedAirport" @change="navigateToAirportDetails" class="airport-select-home">
       <option v-for="airport in airports" :key="airport.id" :value="airport.name">
         {{ airport.name }}
       </option>
@@ -11,6 +11,7 @@
   <script setup>
     import { ref, defineProps, onMounted } from 'vue';
     import { useRouter } from 'vue-router';
+
   
     const airports = ref([]);
     const selectedAirport = ref('');
@@ -52,6 +53,3 @@ const navigateToAirportDetails = async () => {
 onMounted(fetchAirports);
   </script>
 
-<style>
-  
-</style>

@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <form class="review-form">
-        <button class="close-button link" style="text-decoration: none;" @click="closeReview">✖️</button>
+        <button class="close-button" style="text-decoration: none;" @click="closeReview">✖️</button>
       <div class="item">
         <label class="review-label">Select a category:</label>
         <select class="login-selection" v-model="selectedCategory">
@@ -102,12 +102,13 @@ const submitReview = (newReview) => {
   display: flex;
   justify-content: center; 
   align-items: center; 
-  height: 80vh; 
+  height: 20vh; 
 }
 
 .review-form {
   padding: 2em;
   font-family: 'M PLUS Rounded 1c', sans-serif;
+  margin-top: 250px;
 }
 
 
@@ -116,7 +117,7 @@ const submitReview = (newReview) => {
     flex-direction: column;
     justify-content: space-between;
     width: 50vw;
-    height: 50vh;
+    height: 40vh;
     padding: 2em;
     font-family: 'M PLUS Rounded 1c', sans-serif;
     position: relative;
@@ -173,4 +174,10 @@ const submitReview = (newReview) => {
     border: 0;
     text-decoration: none;
   }
+
+  .close-button:hover {
+    cursor: pointer;
+    transform:scale(1.1); 
+  }
+  
 </style>

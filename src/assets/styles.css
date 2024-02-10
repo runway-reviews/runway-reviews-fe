@@ -4,23 +4,23 @@ body, .airport-details-page {
 
 #app {
     text-align: center;
-    /* position: relative;  */
-    /* delete position later potentially */
     background-image: url('public/leonardo-yip-rn-NLirHQPY-unsplash (3).jpg');
     margin: 0;
     height: 100vh;
     width: 100vw;
     background-size: cover;
+    background-position: top 50% left 20%;
 }
 
-header{
-  
-    font-size: 3em;
-    padding-top: 70px;
-    padding-bottom: 50px;
+header {
+    font-size: 4em;
+    padding: 50px;
     font-family: 'great vibes', 'sans-serif';
     color: rgb(255, 255, 255);
+    background-color: black;
+    opacity: .8;
     width: 100%;
+    height: 5%;
 }
 
 .airport-name {
@@ -28,8 +28,8 @@ header{
     font-size: 2.8em;
     color: white;
     margin: 0;
-    padding-top: 70px;
     padding-bottom: 30px;
+    padding-top: 30px;
 }
 
 .login-button {
@@ -38,18 +38,19 @@ header{
     border: none;
     margin-top: 30px;
     margin-right: 20px;
-    font-size: 15px;
+    font-size: 18px;
     color: black;
     position: fixed;
     top: 10px;
-    right: 10px;
+    right: 50px;
     cursor: pointer;
     height: 3.5vh;
     width: 8vw;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 3em;
+    width: 5em;
+    height: 2em;
   }
 
 .login-button:hover {
@@ -68,92 +69,63 @@ header{
     border: 0;
 
   }
-/* Login vue */
 
-   /* form {
-    display: flex;
-    align-items: center;
-    transform: translate(25%, -7%);
-    background-color: white;
+  .airport-dropdown {
+    margin-top: 200px;
   }
 
-  .create-account {
-    display: flex;
-    border: 0;
-    background-color: white;
-    text-decoration: underline;
-    font-size: 1.2em;
-  }
-
-  .home-login:hover, .create-account:hover {
+  .airport-select-home {
+    height: 4vh;
+    width: 30vw;
+    font-size: 20px;
     cursor: pointer;
-    color: white;
-    background-color: green;
-    text-decoration: underline;
-    transform:scale(1.3); 
   }
 
- .input-box {
-  width: 15em;
-  height: 2em;
- }
+ @media(max-width: 900px) {
+    #app {
+        background-position: top 50% left 60%;
+    }
 
-.username-container {
-  display: flex;
-  justify-content: space-between;
-  width: 20em;
-  margin-top: -2em;
+@media(max-width: 850px) {
+    .login-button {
+        right: 40px;
+        margin-right: 0;
+    }
+    #app {
+        background-position: top 80% left 60%;
+    }
 }
 
-.password-container {
-  display: flex;
-  justify-content: space-between;
-  width: 20em;
-  margin-top: -4em;
-}
-
-.home-create-account-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 16em;
-}
-
-.username-label-container {
- display: flex;
- flex-direction: column;
- justify-content: center;
-}
-
-.password-label-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.login-on-page {
-  width:  10em;
-  font-size: 1.2em;
-  height: 2em;
-  color: white;
-  background-color: green;
-  text-decoration: underline;
-  border-radius: 6px;
-  border: 0;
-}
-
-.login-on-page:hover {
-  cursor: pointer;
-  transform:scale(1.3); 
-}
-
-.home-login {
-    display: flex;
-    font-size: 1.2em;
-    height: 2em;
-    width: 4em;
-    background-color: white;
-    border: 0;
-    text-decoration: underline;
+@media (max-width: 827px) {
+    header {
+        font-size: 60px;
+        padding: 50px 90px;
+        text-align: left;
+    }
+  
+    .login-button {
+      width: 14vw;
+      right: 200px; 
+    }
   }
-  */
+  
+
+@media (max-width: 430px) {
+    header {
+        font-size: 50px;
+        padding: 50px 20px;
+        text-align: left;
+    }
+    .login-button {
+        margin-right: 10px;
+        width: 14vw;
+        font-size: 13px;
+        right: 90px;
+        top: 2px;
+    }
+    #app {
+        background-position: top 50% left 55%;
+    }
+}
+
+  } 
