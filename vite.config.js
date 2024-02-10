@@ -1,7 +1,7 @@
 export default defineConfig({
   build: {
     outDir: 'dist',
-  }
+  },
   base: "/runway-reviews-fe",
   plugins: [
     vue(),
