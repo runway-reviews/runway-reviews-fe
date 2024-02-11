@@ -25,13 +25,15 @@ Back-End:
 </div>
 
 ## 💭 Abstract
+This project allows a user to log into their account and view the reviews they made for a particular airport. They can also add a review of the airport based on a list of categories from a dropdown menu. They can then view the review that was just made. This project uses several different API's to get a list of airports, for the user to login and to show the reviews.
 
 
 ## 📝  Context
-We are a group of 2 front-end developers and 3 back-end developers who worked together remotely via Zoom and asynchronously through the GitHub project board to complete this application. This project was completed from week 1 to week 3 in Mod 4 at Turing School of Software & Design. 
+We are a group of 2 front-end developers and 3 back-end developers who worked together remotely via Zoom and asynchronously through the GitHub project board to complete this application. This project was completed from week 1 to week 3 in Mod 4 at Turing School of Software & Design. It was our first time using the Vue framework
 
 ## 🎥 Preview 
 
+![Runway Reviews](runway-reviews.gif)
 
 ## 🔌 Server Setup
 1. Clone the repository: Open a terminal window. Navigate to the directory where you want to clone the repository. Run the following command: git clone 
@@ -41,13 +43,15 @@ We are a group of 2 front-end developers and 3 back-end developers who worked to
 
 ## 📚 Learning Goals
 
+-Develop a basic understanding of the vue framework
+
 
 ## 🥇 Wins
-⭐ 
+⭐ Zen: Completing the MVP
 ⭐ 
 ⭐ 
 
 
 ## 🚧 Challenges
-❗
+❗Zen: Understanding how to pass down props from one component to another
 ❗ 
