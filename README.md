@@ -48,10 +48,9 @@ We are a group of 2 front-end developers and 3 back-end developers who worked to
 
 ## 🥇 Wins
 ⭐ Zen: Completing the MVP
-⭐ 
-⭐ 
+⭐ Emalee: Leaning Vue was really fun for me and it felt good to be able to build an app from it
 
 
 ## 🚧 Challenges
 ❗Zen: Understanding how to pass down props from one component to another
-❗ 
+❗ Emalee: Deploying vue was a pain, there were many different ways to do it and it took a long time
