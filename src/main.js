@@ -1,5 +1,5 @@
 import './assets/styles.css'
-import { createApp } from 'vue'
+import { createApp } from 'vue/dist/vue.esm-bundler'
 import App from './App.vue'
 import router from './router'
 import Toast, { POSITION } from "vue-toastification";
