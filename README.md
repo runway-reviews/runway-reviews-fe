@@ -33,6 +33,7 @@ We are a group of 2 front-end developers and 3 back-end developers who worked to
 
 ## 🎥 Preview 
 
+![Runway Reviews](runway-reviews.gif)
 
 ## 🔌 Server Setup
 1. Clone the repository: Open a terminal window. Navigate to the directory where you want to clone the repository. Run the following command: git clone 
