@@ -1,7 +1,14 @@
 <div align="center">
-  
+
 Runway Reviews
 ![Tests](https://badgen.net/badge/tests/passing/green?icon=github)
+
+## ![image](https://github.com/runway-reviews/runway-reviews-fe/assets/116819092/62bcc16c-d93f-4cfd-bf6e-3193e95fdd77)
+ Deployed Link
+https://runway-reviews.github.io/runway-reviews-fe/ 
+Username: Jeanette Akenja Nearing
+Password: $2a$12$0EhXvY8u12yBUdE/QLdkHuzBMQmRTXmJb25FWNSoysvQfk1FVnNUq
+To be able to add a review, the user must be logged in. Use the above username and password.
 
 ## 💾 Technologies Used
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
