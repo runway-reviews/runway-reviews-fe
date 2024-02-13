@@ -27,8 +27,8 @@ Back-End:
 ## 💭 Abstract
 This project allows a user to log into their account and view the reviews they made for a particular airport. They can also add a review of the airport based on a list of categories from a dropdown menu. They can then view the review that was just made. This project uses several different API's to get a list of airports, for the user to login and to show the reviews.
 
-## ![image](https://github.com/runway-reviews/runway-reviews-fe/assets/116819092/62bcc16c-d93f-4cfd-bf6e-3193e95fdd77) Deployed Link
-https://runway-reviews.github.io/runway-reviews-fe/ 
+## Deployed Link
+[Deployed](https://runway-reviews.github.io/runway-reviews-fe/) 
 Username: Jeanette Akenja Nearing
 Password: $2a$12$0EhXvY8u12yBUdE/QLdkHuzBMQmRTXmJb25FWNSoysvQfk1FVnNUq
 To be able to add a review, the user must be logged in. Use the above username and password.
