@@ -17,6 +17,7 @@
     "cypress": "cypress open"
   },
   "dependencies": {
+    "@google-cloud/translate": "^8.1.0",
     "@heroicons/vue": "^2.1.1",
     "vue": "^3.4.15",
     "vue-router": "^4.2.5",

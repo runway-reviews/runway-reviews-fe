@@ -1,13 +1,27 @@
 <template>
     <AirportHeader />
     <div class="airport-details-page">
+        <!-- why is it $route?  -->
+    
+        <!-- {
+       $route = built-in object provided by Vue Router to access information about the current route, and params is used to access the route parameters. -->
+
+       <!-- if route is defined like this: 
+       
+        path: '/airport/:airportName',
+        name: 'airportName',
+        component: AirportDetails
+        }
+        Then, when you navigate to a URL like /airport/Heathrow, $route.params.airportName will be 'Heathrow'. The :airportName part in the route path is a dynamic segment, and it can be accessed using $route.params.-->
         <h1 class="airport-name">{{ $route.params.airportName }} </h1>
         <div v-if="currentUser" class="user-info">
             <div class="user-logo">
                 <img src="/public/user.png" alt="User Logo" />
             </div>
+            <!-- CAN YOU SHOW ME THIS with the login?  -->
                 <p v-if="currentUser" class="current-user-info"> {{ currentUser.attributes.username }}</p>
         </div>
+        <!-- What is this doing??? with showReview form? if true then 0vh? -->
         <div class="details-container" :style="{height: showReviewForm ? '0vh' : '5em' }">
           <div class="buttons-container" v-if="!showReviewForm" >
             <button class="link add-review" id="add-review" style="text-decoration: none;" @click="handleAddReview" >
@@ -62,6 +76,7 @@ export default {
         const handleAddReview = () => {
             if (currentUser && currentAirportId) {
                 showReviewForm.value = true;
+                // what does reviewRender do?
                 reviewRender.value = false;
             } else {
                 toast.warning('You must be logged in to add a review!');
@@ -69,6 +84,14 @@ export default {
         }
         
         onMounted(() => { 
+            //What is this line?   currentAirportId.value = router.currentRoute.value.query.id
+            //parameter with the key 'id'. In Vue Router, when you navigate to a route with a URL like /some-path?id=123, you can access the query parameters.
+
+            // Here's a breakdown of the line:
+
+            // router.currentRoute refers to the current route object in Vue Router.
+            // .value is used to access the reactive value of a ref.
+            // .query.id is accessing the 'id' parameter in the query string of the current route.
             currentAirportId.value = router.currentRoute.value.query.id
             fetch('https://vast-fortress-94917-3cbbdce45a90.herokuapp.com/api/v1/reviews')
                 .then(response => {
