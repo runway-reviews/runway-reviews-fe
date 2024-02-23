@@ -65,7 +65,8 @@ export default {
     
         const categories = ['Security', 'Restaurants', 'General', 'Arrivals/Departures', 'Ammenities', 'Accessibility']
         const showReviewForm = ref(false);
-        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        // const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        const currentUser = ref(JSON.parse(localStorage.getItem('currentUser')));
         const toast = useToast();
         const currentAirportId = ref(null);
         const reviewData = ref([])

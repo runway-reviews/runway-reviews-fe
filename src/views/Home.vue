@@ -15,7 +15,7 @@ import { ref, computed } from 'vue'
 
 const showLoginForm = ref(false);
 const toast = useToast();
-let currentUser = ref({});
+let currentUser = ref(JSON.parse(localStorage.getItem('currentUser')));
 
 //what is this?
 // const showAirportHeader = computed(() => !showLoginForm.value);
@@ -35,6 +35,7 @@ const onHandleLogin = (userInputtedValues) => {
                         currentUser = element;
                         loggedIn = true;
                         closeLoginForm();
+                        localStorage.setItem('currentUser', JSON.stringify(currentUser.value))
                     }
                 });
                 if (loggedIn) {
