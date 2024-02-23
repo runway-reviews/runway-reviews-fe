@@ -96,7 +96,10 @@ async function translateText() {
     if(selectedLanguage.value) {
         // console.log(reviewData, 'reviewData inside translation', selectedLanguage.value, 'value ')
         const apiKey = 'AIzaSyDIeM718Vp5-kwx6SM83aVOma6MTOueXzg'; 
-        const textToTranslate = reviewData.value.map(element => element.attributes.comment)
+        const textToTranslate = reviewData.value.map(element => ({
+            category: element.attributes.category,
+            comment: element.attributes.comment
+        }));
         // console.log(textToTranslate, 'input text')
         const apiUrl = `https://translation.googleapis.com/language/translate/v2?key=${apiKey}`;
         
@@ -107,13 +110,19 @@ async function translateText() {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    q: textToTranslate,
+                    q: textToTranslate.map(item => item.comment),
                     target: selectedLanguage.value, 
                 }),
             });
             const data = await response.json();
             console.log(data, 'data translated')
-            reviewData.value = data
+            reviewData.value = data.data.translations.map((translation, index) => ({
+                attributes: {
+                    category: textToTranslate[index].category,
+                    comment: translation.translatedText
+                }
+            }));
+
         } catch (error) {
             console.error('Error translating text:', error);
         }
