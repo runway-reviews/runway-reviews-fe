@@ -1,7 +1,23 @@
+<!-- We want to move the invocation of translateText to be invoked when a dropdown is selected, so we create a dropdown with selected languages: English ('en'), Spanish ('es'), Mandarin (''), Tagalog (''), Vietnamese () These are the top most spoken languages in the US and since we are doing US airports... 
+Create a dropdown, in the textTranslate function we need to add a parameter that acts as the language being translated
+We also need to replace the airport api with a list of airports. 
+-->
+
+
+
 <template>
     <AirportHeader />
     <div class="airport-details-page">
         <h1 class="airport-name">{{ $route.params.airportName }} </h1>
+        <div class="language-dropdown">
+            <select v-model="selectedLanguage" @change="translateText">
+                <option :key="en" :value="en">English</option>
+                <option :key="es" :value="es">Spanish</option>
+                <option :key="zh" :value="zh">Mandarin</option>
+                <option :key="vi" :value="vi">Vietnamese</option>
+                <option :key="tl" :value="tl">Tagalog</option>
+            </select>
+        </div>
         <div v-if="currentUser" class="user-info">
             <div class="user-logo">
                 <img src="/public/user.png" alt="User Logo" />
@@ -54,6 +70,12 @@ export default {
         const currentAirportId = ref(null);
         const reviewData = ref([])
         const reviewRender = ref(false)
+        const selectedLanguage = ref('');
+        const en = 'en';
+        const es = 'es';
+        const zh = 'zh';
+        const vi = 'vi';
+        const tl = 'tl';
             
         const closeReviewForm = () => {
             showReviewForm.value = false
@@ -67,6 +89,46 @@ export default {
                 toast.warning('You must be logged in to add a review!');
             }
         }
+
+//I removed the invocation of this for now since we don't want to waste the characters
+async function translateText() {
+    // console.log(selectedLanguage.value)
+    if(selectedLanguage.value) {
+        // console.log(reviewData, 'reviewData inside translation', selectedLanguage.value, 'value ')
+        const apiKey = 'AIzaSyDIeM718Vp5-kwx6SM83aVOma6MTOueXzg'; 
+        const textToTranslate = reviewData.value.map(element => ({
+            category: element.attributes.category,
+            comment: element.attributes.comment
+        }));
+        // console.log(textToTranslate, 'input text')
+        const apiUrl = `https://translation.googleapis.com/language/translate/v2?key=${apiKey}`;
+        
+        try {
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    q: textToTranslate.map(item => item.comment),
+                    target: selectedLanguage.value, 
+                }),
+            });
+            const data = await response.json();
+            console.log(data, 'data translated')
+            reviewData.value = data.data.translations.map((translation, index) => ({
+                attributes: {
+                    category: textToTranslate[index].category,
+                    comment: translation.translatedText
+                }
+            }));
+
+        } catch (error) {
+            console.error('Error translating text:', error);
+        }
+    }
+}
+
         
         onMounted(() => { 
             currentAirportId.value = router.currentRoute.value.query.id
@@ -82,8 +144,10 @@ export default {
                     reviewRender.value = true
             })
         })
+
+
         return {
-            reviewData, reviewRender, currentUser, showReviewForm, categories, closeReviewForm, handleAddReview, currentAirportId
+            reviewData, reviewRender, currentUser, showReviewForm, categories, closeReviewForm, handleAddReview, currentAirportId, translateText, selectedLanguage, en, es, vi, tl, zh
         }
     }
 }

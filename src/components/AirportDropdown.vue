@@ -32,6 +32,7 @@ const fetchAirports = async () => {
             return;
         }
         const data = await response.json();
+        console.log(airports, 'airports')
         airports.value = data.data.map(element => element.attributes);
         // console.log(airports.value);
     } catch (error) {
