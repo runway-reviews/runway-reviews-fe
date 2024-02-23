@@ -49,12 +49,11 @@ We also need to replace the airport api with a list of airports.
          <!-- AddReview component, shown when showReviewForm is true -->
         <AddReview v-if="showReviewForm" @close="closeReviewForm" :currentAirportId="currentAirportId" :currentUser="currentUser && Object.keys(currentUser).length > 0 ? currentUser : null" />
 
-         <!-- Display reviews if reviewRender is true -->
-
         <div class="airport-reviews" v-if="reviewRender">
             <p v-for="data in reviewData" :key="data.id" class="review-item">
-                <span class="category" >{{ data.attributes.category }}</span>
-                {{ data.attributes.comment }}
+                <span class="category" >{{ data.translatedCategories }}</span>
+                {{ data.translatedComments}}
+                {{console.log(data, 'reviewData up here')}}
             </p>
         </div>
     </div>
@@ -92,14 +91,6 @@ export default {
             home: 'Home',
             addReview: 'Add Review',
         })
-        // const translateCategoriesText = ref({
-        //     security: 'Security', 
-        //     restaurants: 'Restaurants', 
-        //     general: 'General', 
-        //     arrival_departures: 'Arrivals/Departures', 
-        //     amenities: 'Ammenities', 
-        //     accessibility: 'Accessibility'
-        // })
 
         // Close review form function
         const closeReviewForm = () => {
@@ -116,85 +107,11 @@ export default {
             }
         }
 
-//          watch(selectedLanguage, async (newLanguage) => {
-//             if (newLanguage) {
-//                 const apiKey = 'AIzaSyDIeM718Vp5-kwx6SM83aVOma6MTOueXzg';
-//                 const apiUrl = `https://translation.googleapis.com/language/translate/v2?key=${apiKey}`;
-
-//                 try {
-//                     const response = await fetch(apiUrl, {
-//                         method: 'POST',
-//                         headers: {
-//                             'Content-Type': 'application/json',
-//                         },
-//                         body: JSON.stringify({
-//                             q: ['Home', 'Add Review'],  // Texts to translate
-//                             target: newLanguage,
-//                         }),
-//                     });
-
-//                     const buttonData = await response.json();
-//                     translateButtonText.value = {
-//                         home: buttonData.data.translations[0].translatedText,
-//                         addReview: buttonData.data.translations[1].translatedText,
-//                     };
-//                 } catch (error) {
-//                     console.error('Error translating text:', error);
-//                 }
-//             }
-//         });
-
-//        watch(selectedLanguage, async (newLanguage) => {
-//         if (newLanguage) {
-//             const apiKey = 'AIzaSyDIeM718Vp5-kwx6SM83aVOma6MTOueXzg';
-//             const apiUrl = `https://translation.googleapis.com/language/translate/v2?key=${apiKey}`;
-
-//         try {
-//             const response = await fetch(apiUrl, {
-//                 method: 'POST',
-//                 headers: {
-//                     'Content-Type': 'application/json',
-//                 },
-//                 body: JSON.stringify({
-//                     q: ['Security', 'Restaurants', 'General', 'Arrivals/Departures', 'Ammenities', 'Accessibility'],  // Texts to translate
-//                     target: newLanguage,
-//                 }),
-//             });
-//             const categoriesData = await response.json();
-//             console.log(categoriesData, 'categoriesData');
-
-//             if (categoriesData.data.translations) {
-//                 const translations = categoriesData.data.translations;
-//                 console.log(translations, 'translations')
-
-//                 // Ensure translations match the expected order
-//                 const categoriesOrder = ['security', 'restaurants', 'general', 'arrival_departures', 'amenities', 'accessibility'];
-
-//                 // Loop through available translations and update the corresponding category
-//                 categoriesOrder.forEach((category, index) => {
-//                     if (translateCategoriesText.value.hasOwnProperty(category)) {
-//                         translateCategoriesText.value[category] = translations[index].translatedText;
-//                     }
-//                 });
-//             }
-//         } catch (error) {
-//             console.error('Error translating text:', error);
-//         }
-//     }
-// });
-        //I removed the invocation of this for now since we don't want to waste the characters
-        async function translateText() {
-            if (selectedLanguage.value) { //if user selects a lanaguage
-                // console.log(reviewData, 'reviewData inside translation', selectedLanguage.value, 'value ')
-                const apiKey = 'AIzaSyDIeM718Vp5-kwx6SM83aVOma6MTOueXzg'; // This key is necessary for making requests to the translation API.
-
-                const textToTranslate = reviewData.value.map(element => ({
-                    category: element.attributes.category,
-                    comment: element.attributes.comment
-                }));
-                // console.log(textToTranslate, 'input text')
+         watch(selectedLanguage, async (newLanguage) => {
+            if (newLanguage) {
+                const apiKey = 'AIzaSyDIeM718Vp5-kwx6SM83aVOma6MTOueXzg';
                 const apiUrl = `https://translation.googleapis.com/language/translate/v2?key=${apiKey}`;
-                
+
                 try {
                     const response = await fetch(apiUrl, {
                         method: 'POST',
@@ -202,42 +119,91 @@ export default {
                             'Content-Type': 'application/json',
                         },
                         body: JSON.stringify({
-                            //In the context of the Google Cloud Translation API, the q and target parameters are part of the request payload for translating text.
-                            //q = query, text to be translated, an array of strings
-                            //target: Represents the target language into which the text should be translated.
-                            q: textToTranslate.map(item => item.comment),
-                            target: selectedLanguage.value, 
+                            q: ['Home', 'Add Review'],  // Texts to translate
+                            target: newLanguage,
                         }),
                     });
-                    const translatedReviewData = await response.json();
-                    reviewData.value = translatedReviewData.data.translations.map((translation, index) => ({
-                        attributes: {
-                            category: textToTranslate[index].category,
-                            comment: translation.translatedText
-                        }
-                    }));
 
+                    const buttonData = await response.json();
+                    translateButtonText.value = {
+                        home: buttonData.data.translations[0].translatedText,
+                        addReview: buttonData.data.translations[1].translatedText,
+                    };
                 } catch (error) {
                     console.error('Error translating text:', error);
+                    }
+                } 
+        });
+
+        //I removed the invocation of this for now since we don't want to waste the characters
+        async function translateText() {
+    if (selectedLanguage.value) { //if user selects a language
+        const apiKey = 'AIzaSyDIeM718Vp5-kwx6SM83aVOma6MTOueXzg';
+
+        const textToTranslate = reviewData.value.map(element => ({
+            category: element.attributes.category,
+            comment: element.attributes.comment
+        }));
+        console.log(textToTranslate, 'input text')
+        const apiUrl = `https://translation.googleapis.com/language/translate/v2?key=${apiKey}`;
+
+        try {
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    q: textToTranslate.map(item => [item.category, item.comment]).flat(),
+                    target: selectedLanguage.value,
+                }),
+            });
+            const translatedData = await response.json();
+
+            const translatedCategories = [];
+            const translatedComments = [];
+
+            translatedData.data.translations.forEach((translation, index) => {
+                if (index % 2 === 0) {
+                    translatedCategories.push(translation.translatedText);
+                } else {
+                    translatedComments.push(translation.translatedText);
                 }
-            }
+            });
+
+            reviewData.value.forEach((element, index) => {
+                element.translatedCategories = translatedCategories[index];
+                element.translatedComments = translatedComments[index];
+            });
+        } catch (error) {
+            console.error('Error translating text:', error);
         }
+    } else {
+        reviewData.value.forEach(element => {
+            element.translatedCategories = element.attributes.category;
+            element.translatedComments = element.attributes.comment;
+        });
+    }
+}
 
         
-        onMounted(() => { 
-            currentAirportId.value = router.currentRoute.value.query.id
+        onMounted(async () => {
+            await translateText(); 
+
+            currentAirportId.value = router.currentRoute.value.query.id;
             fetch('https://vast-fortress-94917-3cbbdce45a90.herokuapp.com/api/v1/reviews')
                 .then(response => {
-                    if(!response.ok) {
-                        console.log('error')
+                    if (!response.ok) {
+                        console.log('error');
                     }
-                    return response.json()
+                    return response.json();
                 })
                 .then(data => {
-                    reviewData.value = data.data.filter(element => element.attributes.airport_id == currentAirportId.value)
-                    reviewRender.value = true
-            })
-        })
+                    reviewData.value = data.data.filter(element => element.attributes.airport_id == currentAirportId.value);
+                    console.log(reviewData, 'reviewData')
+                    reviewRender.value = true;
+                });
+        });
 
 
         return {
