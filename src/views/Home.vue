@@ -1,6 +1,6 @@
 <template>
   <AirportHeader  />
-    <button class="login-button" v-if="!showLoginForm" @click="showLoginForm = true" :showLoginForm="showLoginForm" style="text-decoration: none;">Login</button>
+    <button class="login-button" v-if="!showLoginForm" @click="showLoginForm = true" style="text-decoration: none;">Login</button>
     <Login class="login-words" v-if="showLoginForm" @handleLogin="onHandleLogin" @close="closeLoginForm" />
     <AirportDropdown v-if="showAirportDropdown" :currentUser="currentUser && Object.keys(currentUser).length > 0 ? currentUser : null"/>
 </template>
@@ -17,8 +17,8 @@ const showLoginForm = ref(false);
 const toast = useToast();
 let currentUser = ref({});
 
-
-const showAirportHeader = computed(() => !showLoginForm.value);
+//what is this?
+// const showAirportHeader = computed(() => !showLoginForm.value);
 const showAirportDropdown = computed(() => !showLoginForm.value);
 
 const onHandleLogin = (userInputtedValues) => {
