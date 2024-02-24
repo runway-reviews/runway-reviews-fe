@@ -50,10 +50,13 @@ We also need to replace the airport api with a list of airports.
         <AddReview v-if="showReviewForm" @close="closeReviewForm" :currentAirportId="currentAirportId" :currentUser="currentUser && Object.keys(currentUser).length > 0 ? currentUser : null" />
 
         <div class="airport-reviews" v-if="reviewRender">
-            <p v-for="data in reviewData" :key="data.id" class="review-item">
-                <span class="category" >{{ data.translatedCategories }}</span>
-                {{ data.translatedComments}}
-                {{console.log(data, 'reviewData up here')}}
+            <p v-for="data in reviewData" :key="data.id" 
+            class="review-item">
+            {{console.log(data, 'data in reviewData')}}
+            {{console.log(reviewData, 'reviewData up here')}}
+                <span class="category" >{{ data.attributes.category }}</span>
+                {{ data.attributes.comment}}
+                <!-- {{console.log(data, 'reviewData up here')}} -->
             </p>
         </div>
     </div>
@@ -163,6 +166,14 @@ export default {
             const translatedCategories = [];
             const translatedComments = [];
 
+            // translatedData.data.translations.forEach((translation, index) => {
+            //     if (index % 2 === 0) {
+            //         translatedCategories.push(translation.translatedText);
+            //     } else {
+            //         translatedComments.push(translation.translatedText);
+            //     }
+            // });
+            console.log("translatedData",translatedData)
             translatedData.data.translations.forEach((translation, index) => {
                 if (index % 2 === 0) {
                     translatedCategories.push(translation.translatedText);
@@ -171,22 +182,26 @@ export default {
                 }
             });
 
-            reviewData.value.forEach((element, index) => {
-                element.translatedCategories = translatedCategories[index];
-                element.translatedComments = translatedComments[index];
+            // Update the reviewData with translated categories and comments
+            reviewData.value = translatedCategories.map((category, index) => {
+                return {
+                    attributes: {
+                        category,
+                        comment: translatedComments[index]
+                    }
+                };
             });
         } catch (error) {
             console.error('Error translating text:', error);
         }
     } else {
+        // Set default language to English
         reviewData.value.forEach(element => {
             element.translatedCategories = element.attributes.category;
             element.translatedComments = element.attributes.comment;
         });
     }
 }
-
-        
         onMounted(async () => {
             await translateText(); 
 
