@@ -3,14 +3,14 @@ Create a dropdown, in the textTranslate function we need to add a parameter that
 We also need to replace the airport api with a list of airports. 
 -->
 
-
-
 <template>
     <AirportHeader />
     <div class="airport-details-page">
         <h1 class="airport-name">{{ $route.params.airportName }} </h1>
+         <!-- Language dropdown for translation -->
         <div class="language-dropdown">
             <select v-model="selectedLanguage" @change="translateText">
+                <!-- The values assigned to the :key and :value bindings in the <option> elements are referencing the constants en, es, zh, vi, and tl. -->
                 <option :key="en" :value="en">English</option>
                 <option :key="es" :value="es">Spanish</option>
                 <option :key="zh" :value="zh">Mandarin</option>
@@ -18,31 +18,45 @@ We also need to replace the airport api with a list of airports.
                 <option :key="tl" :value="tl">Tagalog</option>
             </select>
         </div>
+
+        <!-- Display user information if available -->
         <div v-if="currentUser" class="user-info">
             <div class="user-logo">
                 <img src="/public/user.png" alt="User Logo" />
             </div>
                 <p v-if="currentUser" class="current-user-info"> {{ currentUser.attributes.username }}</p>
         </div>
+
+        <!-- Details container with buttons and review form -->
         <div class="details-container" :style="{height: showReviewForm ? '0vh' : '5em' }">
           <div class="buttons-container" v-if="!showReviewForm" >
+            <!-- Button to add a review -->
             <button class="link add-review" id="add-review" style="text-decoration: none;" @click="handleAddReview" >
                 <img class="add-icon" src="/public/add.png" />
-                Add Review
+                 {{translateButtonText.addReview}}
             </button>
+
+             <!-- Router link to navigate back to the home page -->
             <router-link to="/">
                 <button class="home-button-details-page link" style="text-decoration: none;">
                     <img src="/public/home.png" class="add-icon" />
-                    Home
+                    {{translateButtonText.home}}
                 </button>
             </router-link>
           </div >
         </div>
+
+         <!-- AddReview component, shown when showReviewForm is true -->
         <AddReview v-if="showReviewForm" @close="closeReviewForm" :currentAirportId="currentAirportId" :currentUser="currentUser && Object.keys(currentUser).length > 0 ? currentUser : null" />
+
         <div class="airport-reviews" v-if="reviewRender">
-            <p v-for="data in reviewData" :key="data.id" class="review-item">
+            <p v-for="data in reviewData" :key="data.id" 
+            class="review-item">
+            {{console.log(data, 'data in reviewData')}}
+            {{console.log(reviewData, 'reviewData up here')}}
                 <span class="category" >{{ data.attributes.category }}</span>
-                {{ data.attributes.comment }}
+                {{ data.attributes.comment}}
+                <!-- {{console.log(data, 'reviewData up here')}} -->
             </p>
         </div>
     </div>
@@ -51,7 +65,7 @@ We also need to replace the airport api with a list of airports.
 <script>
 import AddReview from './AddReview.vue';
 import AirportHeader from '../components/AirportHeader.vue'
-import { ref, onMounted } from 'vue'
+import { ref, watch, onMounted } from 'vue'
 import { useToast } from 'vue-toastification'
 import { useRouter } from 'vue-router'
 
@@ -63,7 +77,7 @@ export default {
     setup() {
         const router = useRouter();
     
-        const categories = ['Security', 'Restaurants', 'General', 'Arrivals/Departures', 'Ammenities', 'Accessibility']
+        // const categories = ['Security', 'Restaurants', 'General', 'Arrivals/Departures', 'Ammenities', 'Accessibility']
         const showReviewForm = ref(false);
         // const currentUser = JSON.parse(localStorage.getItem('currentUser'));
         const currentUser = ref(JSON.parse(localStorage.getItem('currentUser')));
@@ -71,17 +85,23 @@ export default {
         const currentAirportId = ref(null);
         const reviewData = ref([])
         const reviewRender = ref(false)
-        const selectedLanguage = ref('');
+        const selectedLanguage = ref(''); //falsy
         const en = 'en';
         const es = 'es';
         const zh = 'zh';
         const vi = 'vi';
-        const tl = 'tl';
-            
+        const tl = 'tl'; //The values assigned to the :key and :value bindings in the <option> elements are referencing the constants en, es, zh, vi, and tl.
+        const translateButtonText = ref({
+            home: 'Home',
+            addReview: 'Add Review',
+        })
+
+        // Close review form function
         const closeReviewForm = () => {
             showReviewForm.value = false
         }
         
+        // Handle add review button click
         const handleAddReview = () => {
             if (currentUser && currentAirportId) {
                 showReviewForm.value = true;
@@ -91,19 +111,46 @@ export default {
             }
         }
 
-//I removed the invocation of this for now since we don't want to waste the characters
-async function translateText() {
-    // console.log(selectedLanguage.value)
-    if(selectedLanguage.value) {
-        // console.log(reviewData, 'reviewData inside translation', selectedLanguage.value, 'value ')
-        const apiKey = 'AIzaSyDIeM718Vp5-kwx6SM83aVOma6MTOueXzg'; 
+         watch(selectedLanguage, async (newLanguage) => {
+            if (newLanguage) {
+                const apiKey = 'AIzaSyDIeM718Vp5-kwx6SM83aVOma6MTOueXzg';
+                const apiUrl = `https://translation.googleapis.com/language/translate/v2?key=${apiKey}`;
+
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            q: ['Home', 'Add Review'],  // Texts to translate
+                            target: newLanguage,
+                        }),
+                    });
+
+                    const buttonData = await response.json();
+                    translateButtonText.value = {
+                        home: buttonData.data.translations[0].translatedText,
+                        addReview: buttonData.data.translations[1].translatedText,
+                    };
+                } catch (error) {
+                    console.error('Error translating text:', error);
+                    }
+                } 
+        });
+
+        //I removed the invocation of this for now since we don't want to waste the characters
+        async function translateText() {
+    if (selectedLanguage.value) { //if user selects a language
+        const apiKey = 'AIzaSyDIeM718Vp5-kwx6SM83aVOma6MTOueXzg';
+
         const textToTranslate = reviewData.value.map(element => ({
             category: element.attributes.category,
             comment: element.attributes.comment
         }));
-        // console.log(textToTranslate, 'input text')
+        console.log(textToTranslate, 'input text')
         const apiUrl = `https://translation.googleapis.com/language/translate/v2?key=${apiKey}`;
-        
+
         try {
             const response = await fetch(apiUrl, {
                 method: 'POST',
@@ -111,44 +158,72 @@ async function translateText() {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    q: textToTranslate.map(item => item.comment),
-                    target: selectedLanguage.value, 
+                    q: textToTranslate.map(item => [item.category, item.comment]).flat(),
+                    target: selectedLanguage.value,
                 }),
             });
-            const data = await response.json();
-            console.log(data, 'data translated')
-            reviewData.value = data.data.translations.map((translation, index) => ({
-                attributes: {
-                    category: textToTranslate[index].category,
-                    comment: translation.translatedText
-                }
-            }));
+            const translatedData = await response.json();
 
+            const translatedCategories = [];
+            const translatedComments = [];
+
+            // translatedData.data.translations.forEach((translation, index) => {
+            //     if (index % 2 === 0) {
+            //         translatedCategories.push(translation.translatedText);
+            //     } else {
+            //         translatedComments.push(translation.translatedText);
+            //     }
+            // });
+            console.log("translatedData",translatedData)
+            translatedData.data.translations.forEach((translation, index) => {
+                if (index % 2 === 0) {
+                    translatedCategories.push(translation.translatedText);
+                } else {
+                    translatedComments.push(translation.translatedText);
+                }
+            });
+
+            // Update the reviewData with translated categories and comments
+            reviewData.value = translatedCategories.map((category, index) => {
+                return {
+                    attributes: {
+                        category,
+                        comment: translatedComments[index]
+                    }
+                };
+            });
         } catch (error) {
             console.error('Error translating text:', error);
         }
+    } else {
+        // Set default language to English
+        reviewData.value.forEach(element => {
+            element.translatedCategories = element.attributes.category;
+            element.translatedComments = element.attributes.comment;
+        });
     }
 }
+        onMounted(async () => {
+            await translateText(); 
 
-        
-        onMounted(() => { 
-            currentAirportId.value = router.currentRoute.value.query.id
+            currentAirportId.value = router.currentRoute.value.query.id;
             fetch('https://vast-fortress-94917-3cbbdce45a90.herokuapp.com/api/v1/reviews')
                 .then(response => {
-                    if(!response.ok) {
-                        console.log('error')
+                    if (!response.ok) {
+                        console.log('error');
                     }
-                    return response.json()
+                    return response.json();
                 })
                 .then(data => {
-                    reviewData.value = data.data.filter(element => element.attributes.airport_id == currentAirportId.value)
-                    reviewRender.value = true
-            })
-        })
+                    reviewData.value = data.data.filter(element => element.attributes.airport_id == currentAirportId.value);
+                    console.log(reviewData, 'reviewData')
+                    reviewRender.value = true;
+                });
+        });
 
 
         return {
-            reviewData, reviewRender, currentUser, showReviewForm, categories, closeReviewForm, handleAddReview, currentAirportId, translateText, selectedLanguage, en, es, vi, tl, zh
+            reviewData, reviewRender, currentUser, showReviewForm, closeReviewForm, handleAddReview, currentAirportId, translateText, selectedLanguage, en, es, vi, tl, zh, translateButtonText
         }
     }
 }
