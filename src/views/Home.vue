@@ -3,21 +3,24 @@
     <button class="login-button" v-if="!showLoginForm" @click="showLoginForm = true" style="text-decoration: none;">Login</button>
     <Login class="login-words" v-if="showLoginForm" @handleLogin="onHandleLogin" @close="closeLoginForm" />
     <AirportDropdown v-if="showAirportDropdown" :currentUser="currentUser && Object.keys(currentUser).length > 0 ? currentUser : null"/>
+    <CarouselImages />
 </template>
 
 <script setup>
 import AirportHeader from '../components/AirportHeader.vue'
 import AirportDropdown from '../components/AirportDropdown.vue'
 import Login from '../components/Login.vue'
+import CarouselImages from '../components/CarouselImages.vue'
 import { useToast } from 'vue-toastification'
 import 'vue-toastification/dist/index.css'
 import { ref, computed } from 'vue'
+
 
 const showLoginForm = ref(false);
 const toast = useToast();
 let currentUser = ref(JSON.parse(localStorage.getItem('currentUser')));
 
-//what is this?
+
 // const showAirportHeader = computed(() => !showLoginForm.value);
 const showAirportDropdown = computed(() => !showLoginForm.value);
 

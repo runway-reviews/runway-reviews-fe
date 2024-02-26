@@ -4,7 +4,8 @@ body, .airport-details-page {
 
 #app {
     text-align: center;
-    background-image: url('/leonardo-yip-rn-NLirHQPY-unsplash.jpg');
+    /* background-image: url('/leonardo-yip-rn-NLirHQPY-unsplash.jpg'); */
+    background-color: white;
     margin: 0;
     height: 100vh;
     width: 100vw;
