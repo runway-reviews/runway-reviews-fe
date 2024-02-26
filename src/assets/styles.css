@@ -5,7 +5,8 @@ body, .airport-details-page {
 #app {
     text-align: center;
     /* background-image: url('/leonardo-yip-rn-NLirHQPY-unsplash.jpg'); */
-    background-color: white;
+    /* background-image: url('/annie-spratt-qyAka7W5uMY-unsplash.jpg'); */
+    /* background-color: */
     margin: 0;
     height: 100vh;
     width: 100vw;
@@ -72,7 +73,8 @@ header {
   }
 
   .airport-dropdown {
-    margin-top: 200px;
+    margin-top: 100px;
+    margin-bottom: 200px;
   }
 
   .airport-select-home {
