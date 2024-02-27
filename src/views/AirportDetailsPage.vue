@@ -167,13 +167,6 @@ export default {
             const translatedCategories = [];
             const translatedComments = [];
 
-            // translatedData.data.translations.forEach((translation, index) => {
-            //     if (index % 2 === 0) {
-            //         translatedCategories.push(translation.translatedText);
-            //     } else {
-            //         translatedComments.push(translation.translatedText);
-            //     }
-            // });
             console.log("translatedData",translatedData)
             translatedData.data.translations.forEach((translation, index) => {
                 if (index % 2 === 0) {
@@ -204,10 +197,18 @@ export default {
     }
 }
         onMounted(async () => {
-            await translateText(); 
-
+            await translateText();
+            
+            // const currentRoute = router.currentRoute.value;
+            // console.log(currentRoute, 'currentRoute')
+            // currentAirportId.value = currentRoute.params.airportId;
+            
             currentAirportId.value = router.currentRoute.value.query.id;
-            fetch('https://vast-fortress-94917-3cbbdce45a90.herokuapp.com/api/v1/reviews')
+            // console.log(currentAirportId, 'currentAirportId')
+            // console.log(router, 'router')
+            console.log(router.currentRoute.value, 'router.currentRoute.value')
+            
+            fetch('https://runwayreviewsbe-4165084ad9d0.herokuapp.com/reviews')
                 .then(response => {
                     if (!response.ok) {
                         console.log('error');
@@ -215,8 +216,15 @@ export default {
                     return response.json();
                 })
                 .then(data => {
-                    reviewData.value = data.data.filter(element => element.attributes.airport_id == currentAirportId.value);
+                    console.log(data, 'review data')
+                    reviewData.value = data.filter(element => {
+                        // console.log(currentAirportId.value,'currentAirport ID.value')
+                        // console.log(currentAirportId,'currentAirport ID')
+                        return element.attributes.airport_id == currentAirportId.value
+                    });
                     console.log(reviewData, 'reviewData')
+                    // console.log(currentAirportId, 'currentAirportId assigned')
+
                     reviewRender.value = true;
                 });
         });

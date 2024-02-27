@@ -5,12 +5,12 @@
       <div class="item">
         <label class="review-label">Select a category:</label>
         <select class="login-selection" v-model="selectedCategory">
-            <option>security</option>
-            <option>restaurants</option>
-            <option>bathrooms</option>
-            <option>amenities</option>
-            <option>accessibility</option>
-            <option>general</option>
+            <option>Security</option>
+            <option>Restaurants</option>
+            <option>Bathrooms</option>
+            <option>Amenities</option>
+            <option>Accessibility</option>
+            <option>General</option>
         </select>
       </div>
 
@@ -64,19 +64,19 @@ const addNewReview = () => {
     console.log(props.currentUser, 'current user in add review')
     console.log(props.currentAirportId, 'airportId')
     const newReview = {
-    "review": {
-        "user_id": props.currentUser.id,
-        "airport_id": props.currentAirportId,
-        "comment": review.value,
-        "category": selectedCategory.value
-  }
-}
+        "review": {
+            "user_id": parseInt(props.currentUser.id),
+            "airport_id": parseInt(props.currentAirportId),
+            "comment": review.value,
+            "category": selectedCategory.value
+      }
+    }
+    console.log(newReview, "newReview")
     submitReview(newReview)
 }
 
-
 const submitReview = (newReview) => {
-    return fetch('https://vast-fortress-94917-3cbbdce45a90.herokuapp.com/api/v1/reviews', {
+    return fetch('https://runwayreviewsbe-4165084ad9d0.herokuapp.com/reviews', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -88,6 +88,9 @@ const submitReview = (newReview) => {
             console.log('err')
         }
         return response.json()
+    })
+    .then(data => {
+      console.log(data, "data")
     })
 }
 
