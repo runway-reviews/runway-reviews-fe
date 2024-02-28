@@ -4,20 +4,29 @@
     <button class="login-button" v-if="!showLoginForm" @click="showLoginForm = true" style="text-decoration: none;">Login</button>
     <button class="createAccount-button" v-if="!showCreateAccountForm" @click='handleNewAccount' style="text-decoration: none;">Create New Account</button>
   </div>
+    <img src="/Screenshot 2024-02-27 at 4.07.11 PM.png" alt="runway-logo" class="logo"/>
+    <button class="login-button" v-if="!showLoginForm" @click="showLoginForm = true" style="text-decoration: none;">Login</button>
+    <p class="home-sentence">Honest reviews from the most popular airports in the country</p>
     <Login class="login-words" v-if="showLoginForm" @handleLogin="onHandleLogin" @close="closeLoginForm" />
     <CreateAccount v-if="showCreateAccountForm" @close="closeCreateAccountForm"
     />
     <AirportDropdown v-if="showAirportDropdown" :currentUser="currentUser && Object.keys(currentUser).length > 0 ? currentUser : null"/>
+    <CarouselImages />
 </template>
 
 <script setup>
 import AirportHeader from '../components/AirportHeader.vue'
 import AirportDropdown from '../components/AirportDropdown.vue'
 import Login from '../components/Login.vue'
+
 import CreateAccount from './CreateAccount.vue'
+
+import CarouselImages from '../components/CarouselImages.vue'
+
 import { useToast } from 'vue-toastification'
 import 'vue-toastification/dist/index.css'
 import { ref, computed } from 'vue'
+
 
 const showLoginForm = ref(false);
 const showCreateAccountForm = ref(false);

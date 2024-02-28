@@ -197,7 +197,9 @@ export default {
         onMounted(async () => {
             await translateText();
             currentAirportId.value = router.currentRoute.value.query.id;
+
             fetch('https://runwayreviewsbe-4165084ad9d0.herokuapp.com/reviews')
+
                 .then(response => {
                     if (!response.ok) {
                         console.log('error');
