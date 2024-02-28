@@ -30,7 +30,7 @@ const router = createRouter({
       component: AddReview
     },
     {
-      path: '/',
+      path: '/create-account',
       name: 'createAccount',
       component: CreateAccount
     }

@@ -13,8 +13,8 @@
 <script setup>
 import AirportHeader from '../components/AirportHeader.vue'
 import AirportDropdown from '../components/AirportDropdown.vue'
-import CreateAccount from './CreateAccount.vue'
 import Login from '../components/Login.vue'
+import CreateAccount from './CreateAccount.vue'
 import { useToast } from 'vue-toastification'
 import 'vue-toastification/dist/index.css'
 import { ref, computed } from 'vue'

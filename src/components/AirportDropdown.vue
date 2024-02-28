@@ -58,7 +58,6 @@ const navigateToAirportDetails = async () => {
     }
 }
 
-
 onMounted(fetchAirports);
   </script>
 
