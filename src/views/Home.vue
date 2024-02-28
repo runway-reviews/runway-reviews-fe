@@ -37,7 +37,6 @@ const onHandleLogin = (userInputtedValues) => {
             } else {
                 let loggedIn = false; 
                 userAndPasswordStorage.forEach(element => {
-                    console.log(element, 'element')
                     if (element.attributes.username === userInputtedValues.text && element.attributes.password === userInputtedValues.password) {
                         currentUser = element;
                         loggedIn = true;

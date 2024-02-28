@@ -22,7 +22,7 @@ We also need to replace the airport api with a list of airports.
         <!-- Display user information if available -->
         <div v-if="currentUser" class="user-info">
             <div class="user-logo">
-                <img src="/public/user.png" alt="User Logo" />
+                <img src="/user.png" alt="User Logo" />
             </div>
                 <p v-if="currentUser" class="current-user-info"> {{ currentUser.attributes.username }}</p>
         </div>
@@ -32,7 +32,7 @@ We also need to replace the airport api with a list of airports.
           <div class="buttons-container" v-if="!showReviewForm" >
             <!-- Button to add a review -->
             <button class="link add-review" id="add-review" style="text-decoration: none;" @click="handleAddReview" >
-                <img class="add-icon" src="/public/add.png" />
+                <img class="add-icon" src="/add.png" />
                  {{translateButtonText.addReview}}
             </button>
 
@@ -76,10 +76,8 @@ export default {
     },
     setup() {
         const router = useRouter();
-    
-        // const categories = ['Security', 'Restaurants', 'General', 'Arrivals/Departures', 'Ammenities', 'Accessibility']
+
         const showReviewForm = ref(false);
-        // const currentUser = JSON.parse(localStorage.getItem('currentUser'));
         const currentUser = ref(JSON.parse(localStorage.getItem('currentUser')));
         const toast = useToast();
         const currentAirportId = ref(null);
@@ -90,7 +88,7 @@ export default {
         const es = 'es';
         const zh = 'zh';
         const vi = 'vi';
-        const tl = 'tl'; //The values assigned to the :key and :value bindings in the <option> elements are referencing the constants en, es, zh, vi, and tl.
+        const tl = 'tl'; 
         const translateButtonText = ref({
             home: 'Home',
             addReview: 'Add Review',
@@ -123,7 +121,7 @@ export default {
                             'Content-Type': 'application/json',
                         },
                         body: JSON.stringify({
-                            q: ['Home', 'Add Review'],  // Texts to translate
+                            q: ['Home', 'Add Review'], 
                             target: newLanguage,
                         }),
                     });
@@ -198,16 +196,7 @@ export default {
 }
         onMounted(async () => {
             await translateText();
-            
-            // const currentRoute = router.currentRoute.value;
-            // console.log(currentRoute, 'currentRoute')
-            // currentAirportId.value = currentRoute.params.airportId;
-            
             currentAirportId.value = router.currentRoute.value.query.id;
-            // console.log(currentAirportId, 'currentAirportId')
-            // console.log(router, 'router')
-            console.log(router.currentRoute.value, 'router.currentRoute.value')
-            
             fetch('https://runwayreviewsbe-4165084ad9d0.herokuapp.com/reviews')
                 .then(response => {
                     if (!response.ok) {
@@ -218,13 +207,8 @@ export default {
                 .then(data => {
                     console.log(data, 'review data')
                     reviewData.value = data.filter(element => {
-                        // console.log(currentAirportId.value,'currentAirport ID.value')
-                        // console.log(currentAirportId,'currentAirport ID')
                         return element.attributes.airport_id == currentAirportId.value
                     });
-                    console.log(reviewData, 'reviewData')
-                    // console.log(currentAirportId, 'currentAirportId assigned')
-
                     reviewRender.value = true;
                 });
         });

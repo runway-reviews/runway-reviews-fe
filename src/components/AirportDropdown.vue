@@ -31,17 +31,13 @@ const fetchAirports = async () => {
             console.log('Error fetching airports data');
             return;
         }
-        //new api: https://runwayreviewsbe-4165084ad9d0.herokuapp.com/airports/
         const data = await response.json();
-        console.log(data, 'data')
-        console.log(airports, 'airports in fetch')
         airports.value = data.map(element => {
           return {
             name: element.attributes,
             id: element.id
           }
           } );
-        console.log(airports.value, 'airport.value');
     } catch (error) {
         console.error('Error fetching airports data:', error);
     }
@@ -52,7 +48,6 @@ const navigateToAirportDetails = async () => {
     
     if (selectedAirport.value) {
         const airportObject = airports.value.find(airport => airport.name.name === selectedAirport.value);
-        console.log(airportObject, 'airport object');
         localStorage.setItem('currentUser', JSON.stringify(props.currentUser)); 
         router.push({ name: 'airportName', params: { airportName: selectedAirport.value }, query: { id: airportObject.id } });
     }

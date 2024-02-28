@@ -64,13 +64,14 @@ const addNewReview = () => {
     console.log(props.currentUser, 'current user in add review')
     console.log(props.currentAirportId, 'airportId')
     const newReview = {
-        "review": {
-            "user_id": parseInt(props.currentUser.id),
-            "airport_id": parseInt(props.currentAirportId),
-            "comment": review.value,
-            "category": selectedCategory.value
-      }
-    }
+        // "review": {
+          // "user_id": props.currentUser.id,
+          "airport_id": props.currentAirportId,
+          "comment": review.value,
+          "category": selectedCategory.value
+        }
+      
+    // }
     console.log(newReview, "newReview")
     submitReview(newReview)
 }
@@ -84,6 +85,7 @@ const submitReview = (newReview) => {
         body: JSON.stringify(newReview)
     })
     .then(response => {
+      console.log(response, 'response from add review POST')
         if(!response.ok) {
             console.log('err')
         }

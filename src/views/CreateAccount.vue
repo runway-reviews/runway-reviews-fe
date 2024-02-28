@@ -108,9 +108,6 @@ import { ref, defineEmits, defineProps } from 'vue'
         if (newAccount.username === '' || newAccount.password === '' || newAccount.email === '') {
             toast.error('All inputs must be filled out');
         } else {
-            // console.log(allUserData, 'allUserData')
-            // closeCreateAccountForm()
-            //how to add local storage?
             closeLogin()
             toast.success('User account created successfully!');
             } 
