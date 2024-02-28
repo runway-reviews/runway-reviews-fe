@@ -1,62 +1,46 @@
-<!-- We want to move the invocation of translateText to be invoked when a dropdown is selected, so we create a dropdown with selected languages: English ('en'), Spanish ('es'), Mandarin (''), Tagalog (''), Vietnamese () These are the top most spoken languages in the US and since we are doing US airports... 
-Create a dropdown, in the textTranslate function we need to add a parameter that acts as the language being translated
-We also need to replace the airport api with a list of airports. 
--->
-
 <template>
     <AirportHeader />
     <div class="airport-details-page">
         <h1 class="airport-name">{{ $route.params.airportName }} </h1>
-         <!-- Language dropdown for translation -->
-        <div class="language-dropdown">
-            <select v-model="selectedLanguage" @change="translateText">
-                <!-- The values assigned to the :key and :value bindings in the <option> elements are referencing the constants en, es, zh, vi, and tl. -->
-                <option :key="en" :value="en">English</option>
-                <option :key="es" :value="es">Spanish</option>
-                <option :key="zh" :value="zh">Mandarin</option>
-                <option :key="vi" :value="vi">Vietnamese</option>
-                <option :key="tl" :value="tl">Tagalog</option>
-            </select>
-        </div>
-
-        <!-- Display user information if available -->
         <div v-if="currentUser" class="user-info">
             <div class="user-logo">
-                <img src="/public/user.png" alt="User Logo" />
+                <img src="/user.png" alt="User Logo" />
             </div>
                 <p v-if="currentUser" class="current-user-info"> {{ currentUser.attributes.username }}</p>
         </div>
-
-        <!-- Details container with buttons and review form -->
         <div class="details-container" :style="{height: showReviewForm ? '0vh' : '5em' }">
           <div class="buttons-container" v-if="!showReviewForm" >
-            <!-- Button to add a review -->
             <button class="link add-review" id="add-review" style="text-decoration: none;" @click="handleAddReview" >
-                <img class="add-icon" src="/public/add.png" />
+                <img class="add-icon" src="/add.png" />
                  {{translateButtonText.addReview}}
             </button>
-
-             <!-- Router link to navigate back to the home page -->
             <router-link to="/">
                 <button class="home-button-details-page link" style="text-decoration: none;">
-                    <img src="/public/home.png" class="add-icon" />
+                    <img src="/home.png" class="add-icon" />
                     {{translateButtonText.home}}
                 </button>
             </router-link>
+            <div class="language-dropdown">
+                <select v-model="selectedLanguage" @change="translateText">
+                    <optgroup label="Choose Language">
+                        <option class="change-language" value="" disabled>Change Language</option>
+                        <option :key="en" :value="en">English</option>
+                        <option :key="es" :value="es">Spanish</option>
+                        <option :key="zh" :value="zh">Mandarin</option>
+                        <option :key="vi" :value="vi">Vietnamese</option>
+                        <option :key="tl" :value="tl">Tagalog</option>
+                    </optgroup>
+                </select>
+            </div>
           </div >
         </div>
-
-         <!-- AddReview component, shown when showReviewForm is true -->
         <AddReview v-if="showReviewForm" @close="closeReviewForm" :currentAirportId="currentAirportId" :currentUser="currentUser && Object.keys(currentUser).length > 0 ? currentUser : null" />
 
         <div class="airport-reviews" v-if="reviewRender">
             <p v-for="data in reviewData" :key="data.id" 
             class="review-item">
-            {{console.log(data, 'data in reviewData')}}
-            {{console.log(reviewData, 'reviewData up here')}}
                 <span class="category" >{{ data.attributes.category }}</span>
                 {{ data.attributes.comment}}
-                <!-- {{console.log(data, 'reviewData up here')}} -->
             </p>
         </div>
     </div>
@@ -76,32 +60,30 @@ export default {
     },
     setup() {
         const router = useRouter();
-    
-        // const categories = ['Security', 'Restaurants', 'General', 'Arrivals/Departures', 'Ammenities', 'Accessibility']
+
         const showReviewForm = ref(false);
-        // const currentUser = JSON.parse(localStorage.getItem('currentUser'));
         const currentUser = ref(JSON.parse(localStorage.getItem('currentUser')));
         const toast = useToast();
         const currentAirportId = ref(null);
         const reviewData = ref([])
         const reviewRender = ref(false)
-        const selectedLanguage = ref(''); //falsy
+        const selectedLanguage = ref(''); 
         const en = 'en';
         const es = 'es';
         const zh = 'zh';
         const vi = 'vi';
-        const tl = 'tl'; //The values assigned to the :key and :value bindings in the <option> elements are referencing the constants en, es, zh, vi, and tl.
+        const tl = 'tl'; 
         const translateButtonText = ref({
             home: 'Home',
             addReview: 'Add Review',
         })
 
-        // Close review form function
+
         const closeReviewForm = () => {
             showReviewForm.value = false
         }
         
-        // Handle add review button click
+
         const handleAddReview = () => {
             if (currentUser && currentAirportId) {
                 showReviewForm.value = true;
@@ -123,7 +105,7 @@ export default {
                             'Content-Type': 'application/json',
                         },
                         body: JSON.stringify({
-                            q: ['Home', 'Add Review'],  // Texts to translate
+                            q: ['Home', 'Add Review'], 
                             target: newLanguage,
                         }),
                     });
@@ -139,9 +121,8 @@ export default {
                 } 
         });
 
-        //I removed the invocation of this for now since we don't want to waste the characters
         async function translateText() {
-    if (selectedLanguage.value) { //if user selects a language
+    if (selectedLanguage.value) { 
         const apiKey = 'AIzaSyDIeM718Vp5-kwx6SM83aVOma6MTOueXzg';
 
         const textToTranslate = reviewData.value.map(element => ({
@@ -166,15 +147,6 @@ export default {
 
             const translatedCategories = [];
             const translatedComments = [];
-
-            // translatedData.data.translations.forEach((translation, index) => {
-            //     if (index % 2 === 0) {
-            //         translatedCategories.push(translation.translatedText);
-            //     } else {
-            //         translatedComments.push(translation.translatedText);
-            //     }
-            // });
-            console.log("translatedData",translatedData)
             translatedData.data.translations.forEach((translation, index) => {
                 if (index % 2 === 0) {
                     translatedCategories.push(translation.translatedText);
@@ -183,7 +155,6 @@ export default {
                 }
             });
 
-            // Update the reviewData with translated categories and comments
             reviewData.value = translatedCategories.map((category, index) => {
                 return {
                     attributes: {
@@ -196,7 +167,6 @@ export default {
             console.error('Error translating text:', error);
         }
     } else {
-        // Set default language to English
         reviewData.value.forEach(element => {
             element.translatedCategories = element.attributes.category;
             element.translatedComments = element.attributes.comment;
@@ -232,6 +202,18 @@ export default {
 
 <style setup>
   
+.language-dropdown {
+    font-size: 1.4em;
+    border: 0;
+    background-color: white;
+    margin: 10px;
+}
+
+.change-language {
+    color: gray;
+    font-size: 10px;
+}
+
   .details-container {
     display: flex;
     flex-direction: column;
@@ -247,12 +229,13 @@ export default {
 
   .link {
     font-size: 1.4em;
-    border: 0;
     font-size: 1.3em;
-    background-color: white;
+    border: none;
+    background-color: rgb(235, 157, 220);
     margin: 10px;
     border-radius: 10px;
     width: 10vw;
+    box-shadow: 4px 5px 17px 1px rgba(0, 0, 0, 0.5);
   }
  
 .buttons-container {
@@ -274,15 +257,16 @@ export default {
     display: flex;
     flex-direction: column;
     font-size: 20px;
-    background-color: white;
+    background-color: rgb(0, 0, 0);
     width: 80vw;
     margin: auto;
     margin-top: 40px;
     height: 40vh;
-    opacity: .7;   
+    opacity: .8;   
     overflow-y: auto;
     font-family: 'Nunito Sans', sans-serif;
     padding-left: 20px;
+    color: white;
 }
 
 .add-icon {
@@ -304,7 +288,8 @@ export default {
     right: 30px;
     display: flex;
     align-items: center;
-    background-color: rgb(187, 81, 63);
+    background-color: rgb(68, 111, 204);
+    font-family: 'Nunito Sans', sans-serif;
     color: rgb(0, 0, 0);
     width: 15vw;
     height: 5vh;
