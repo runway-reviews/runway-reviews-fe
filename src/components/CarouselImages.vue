@@ -2,7 +2,7 @@
   <div>
     <Carousel :itemsToShow="slidesPerPage" :autoplay="autoplayInterval" :wrap-around="true">
       <Slide v-for="(image, index) in images" :key="index" >
-        <img :src="image.src" :alt="image.alt" class="carousel-images">
+        <img :src="image.src" :alt="image.alt" class="carousel-images" style="object-fit: cover;">
       </Slide>
 
       <!-- <template #addons> -->
@@ -37,6 +37,7 @@ const slidesPerPage = ref(4);
 
 .carousel-images {
   /* opacity: .8; */
+  border-radius: 10px;
   width: 300px;
   height: 30vh;
 }

@@ -207,6 +207,7 @@ export default {
             await translateText(); 
 
             currentAirportId.value = router.currentRoute.value.query.id;
+            console.log(router.currentRoute.value, 'router value')
             fetch('https://vast-fortress-94917-3cbbdce45a90.herokuapp.com/api/v1/reviews')
                 .then(response => {
                     if (!response.ok) {
