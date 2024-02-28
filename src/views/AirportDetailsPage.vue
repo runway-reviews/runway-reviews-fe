@@ -56,7 +56,6 @@ We also need to replace the airport api with a list of airports.
             {{console.log(reviewData, 'reviewData up here')}}
                 <span class="category" >{{ data.attributes.category }}</span>
                 {{ data.attributes.comment}}
-                <!-- {{console.log(data, 'reviewData up here')}} -->
             </p>
         </div>
     </div>
@@ -167,13 +166,6 @@ export default {
             const translatedCategories = [];
             const translatedComments = [];
 
-            // translatedData.data.translations.forEach((translation, index) => {
-            //     if (index % 2 === 0) {
-            //         translatedCategories.push(translation.translatedText);
-            //     } else {
-            //         translatedComments.push(translation.translatedText);
-            //     }
-            // });
             console.log("translatedData",translatedData)
             translatedData.data.translations.forEach((translation, index) => {
                 if (index % 2 === 0) {
@@ -231,7 +223,6 @@ export default {
 </script>
 
 <style setup>
-  
   .details-container {
     display: flex;
     flex-direction: column;
@@ -296,7 +287,6 @@ export default {
 .review-item {
     text-align: left;
 }
-
 
 .user-info {
     position: absolute;
@@ -376,7 +366,6 @@ export default {
     }
 }
 
-
 @media(max-width: 680px ) {
     .add-review {
         width: 28vw;
@@ -393,7 +382,7 @@ export default {
     .current-user-info {
         margin: 0;
         font-size: 13px;
-}
+    }
 }
 
 @media (max-width: 435px) {

@@ -1,6 +1,7 @@
 body, .airport-details-page {
     margin: 0;
     font-family: 'great vibes', 'sans-serif';
+    background-color: #F8F7F4;
 }
 
 .home-sentence {
@@ -14,10 +15,8 @@ body, .airport-details-page {
     height: 100vh;
     width: 100vw;
     /* background-size: cover; */
-    background-color: rgba(250, 248, 248, 0.785); 
+    background-color: #F8F7F4;
 }
-
-
 
 header {
     font-size: 4em;
@@ -48,6 +47,7 @@ header {
     /* margin-right: 20px; */
     font-size: 18px;
     color: black;
+    background-color: #F8F7F4;
     position: fixed;
     top: 10px;
     right: 50px;
@@ -79,15 +79,17 @@ header {
 }
 
 .airport-dropdown {
-    margin-top: 100px;
+    margin-top: 50px;
     margin-bottom: 100px;
 }
 
 .airport-select-home {
-    height: 4vh;
-    width: 30vw;
+    height: 5vh;
+    width: 38vw;
     font-size: 20px;
     cursor: pointer;
+    background: rgba(0, 0, 0, 0.7); /* Adjust the alpha value (0.7) for your desired opacity */
+    color: #F8F7F4;
 }
 
 .logo {

@@ -1,7 +1,7 @@
 <template>
   <div class="airport-dropdown">
     <select v-model="selectedAirport" @change="navigateToAirportDetails" class="airport-select-home">
-      <option v-for="airport in airports" :key="airport.id" :value="airport.name">
+      <option class="airport-names" v-for="airport in airports" :key="airport.id" :value="airport.name">
         {{ airport.name }}
       </option>
     </select>
@@ -53,7 +53,13 @@ const navigateToAirportDetails = async () => {
     }
 }
 
-
 onMounted(fetchAirports);
   </script>
 
+<style scoped>
+/* It's not working for some reason */
+  /* .airport-select-home .airport-names {
+    font-family: 'Source Serif 4', serif !important;
+} */
+
+</style>

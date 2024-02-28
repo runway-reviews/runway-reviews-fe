@@ -2,10 +2,11 @@
   <AirportHeader  />
     <img src="/Screenshot 2024-02-27 at 4.07.11 PM.png" alt="runway-logo" class="logo"/>
     <button class="login-button" v-if="!showLoginForm" @click="showLoginForm = true" style="text-decoration: none;">Login</button>
-    <p class="home-sentence">Honest reviews from the most popular airports in the country</p>
+    <h2 class="home-sentence">Authentic reviews from the nation's leading airports.</h2>
+    <p>Discover Your Oasis: Choose Your Destination of Comfort</p>
     <Login class="login-words" v-if="showLoginForm" @handleLogin="onHandleLogin" @close="closeLoginForm" />
     <AirportDropdown v-if="showAirportDropdown" :currentUser="currentUser && Object.keys(currentUser).length > 0 ? currentUser : null"/>
-    <CarouselImages />
+    <CarouselImages v-if="!showLoginForm" />
 </template>
 
 <script setup>
@@ -22,8 +23,6 @@ const showLoginForm = ref(false);
 const toast = useToast();
 let currentUser = ref(JSON.parse(localStorage.getItem('currentUser')));
 
-
-// const showAirportHeader = computed(() => !showLoginForm.value);
 const showAirportDropdown = computed(() => !showLoginForm.value);
 
 const onHandleLogin = (userInputtedValues) => {
@@ -58,3 +57,14 @@ const closeLoginForm = () => {
 }
 
 </script>
+
+<style scoped>
+    button, h2 {
+        font-family: 'Source Serif 4', serif;
+        font-weight: 500;
+    }
+    p {
+        font-family: 'Source Serif 4', serif;
+        font-size: 20px;
+    }
+</style>

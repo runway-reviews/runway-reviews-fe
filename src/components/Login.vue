@@ -10,7 +10,7 @@
             </div>
             <input 
                     type="text"
-                    placeholder="username"
+                    placeholder="Enter Username..."
                     name="username"
                     v-model="text"
                     id="username"
@@ -21,9 +21,11 @@
             <div class="password-label-container">
                 <label>Password</label>
             </div>
+             <!-- :type: shorthand syntax for v-bind:type. It is used for dynamic binding of attributes in Vue.js. :type binds type attribute to the result of the expression on the right side of the equal sign. -->
+            <!-- If showPassword is true, the type is set to 'text', revealing the actual characters in the password. If showPassword is false, the type is set to 'password', hiding the actual characters with asterisks. -->
             <input 
-                type="text"
-                placeholder="**********************"
+                :type="showPassword ? 'text' : 'password'"
+                placeholder="Enter password..."
                 name="password"
                 v-model="password"
                 id="password"
@@ -31,6 +33,7 @@
             />
         </div>
             <button @click.prevent="login" class="login-on-page" style="text-decoration: none;">Log In</button>
+            <button @click.prevent='toggleShowPassword' class="login-on-page">Show Password</button>
         </form>
     </div>
 </template>
@@ -42,6 +45,7 @@ import 'vue-toastification/dist/index.css'
 
 const text = ref('')
 const password = ref('')
+const showPassword = ref(false)
 const emit = defineEmits(['handleLogin', 'close']);
 const toast = useToast();
 
@@ -64,22 +68,45 @@ const closeLogin = () => {
     emit('close')
 }
 
+//when clicked, changes boolean value
+const toggleShowPassword = () => {
+  showPassword.value = !showPassword.value;
+}
+
+// const hidePassword = () => {
+//   if (!showPassword.value) {
+//     password.value = '*'.repeat(password.value.length)
+//   }
+// }
+
 </script>
 
 <style>
+
+.username-label,
+.password-label, 
+input, button {
+  font-family: 'Source Serif 4', serif;
+}
 
 .login-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 50vh;
+    height: 38vh;
 }
 
   form {
-    display: flex;
+    /* display: flex;
     align-items: center;
     background-color: white;
-    margin-top: 150px;
+    margin-top: 150px; */
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+    border: 3px rgba(0, 0, 0, 0.85);
+    background-color: rgba(0, 0, 0, 0.85);
+    color: white;
   }
 
   .close-login {
@@ -92,6 +119,7 @@ const closeLogin = () => {
     background-color: white;
     border: 0;
     text-decoration: none;
+    background-color: rgba(0, 0, 0, -0.3);
   }
 
   .close-login:hover, .create-account:hover {
@@ -138,6 +166,7 @@ const closeLogin = () => {
   background-color: green;
   border-radius: 6px;
   border: 0;
+  margin-top: -66px !important;
 }
 
 .login-on-page:hover {
