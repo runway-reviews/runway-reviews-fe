@@ -43,7 +43,10 @@ const fetchAirports = async () => {
 const navigateToAirportDetails = async () => {
     await fetchAirports(); 
     if (selectedAirport.value) {
-        const airportObject = airports.value.find(airport => airport.name === selectedAirport.value);
+        const airportObject = airports.value.find(airport => {
+          console.log(airport, 'airport in fetchAirport')
+          return airport.name === selectedAirport.value
+        });
         console.log(airportObject, 'airport object');
         localStorage.setItem('currentUser', JSON.stringify(props.currentUser)); 
         router.push({ name: 'airportName', params: { airportName: selectedAirport.value }, query: { id: airportObject.id } });
