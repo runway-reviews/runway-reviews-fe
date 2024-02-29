@@ -1,18 +1,17 @@
 <template >
-  <AirportHeader  />
-  <div class='buttons'>
-    <button class="login-button" v-if="!showLoginForm" @click="showLoginForm = true" style="text-decoration: none;">Login</button>
-    <button class="createAccount-button" v-if="!showCreateAccountForm" @click='handleNewAccount' style="text-decoration: none;">Create New Account</button>
-  </div>
+  <AirportHeader/>
     <img src="/Screenshot 2024-02-27 at 4.07.11 PM.png" alt="runway-logo" class="logo"/>
-    <button class="login-button" v-if="!showLoginForm" @click="showLoginForm = true" style="text-decoration: none;">Login</button>
+    <div class='buttons'>
+        <button class="login-button" v-if="!showLoginForm && !showCreateAccountForm" @click="showLoginForm = true" style="text-decoration: none;">Login</button>
+        <button class="createaccount-button" v-if="!showCreateAccountForm && !showLoginForm" @click='handleNewAccount' style="text-decoration: none;">Create New Account</button>
+     </div>
     <h2 class="home-sentence">Authentic reviews from the nation's leading airports.</h2>
     <p>Discover Your Oasis: Choose Your Destination of Comfort</p>
     <Login class="login-words" v-if="showLoginForm" @handleLogin="onHandleLogin" @close="closeLoginForm" />
     <CreateAccount v-if="showCreateAccountForm" @close="closeCreateAccountForm"
     />
-    <AirportDropdown v-if="showAirportDropdown" :currentUser="currentUser && Object.keys(currentUser).length > 0 ? currentUser : null"/>
-    <CarouselImages v-if="!showLoginForm" />
+    <AirportDropdown v-if="showAirportDropdown && !showCreateAccountForm" :currentUser="currentUser && Object.keys(currentUser).length > 0 ? currentUser : null"/>
+    <CarouselImages v-if="!showLoginForm && !showCreateAccountForm" />
 </template>
 
 <script setup>
@@ -79,8 +78,12 @@ const handleNewAccount = () => {
         font-family: 'Source Serif 4', serif;
         font-weight: 500;
     }
-    .button {
+    .buttons {
+        position: fixed;
+        top: 10px;
+        right: 50px;
         display: flex;
+        gap: 10px; /* Adjust the gap between buttons as needed */
     }
     p {
         font-family: 'Source Serif 4', serif;

@@ -73,16 +73,9 @@ const toggleShowPassword = () => {
   showPassword.value = !showPassword.value;
 }
 
-// const hidePassword = () => {
-//   if (!showPassword.value) {
-//     password.value = '*'.repeat(password.value.length)
-//   }
-// }
-
 </script>
 
 <style>
-
 .username-label,
 .password-label, 
 input, button {
@@ -97,16 +90,12 @@ input, button {
 }
 
   form {
-    /* display: flex;
-    align-items: center;
-    background-color: white;
-    margin-top: 150px; */
     display: flex;
     align-items: center;
     margin-top: auto;
     border: 3px rgba(0, 0, 0, 0.85);
     background-color: rgba(0, 0, 0, 0.85);
-    color: white;
+    color: #F8F7F4;
   }
 
   .close-login {
@@ -159,7 +148,7 @@ input, button {
 }
 
 .login-on-page {
-  width:  10em;
+  width: 10em;
   font-size: 1.2em;
   height: 2em;
   color: white;
