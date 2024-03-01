@@ -201,6 +201,18 @@ export default {
 </script>
 
 <style setup>
+.language-dropdown {
+    font-size: 1.4em;
+    border: 0;
+    background-color: white;
+    margin: 10px;
+}
+
+.change-language {
+    color: gray;
+    font-size: 10px;
+}
+
   .details-container {
     display: flex;
     flex-direction: column;
@@ -216,12 +228,13 @@ export default {
 
   .link {
     font-size: 1.4em;
-    border: 0;
     font-size: 1.3em;
-    background-color: white;
+    border: none;
+    background-color: rgb(228, 78, 106);
     margin: 10px;
     border-radius: 10px;
     width: 10vw;
+    box-shadow: 4px 5px 17px 1px rgba(0, 0, 0, 0.5);
   }
  
 .buttons-container {
@@ -236,22 +249,24 @@ export default {
 .link:hover {
   cursor: pointer;   
   background-color: green;
-  box-shadow: 0px 0px 10px 3px rgba(248, 246, 246, 0.5);
+
+  box-shadow: 0px 0px 17px 1px rgba(0, 0, 0, 0.5);
 }
 
 .airport-reviews {
     display: flex;
     flex-direction: column;
     font-size: 20px;
-    background-color: white;
+    background-color: rgb(0, 0, 0);
     width: 80vw;
     margin: auto;
     margin-top: 40px;
     height: 40vh;
-    opacity: .7;   
+    opacity: .8;   
     overflow-y: auto;
     font-family: 'Nunito Sans', sans-serif;
     padding-left: 20px;
+    color: white;
 }
 
 .add-icon {
@@ -266,13 +281,15 @@ export default {
     text-align: left;
 }
 
+
 .user-info {
     position: absolute;
     top: 30px;
     right: 30px;
     display: flex;
     align-items: center;
-    background-color: rgb(187, 81, 63);
+    background-color: rgb(68, 111, 204);
+    font-family: 'Nunito Sans', sans-serif;
     color: rgb(0, 0, 0);
     width: 15vw;
     height: 5vh;
@@ -298,6 +315,34 @@ export default {
     color: white;
     padding: 4px;
     border-radius: 5px;
+}
+
+@media  screen and (max-width: 375px) {
+  .airport-reviews {
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    background-color: white;
+    width: 80vw;
+    margin: auto;
+    margin-top: 40px;
+    height: 100%;
+  }
+}
+
+@media(max-width: 1400px ) {
+    .add-review {
+        width: 13vw;
+    }
+}
+
+@media(max-width: 1110px ) {
+    .add-review {
+        width: 17vw;
+    }
+    .user-info {
+        width: 21vw;
+    }
 }
 
 .must-login-review {
