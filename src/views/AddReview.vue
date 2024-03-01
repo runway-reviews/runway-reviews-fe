@@ -127,6 +127,9 @@ const submitReview = (newReview) => {
     font-family: 'M PLUS Rounded 1c', sans-serif;
     position: relative;
     z-index: 5;
+    border-radius: 2%;
+    padding-bottom: 5em;
+
   }
 
   .item,

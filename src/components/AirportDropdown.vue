@@ -32,6 +32,8 @@ const fetchAirports = async () => {
             return;
         }
         const data = await response.json();
+        //console.log(airports, 'airports')
+        //airports.value = data.data.map(element => element.attributes);
         airports.value = data.map(element => {
           return {
             name: element.attributes,
@@ -47,7 +49,6 @@ const navigateToAirportDetails = async () => {
     await fetchAirports(); 
     
     if (selectedAirport.value) {
-
         const airportObject = airports.value.find(airport => airport.name.name === selectedAirport.value);
         localStorage.setItem('currentUser', JSON.stringify(props.currentUser)); 
         router.push({ name: 'airportName', params: { airportName: selectedAirport.value }, query: { id: airportObject.id } });
@@ -57,3 +58,10 @@ const navigateToAirportDetails = async () => {
 onMounted(fetchAirports);
   </script>
 
+<style scoped>
+/* It's not working for some reason */
+  /* .airport-select-home .airport-names {
+    font-family: 'Source Serif 4', serif !important;
+} */
+
+</style>
