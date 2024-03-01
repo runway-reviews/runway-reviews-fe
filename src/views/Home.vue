@@ -4,7 +4,7 @@
       <div class='buttons'>
           <button class="login-button" v-if="!showLoginForm && !showCreateAccountForm" @click="showLoginForm = true" style="text-decoration: none;">Login</button>
           <button class="createaccount-button" v-if="!showCreateAccountForm && !showLoginForm" @click='handleNewAccount' style="text-decoration: none;">Create New Account</button>
-          <button  class="createaccount-button" @click="logout">Log Out</button>
+          <button v-if="currentUser" class="logout-button" @click="logout">Log Out</button>
        </div>
       <h2 class="home-sentence">Authentic reviews from the nation's leading airports.</h2>
       <p>Discover Your Oasis: Choose Your Destination of Comfort</p>
@@ -40,7 +40,7 @@
   const logout = () => {
       currentUser.value = null; // or currentUser.value = {}
       localStorage.removeItem('currentUser'); // Remove the user info from localStorage
-      // Additional logic if needed after logout
+      toast.success('You have been successfully logged out');
   }
   
   const onHandleLogin = (userInputtedValues) => {
