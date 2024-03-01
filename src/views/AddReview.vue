@@ -77,7 +77,7 @@ const addNewReview = () => {
 }
 
 const submitReview = (newReview) => {
-    return fetch('https://runwayreviewsbe-4165084ad9d0.herokuapp.com/reviews', {
+    return fetch(`https://runwayreviewsbe-4165084ad9d0.herokuapp.com/user/${props.currentUser.id}/review/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
