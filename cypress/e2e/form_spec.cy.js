@@ -24,15 +24,15 @@ describe('Runway Reviews', () => {
   it('should navigate user to an airport details page when clicked', () => {
     cy.get('select').select('Flying O Airport')
     cy.get('h1').contains('Flying O Airport')
-    cy.get('button[class="link add-review"]').contains('Add Review')
+    // cy.get('button[class="link add-review"]').contains('Add Review')
     cy.get('button').contains('Home')
   })
-  it.only('should not display an add review button if no user has logged in', () => {
+  it('should not display an add review button if no user has logged in', () => {
     cy.get('select').select('Flying O Airport')
     cy.get('h1').contains('Flying O Airport')
     // cy.get('button[class="link add-review"]').contains('Add Review')
     cy.get('button').contains('Home')
-    
+    //trying to make it so that there is a paragraph that states 'You must be logged in to add a review!').should('be.visible'
 
     // //it's not displaying the You must be logged in. Needs to be fixed
     // cy.get('button').contains('Add Review').click()

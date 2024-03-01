@@ -35,6 +35,7 @@ We also need to replace the airport api with a list of airports.
                 <img class="add-icon" src="/add.png" />
                  {{translateButtonText.addReview}}
             </button>
+            <p class="must-login-review" v-if="!currentUser && !currentAirportId">You must be logged in to add a review!</p>
 
              <!-- Router link to navigate back to the home page -->
             <router-link to="/">
@@ -56,6 +57,7 @@ We also need to replace the airport api with a list of airports.
             {{console.log(reviewData, 'reviewData up here')}}
                 <span class="category" >{{ data.attributes.category }}</span>
                 {{ data.attributes.comment}}
+                <!-- {{console.log(data, 'reviewData up here')}} -->
             </p>
         </div>
     </div>
@@ -100,11 +102,10 @@ export default {
         
         // Handle add review button click
         const handleAddReview = () => {
-            // console.log('handleAddReview triggered');
-            // if (currentUser && currentAirportId) {
+            if (currentUser && currentAirportId) {
                 showReviewForm.value = true;
                 reviewRender.value = false;
-            // } 
+            } 
             // else {
             //     toast.warning('You must be logged in to add a review!');
             // }
@@ -208,20 +209,12 @@ export default {
                     return response.json();
                 })
                 .then(data => {
-                console.log(data, 'review data')
-                if (Array.isArray(data)) {
+                    console.log(data, 'review data')
                     reviewData.value = data.filter(element => {
-                        return element.attributes.airport_id == currentAirportId.value;
+                        return element.attributes.airport_id == currentAirportId.value
                     });
                     reviewRender.value = true;
-                    // Check if there is no review data
-                    if (reviewData.value.length === 0) {
-                        console.warn('No review data available for this airport.');
-                    }
-                } else {
-                    console.error('Invalid data format:', data);
-                }
-            })
+                });
         });
 
 
@@ -231,7 +224,6 @@ export default {
     }
 }
 </script>
-
 <style setup>
   .details-container {
     display: flex;
@@ -330,6 +322,11 @@ export default {
     color: white;
     padding: 4px;
     border-radius: 5px;
+}
+
+.must-login-review {
+    color: black;
+    font-family: 'Nunito Sans', sans-serif;
 }
 
 @media  screen and (max-width: 375px) {
