@@ -1,16 +1,9 @@
-<!-- We want to move the invocation of translateText to be invoked when a dropdown is selected, so we create a dropdown with selected languages: English ('en'), Spanish ('es'), Mandarin (''), Tagalog (''), Vietnamese () These are the top most spoken languages in the US and since we are doing US airports... 
-Create a dropdown, in the textTranslate function we need to add a parameter that acts as the language being translated
-We also need to replace the airport api with a list of airports. 
--->
-
 <template>
     <AirportHeader />
     <div class="airport-details-page">
         <h1 class="airport-name">{{ $route.params.airportName }} </h1>
-         <!-- Language dropdown for translation -->
         <div class="language-dropdown">
             <select v-model="selectedLanguage" @change="translateText">
-                <!-- The values assigned to the :key and :value bindings in the <option> elements are referencing the constants en, es, zh, vi, and tl. -->
                 <option :key="en" :value="en">English</option>
                 <option :key="es" :value="es">Spanish</option>
                 <option :key="zh" :value="zh">Mandarin</option>
@@ -18,25 +11,18 @@ We also need to replace the airport api with a list of airports.
                 <option :key="tl" :value="tl">Tagalog</option>
             </select>
         </div>
-
-        <!-- Display user information if available -->
         <div v-if="currentUser" class="user-info">
             <div class="user-logo">
                 <img src="/user.png" alt="User Logo" />
             </div>
                 <p v-if="currentUser" class="current-user-info"> {{ currentUser.attributes.username }}</p>
         </div>
-
-        <!-- Details container with buttons and review form -->
         <div class="details-container" :style="{height: showReviewForm ? '0vh' : '5em' }">
           <div class="buttons-container" v-if="!showReviewForm" >
-            <!-- Button to add a review -->
             <button class="link add-review" id="add-review" style="text-decoration: none;" @click="handleAddReview" >
                 <img class="add-icon" src="/add.png" />
                  {{translateButtonText.addReview}}
             </button>
-
-             <!-- Router link to navigate back to the home page -->
             <router-link to="/">
                 <button class="home-button-details-page link" style="text-decoration: none;">
                     <img src="/public/home.png" class="add-icon" />
@@ -45,8 +31,6 @@ We also need to replace the airport api with a list of airports.
             </router-link>
           </div >
         </div>
-
-         <!-- AddReview component, shown when showReviewForm is true -->
         <AddReview v-if="showReviewForm" @close="closeReviewForm" :currentAirportId="currentAirportId" :currentUser="currentUser && Object.keys(currentUser).length > 0 ? currentUser : null" />
 
         <div class="airport-reviews" v-if="reviewRender">
@@ -82,7 +66,7 @@ export default {
         const currentAirportId = ref(null);
         const reviewData = ref([])
         const reviewRender = ref(false)
-        const selectedLanguage = ref(''); //falsy
+        const selectedLanguage = ref(''); 
         const en = 'en';
         const es = 'es';
         const zh = 'zh';
@@ -93,12 +77,10 @@ export default {
             addReview: 'Add Review',
         })
 
-        // Close review form function
         const closeReviewForm = () => {
             showReviewForm.value = false
         }
         
-        // Handle add review button click
         const handleAddReview = () => {
             if (currentUser && currentAirportId) {
                 showReviewForm.value = true;
@@ -136,63 +118,57 @@ export default {
                 } 
         });
 
-        //I removed the invocation of this for now since we don't want to waste the characters
         async function translateText() {
-    if (selectedLanguage.value) { //if user selects a language
-        const apiKey = 'AIzaSyDIeM718Vp5-kwx6SM83aVOma6MTOueXzg';
+            if (selectedLanguage.value) { 
+                const apiKey = 'AIzaSyDIeM718Vp5-kwx6SM83aVOma6MTOueXzg';
 
-        const textToTranslate = reviewData.value.map(element => ({
-            category: element.attributes.category,
-            comment: element.attributes.comment
-        }));
-        console.log(textToTranslate, 'input text')
-        const apiUrl = `https://translation.googleapis.com/language/translate/v2?key=${apiKey}`;
+                const textToTranslate = reviewData.value.map(element => ({
+                    category: element.attributes.category,
+                    comment: element.attributes.comment
+                }));
+                console.log(textToTranslate, 'input text')
+                const apiUrl = `https://translation.googleapis.com/language/translate/v2?key=${apiKey}`;
 
-        try {
-            const response = await fetch(apiUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    q: textToTranslate.map(item => [item.category, item.comment]).flat(),
-                    target: selectedLanguage.value,
-                }),
-            });
-            const translatedData = await response.json();
-
-            const translatedCategories = [];
-            const translatedComments = [];
-
-            console.log("translatedData",translatedData)
-            translatedData.data.translations.forEach((translation, index) => {
-                if (index % 2 === 0) {
-                    translatedCategories.push(translation.translatedText);
-                } else {
-                    translatedComments.push(translation.translatedText);
-                }
-            });
-
-            // Update the reviewData with translated categories and comments
-            reviewData.value = translatedCategories.map((category, index) => {
-                return {
-                    attributes: {
-                        category,
-                        comment: translatedComments[index]
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            q: textToTranslate.map(item => [item.category, item.comment]).flat(),
+                            target: selectedLanguage.value,
+                        }),
+                    });
+                    const translatedData = await response.json();
+                    const translatedCategories = [];
+                    const translatedComments = [];
+                    translatedData.data.translations.forEach((translation, index) => {
+                        if (index % 2 === 0) {
+                            translatedCategories.push(translation.translatedText);
+                        } else {
+                            translatedComments.push(translation.translatedText);
+                        }
+                    });
+                    reviewData.value = translatedCategories.map((category, index) => {
+                        return {
+                            attributes: {
+                                category,
+                                comment: translatedComments[index]
+                            }
+                        };
+                    });
+                    } catch (error) {
+                        console.error('Error translating text:', error);
                     }
-                };
-            });
-        } catch (error) {
-            console.error('Error translating text:', error);
-        }
-    } else {
-        // Set default language to English
-        reviewData.value.forEach(element => {
-            element.translatedCategories = element.attributes.category;
-            element.translatedComments = element.attributes.comment;
-        });
-    }
-}
+                        } else {
+                            reviewData.value.forEach(element => {
+                                element.translatedCategories = element.attributes.category;
+                                element.translatedComments = element.attributes.comment;
+                            });
+                        }
+                    }
+
         onMounted(async () => {
             await translateText();
             currentAirportId.value = router.currentRoute.value.query.id;
