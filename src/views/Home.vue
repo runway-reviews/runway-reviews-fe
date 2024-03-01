@@ -31,7 +31,7 @@ import { ref, computed } from 'vue'
 const showLoginForm = ref(false);
 const showCreateAccountForm = ref(false);
 const toast = useToast();
-let currentUser = ref(JSON.parse(localStorage.getItem('currentUser')));
+const currentUser = ref(JSON.parse(localStorage.getItem('currentUser')));
 
 //computed - any variable you want it to be reactive (has to have some sort of calculation) 
 //ref - simple , true or false
