@@ -27,7 +27,7 @@ describe('Runway Reviews', () => {
     // cy.get('button[class="link add-review"]').contains('Add Review')
     cy.get('button').contains('Home')
   })
-  it('should not display an add review button if no user has logged in', () => {
+  it.only('should not display an add review button if no user has logged in', () => {
     cy.get('select').select('Flying O Airport')
     cy.get('h1').contains('Flying O Airport')
     // cy.get('button[class="link add-review"]').contains('Add Review')

@@ -35,7 +35,7 @@ We also need to replace the airport api with a list of airports.
                 <img class="add-icon" src="/add.png" />
                  {{translateButtonText.addReview}}
             </button>
-            <p class="must-login-review" v-if="!currentUser && !currentAirportId">You must be logged in to add a review!</p>
+            <p class="must-login-review" v-if="!currentUser">You must be logged in to add a review!</p>
 
              <!-- Router link to navigate back to the home page -->
             <router-link to="/">
