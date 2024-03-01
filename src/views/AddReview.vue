@@ -93,7 +93,6 @@ const submitReview = (newReview) => {
 
 
 <style>
-
 .container {
   display: flex;
   justify-content: center; 
@@ -169,8 +168,7 @@ const submitReview = (newReview) => {
     font-size: 1.6em;
     height: 2em;
     width: 2em;
-    background-color: black;
-    color: white;
+    background-color: white;
     border: 0;
     text-decoration: none;
   }
