@@ -1,309 +1,318 @@
-{
-  "data": [
-    {
-      "id": "1",
-      "type": "user",
-      "attributes": {
-        "username": "Isadore Bell",
-        "email": "denver@mueller-wilderman.test",
-        "password_digest": "$2a$12$DjWVbNbpMte4HnxMvvOVGOuR3qnYNb48MT8tnmbSSERUYvSg6JVLi"
-      },
-      "relationships": {
-        "reviews": {
-          "data": [
-            {
-              "id": "2",
-              "type": "review"
-            },
-            {
-              "id": "10",
-              "type": "review"
-            },
-            {
-              "id": "24",
-              "type": "review"
-            },
-            {
-              "id": "31",
-              "type": "review"
-            },
-            {
-              "id": "32",
-              "type": "review"
-            },
-            {
-              "id": "33",
-              "type": "review"
-            },
-            {
-              "id": "34",
-              "type": "review"
-            },
-            {
-              "id": "35",
-              "type": "review"
-            },
-            {
-              "id": "37",
-              "type": "review"
-            },
-            {
-              "id": "38",
-              "type": "review"
-            },
-            {
-              "id": "40",
-              "type": "review"
-            }
-          ]
-        }
-      }
+[
+  {
+    "id": "1",
+    "type": "user",
+    "attributes": {
+      "username": "Isadore Bell",
+      "email": "denver@mueller-wilderman.test",
+      "password": "mypassword",
+      "password_digest": "pbkdf2_sha256$720000$QDGwaabqN52j3F5LjLyJPk$O/dK8N24F8aMHwFVQ6Kew7eMFi9/XYU3J3u8MdZelAI="
     },
-    {
-      "id": "2",
-      "type": "user",
-      "attributes": {
-        "username": "Jeanette Akenja Nearing",
-        "email": "matt@crist-armstrong.example",
-        "password_digest": "$2a$12$0EhXvY8u12yBUdE/QLdkHuzBMQmRTXmJb25FWNSoysvQfk1FVnNUq"
-      },
-      "relationships": {
-        "reviews": {
-          "data": [
-            {
-              "id": "6",
-              "type": "review"
-            },
-            {
-              "id": "9",
-              "type": "review"
-            },
-            {
-              "id": "25",
-              "type": "review"
-            },
-            {
-              "id": "26",
-              "type": "review"
-            },
-            {
-              "id": "27",
-              "type": "review"
-            },
-            {
-              "id": "30",
-              "type": "review"
-            }
-          ]
-        }
-      }
-    },
-    {
-      "id": "3",
-      "type": "user",
-      "attributes": {
-        "username": "Phil Graves",
-        "email": "darrick.parker@lindgren-abshire.test",
-        "password_digest": "$2a$12$HYJAGwRBlkIxVyZkCI8/deBIrfO6u.A37SEEiHV17UsCQ9gzQwo5W"
-      },
-      "relationships": {
-        "reviews": {
-          "data": [
-            {
-              "id": "3",
-              "type": "review"
-            },
-            {
-              "id": "5",
-              "type": "review"
-            },
-            {
-              "id": "8",
-              "type": "review"
-            },
-            {
-              "id": "17",
-              "type": "review"
-            },
-            {
-              "id": "20",
-              "type": "review"
-            },
-            {
-              "id": "23",
-              "type": "review"
-            },
-            {
-              "id": "39",
-              "type": "review"
-            }
-          ]
-        }
-      }
-    },
-    {
-      "id": "4",
-      "type": "user",
-      "attributes": {
-        "username": "Olive Branch",
-        "email": "melodee@connelly-littel.example",
-        "password_digest": "$2a$12$Ma4armDo5YIeYkUUZbp4x.zySC1JLA7nRKxyCVTpe4HJbHGE7Qe6C"
-      },
-      "relationships": {
-        "reviews": {
-          "data": [
-            {
-              "id": "1",
-              "type": "review"
-            },
-            {
-              "id": "4",
-              "type": "review"
-            },
-            {
-              "id": "7",
-              "type": "review"
-            },
-            {
-              "id": "18",
-              "type": "review"
-            },
-            {
-              "id": "21",
-              "type": "review"
-            },
-            {
-              "id": "22",
-              "type": "review"
-            },
-            {
-              "id": "28",
-              "type": "review"
-            },
-            {
-              "id": "36",
-              "type": "review"
-            }
-          ]
-        }
-      }
-    },
-    {
-      "id": "5",
-      "type": "user",
-      "attributes": {
-        "username": "Rusty Fossat",
-        "email": "karl@wisozk.test",
-        "password_digest": "$2a$12$mZeRMpnubdnBBuBBOGhIjevQaLck64qi/eZMW/FSGKy26jYl6rvhW"
-      },
-      "relationships": {
-        "reviews": {
-          "data": [
-            {
-              "id": "11",
-              "type": "review"
-            },
-            {
-              "id": "12",
-              "type": "review"
-            },
-            {
-              "id": "13",
-              "type": "review"
-            },
-            {
-              "id": "14",
-              "type": "review"
-            },
-            {
-              "id": "15",
-              "type": "review"
-            },
-            {
-              "id": "16",
-              "type": "review"
-            },
-            {
-              "id": "19",
-              "type": "review"
-            },
-            {
-              "id": "29",
-              "type": "review"
-            }
-          ]
-        }
-      }
-    },
-    {
-      "id": "6",
-      "type": "user",
-      "attributes": {
-        "username": "Jim Shorts",
-        "email": "bud@jones.test",
-        "password_digest": "$2a$12$CnbmEYyLkb3.7ey8kNlOK.Z.UrN8xGBkDiGvHsk3.SpSPZsuWWng2"
-      },
-      "relationships": {
-        "reviews": {
-          "data": []
-        }
-      }
-    },
-    {
-      "id": "7",
-      "type": "user",
-      "attributes": {
-        "username": "Barry D. Hatchett",
-        "email": "andreas.okon@corwin.example",
-        "password_digest": "$2a$12$YZEkOcfmGb5F7K.ovTXvZOT594jNspcSrMhqpy8oSE6nQwysfrF9C"
-      },
-      "relationships": {
-        "reviews": {
-          "data": []
-        }
-      }
-    },
-    {
-      "id": "8",
-      "type": "user",
-      "attributes": {
-        "username": "Olive Green",
-        "email": "kasandra@wunsch-jakubowski.example",
-        "password_digest": "$2a$12$1x6rla3MLGEJYN2u96YG2eA35ftCUhvjn/ILieiVNniMAXKbbHYGC"
-      },
-      "relationships": {
-        "reviews": {
-          "data": []
-        }
-      }
-    },
-    {
-      "id": "9",
-      "type": "user",
-      "attributes": {
-        "username": "Kent Cook",
-        "email": "jayson.hirthe@waters.example",
-        "password_digest": "$2a$12$gZnhksRic3sbXrY0IBdbpunXgIWMnE4mfjnpobXlrrt1qjsWW2ZU."
-      },
-      "relationships": {
-        "reviews": {
-          "data": []
-        }
-      }
-    },
-    {
-      "id": "10",
-      "type": "user",
-      "attributes": {
-        "username": "Duane Pipe",
-        "email": "marvin@mann-mayer.test",
-        "password_digest": "$2a$12$FfJX7lEB0AEh3mCflFeYM.5oLtSmUEYyysDs.tiPAt8mzkF78jhya"
-      },
-      "relationships": {
-        "reviews": {
-          "data": []
-        }
+    "relationships": {
+      "reviews": {
+        "data": [
+          {
+            "id": "2",
+            "type": "review"
+          },
+          {
+            "id": "10",
+            "type": "review"
+          },
+          {
+            "id": "24",
+            "type": "review"
+          },
+          {
+            "id": "31",
+            "type": "review"
+          },
+          {
+            "id": "32",
+            "type": "review"
+          },
+          {
+            "id": "33",
+            "type": "review"
+          },
+          {
+            "id": "34",
+            "type": "review"
+          },
+          {
+            "id": "35",
+            "type": "review"
+          },
+          {
+            "id": "37",
+            "type": "review"
+          },
+          {
+            "id": "38",
+            "type": "review"
+          },
+          {
+            "id": "40",
+            "type": "review"
+          }
+        ]
       }
     }
-  ]
-}
+  },
+  {
+    "id": "2",
+    "type": "user",
+    "attributes": {
+      "username": "Jeanette Akenja Nearing",
+      "email": "matt@crist-armstrong.example", 
+      "password": "mypassword",
+      "password_digest": "pbkdf2_sha256$720000$u836wmmL7vmEL1eGA4Q7Jd$Q8ikKGnGIcZ+li6cOqXUwA06+IxQOPvFN0L3e4nTNyE="
+    },
+    "relationships": {
+      "reviews": {
+        "data": [
+          {
+            "id": "6",
+            "type": "review"
+          },
+          {
+            "id": "9",
+            "type": "review"
+          },
+          {
+            "id": "25",
+            "type": "review"
+          },
+          {
+            "id": "26",
+            "type": "review"
+          },
+          {
+            "id": "27",
+            "type": "review"
+          },
+          {
+            "id": "30",
+            "type": "review"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "3",
+    "type": "user",
+    "attributes": {
+      "username": "Phil Graves",
+      "email": "darrick.parker@lindgren-abshire.test",
+      "password": "password12",
+      "password_digest": "pbkdf2_sha256$720000$Y1rd0vaTONevD5fJUotpml$T9QC/KCafZKHWYoUfJLFUVR7clRthFB6agWNAKvXmLY="
+    },
+    "relationships": {
+      "reviews": {
+        "data": [
+          {
+            "id": "3",
+            "type": "review"
+          },
+          {
+            "id": "5",
+            "type": "review"
+          },
+          {
+            "id": "8",
+            "type": "review"
+          },
+          {
+            "id": "17",
+            "type": "review"
+          },
+          {
+            "id": "20",
+            "type": "review"
+          },
+          {
+            "id": "23",
+            "type": "review"
+          },
+          {
+            "id": "39",
+            "type": "review"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "4",
+    "type": "user",
+    "attributes": {
+      "username": "Olive Branch",
+      "email": "melodee@connelly-littel.example",
+      "password": "password",
+      "password_digest": "pbkdf2_sha256$720000$nJOFgdU4ciqUKb54rWfxH3$4xpwwKNTzBRhIAaxcJ9tOXlLvZQBhPfgLzMab+xdNco="
+    },
+    "relationships": {
+      "reviews": {
+        "data": [
+          {
+            "id": "1",
+            "type": "review"
+          },
+          {
+            "id": "4",
+            "type": "review"
+          },
+          {
+            "id": "7",
+            "type": "review"
+          },
+          {
+            "id": "18",
+            "type": "review"
+          },
+          {
+            "id": "21",
+            "type": "review"
+          },
+          {
+            "id": "22",
+            "type": "review"
+          },
+          {
+            "id": "28",
+            "type": "review"
+          },
+          {
+            "id": "36",
+            "type": "review"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "5",
+    "type": "user",
+    "attributes": {
+      "username": "Rusty Fossat",
+      "email": "karl@wisozk.test",
+      "password": "password",
+      "password_digest": "pbkdf2_sha256$720000$nJOFgdU4ciqUKb54rWfxH3$4xpwwKNTzBRhIAaxcJ9tOXlLvZQBhPfgLzMab+xdNco="
+    },
+    "relationships": {
+      "reviews": {
+        "data": [
+          {
+            "id": "11",
+            "type": "review"
+          },
+          {
+            "id": "12",
+            "type": "review"
+          },
+          {
+            "id": "13",
+            "type": "review"
+          },
+          {
+            "id": "14",
+            "type": "review"
+          },
+          {
+            "id": "15",
+            "type": "review"
+          },
+          {
+            "id": "16",
+            "type": "review"
+          },
+          {
+            "id": "19",
+            "type": "review"
+          },
+          {
+            "id": "29",
+            "type": "review"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "id": "6",
+    "type": "user",
+    "attributes": {
+      "username": "Jim Shorts",
+      "email": "bud@jones.test",
+      "password": "password",
+      "password_digest": "pbkdf2_sha256$720000$nJOFgdU4ciqUKb54rWfxH3$4xpwwKNTzBRhIAaxcJ9tOXlLvZQBhPfgLzMab+xdNco="
+    },
+    "relationships": {
+      "reviews": {
+        "data": []
+      }
+    }
+  },
+  {
+    "id": "7",
+    "type": "user",
+    "attributes": {
+      "username": "Barry D. Hatchett",
+      "email": "andreas.okon@corwin.example",
+      "password": "password",
+      "password_digest": "pbkdf2_sha256$720000$nJOFgdU4ciqUKb54rWfxH3$4xpwwKNTzBRhIAaxcJ9tOXlLvZQBhPfgLzMab+xdNco="
+    },
+    "relationships": {
+      "reviews": {
+        "data": []
+      }
+    }
+  },
+  {
+    "id": "8",
+    "type": "user",
+    "attributes": {
+      "username": "Olive Green",
+      "email": "kasandra@wunsch-jakubowski.example",
+      "password": "password",
+      "password_digest": "pbkdf2_sha256$720000$nJOFgdU4ciqUKb54rWfxH3$4xpwwKNTzBRhIAaxcJ9tOXlLvZQBhPfgLzMab+xdNco="
+    },
+    "relationships": {
+      "reviews": {
+        "data": []
+      }
+    }
+  },
+  {
+    "id": "9",
+    "type": "user",
+    "attributes": {
+      "username": "Kent Cook",
+      "email": "jayson.hirthe@waters.example",
+      "password": "password",
+      "password_digest": "pbkdf2_sha256$720000$nJOFgdU4ciqUKb54rWfxH3$4xpwwKNTzBRhIAaxcJ9tOXlLvZQBhPfgLzMab+xdNco="
+    },
+    "relationships": {
+      "reviews": {
+        "data": []
+      }
+    }
+  },
+  {
+    "id": "10",
+    "type": "user",
+    "attributes": {
+      "username": "Duane Pipe",
+      "email": "marvin@mann-mayer.test",
+      "password": "password",
+      "password_digest": "pbkdf2_sha256$720000$nJOFgdU4ciqUKb54rWfxH3$4xpwwKNTzBRhIAaxcJ9tOXlLvZQBhPfgLzMab+xdNco="
+    },
+    "relationships": {
+      "reviews": {
+        "data": []
+      }
+    }
+  }
+]
+
