@@ -13,22 +13,21 @@
             <option>General</option>
         </select>
       </div>
-
-        <div class="item-1">
-          <label class="review-label">Write your review here:</label>
-          <input 
-          class="review-input"
-          type="review"
-          placeholder="review"
-          name="review"
-          id="review"
-          v-model="reviewValue"
-        />
-        <router-link to="/">
-            <button class="submit-review" style="text-decoration: none;" @click="addNewReview">Submit</button>
-        </router-link>
-        </div>
-        
+      <div class="item-1">
+        <label class="review-label">Write your review here:</label>
+        <input 
+        class="review-input"
+        type="review"
+        placeholder="review"
+        name="review"
+        id="review"
+        v-model="reviewValue"
+      />
+      <!-- <router-link :to="`/airport/${$route.params.airportName}?id=${currentAirportId}`"> -->
+      <router-link to="/">
+        <button class="submit-review" style="text-decoration: none;" @click="addNewReview">Submit</button>
+      </router-link>
+      </div>
     </form>
   </div>
 </template>
@@ -61,17 +60,11 @@ const closeReview = () => {
 }
 
 const addNewReview = () => {
-    console.log(props.currentUser, 'current user in add review')
-    console.log(props.currentAirportId, 'airportId')
     const newReview = {
-        // "review": {
-          // "user_id": props.currentUser.id,
           "airport_id": props.currentAirportId,
-          "comment": review.value,
+          "comment": reviewValue.value,
           "category": selectedCategory.value
         }
-      
-    // }
     console.log(newReview, "newReview")
     submitReview(newReview)
 }
@@ -91,9 +84,7 @@ const submitReview = (newReview) => {
         }
         return response.json()
     })
-    .then(data => {
-      console.log(data, "data")
-    })
+    .then(emit('close'))
 }
 
 
@@ -178,7 +169,8 @@ const submitReview = (newReview) => {
     font-size: 1.6em;
     height: 2em;
     width: 2em;
-    background-color: white;
+    background-color: black;
+    color: white;
     border: 0;
     text-decoration: none;
   }

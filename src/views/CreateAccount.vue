@@ -1,7 +1,6 @@
 <template>
   <div class="create-login-container">
     <form class="create-account-form">
-      <!-- close button  -->
         <button @click="closeCreateLogin" class="close-login" style="text-decoration: none;">✖️</button>
       <div class="create-username-container">
         <div class="username-label-container">
@@ -42,8 +41,6 @@
           class="input-box"
         />
       </div>
-      <!-- <button @click.prevent="login" class="login-on-page" style="text-decoration: none;">Submit</button> -->
-
       <router-link to="/">
         <button class="submit-account-button" style="text-decoration: none; cursor: pointer;" @click="addNewAccount">Submit</button>
         </router-link>
@@ -54,17 +51,13 @@
 
 
 <script setup>
-    // import { l } from 'vite/dist/node/types.d-jgA8ss1A'
 import { ref, defineEmits, defineProps } from 'vue'
     import { useToast } from 'vue-toastification'
     import 'vue-toastification/dist/index.css'
-
-    // const addUsers = ref([])
     const newUsername = ref('')
     const newPassword = ref('')
     const showPassword = ref(false)
     const email = ref('')
-    // const emit = defineEmits('createLogin') do I need emits?
     const emit = defineEmits(['close']);
     const toast = useToast();
 
@@ -74,9 +67,7 @@ import { ref, defineEmits, defineProps } from 'vue'
                 "email": email.value,
                 "password": newPassword.value
             }
-        console.log(newAccount, 'newAccount')
         submitAccount(newAccount);
-        // closeCreateAccountForm();
     }
 
     const submitAccount = (newAccount) => {
@@ -91,9 +82,7 @@ import { ref, defineEmits, defineProps } from 'vue'
         }
         return response.json()
         })
-        .then(newUserData => {
-        console.log(newUserData, 'newUserData here 1st')
-        // const newUserInfoStorage = data.data;
+        .then(() => {
         if (newAccount.username === '' || newAccount.password === '' || newAccount.email === '') {
             toast.error('All inputs must be filled out');
         } else {
@@ -103,19 +92,14 @@ import { ref, defineEmits, defineProps } from 'vue'
         })
     }
 
-    //where is close coming from?
     const closeLogin = () => {
         emit('close')
     }
 
-    //when clicked, changes boolean value
     const toggleShowPassword = () => {
       showPassword.value = !showPassword.value;
     }
 
-    // const closeCreateAccountForm = () => {
-    //     props.showCreateAccountForm.value = false;
-    // }
 </script>
 
 <style>
