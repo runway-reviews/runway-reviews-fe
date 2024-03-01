@@ -7,9 +7,9 @@
      </div>
     <h2 class="home-sentence">Authentic reviews from the nation's leading airports.</h2>
     <p>Discover Your Oasis: Choose Your Destination of Comfort</p>
+
     <Login class="login-words" v-if="showLoginForm" @handleLogin="onHandleLogin" @close="closeLoginForm" />
-    <CreateAccount v-if="showCreateAccountForm" @close="closeCreateAccountForm"
-    />
+    <CreateAccount v-if="showCreateAccountForm" @close="closeCreateAccountForm"/>
     <AirportDropdown v-if="showAirportDropdown && !showCreateAccountForm" :currentUser="currentUser && Object.keys(currentUser).length > 0 ? currentUser : null"/>
     <CarouselImages v-if="!showLoginForm && !showCreateAccountForm" />
 </template>
@@ -32,6 +32,9 @@ const showLoginForm = ref(false);
 const showCreateAccountForm = ref(false);
 const toast = useToast();
 let currentUser = ref(JSON.parse(localStorage.getItem('currentUser')));
+
+//computed - any variable you want it to be reactive (has to have some sort of calculation) 
+//ref - simple , true or false
 
 const showAirportDropdown = computed(() => !showLoginForm.value);
 
@@ -71,9 +74,14 @@ const handleNewAccount = () => {
     showCreateAccountForm.value = true;
 }
 
+const closeCreateAccountForm = () => {
+  showCreateAccountForm.value = false
+}
+
 </script>
 
 <style scoped>
+/* scoped - means it only apply on this component */
     button, h2 {
         font-family: 'Source Serif 4', serif;
         font-weight: 500;
@@ -83,8 +91,8 @@ const handleNewAccount = () => {
         top: 10px;
         right: 50px;
         display: flex;
-        gap: 10px; /* Adjust the gap between buttons as needed */
-    }
+        gap: 50px    
+        }
     p {
         font-family: 'Source Serif 4', serif;
         font-size: 20px;

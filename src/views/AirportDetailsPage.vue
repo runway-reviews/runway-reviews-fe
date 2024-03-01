@@ -31,7 +31,7 @@ We also need to replace the airport api with a list of airports.
         <div class="details-container" :style="{height: showReviewForm ? '0vh' : '5em' }">
           <div class="buttons-container" v-if="!showReviewForm" >
             <!-- Button to add a review -->
-            <button class="link add-review" id="add-review" style="text-decoration: none;" @click="handleAddReview" >
+            <button v-if="currentUser && currentAirportId" class="link add-review" id="add-review" style="text-decoration: none;" @click="handleAddReview" >
                 <img class="add-icon" src="/add.png" />
                  {{translateButtonText.addReview}}
             </button>
@@ -100,12 +100,14 @@ export default {
         
         // Handle add review button click
         const handleAddReview = () => {
-            if (currentUser && currentAirportId) {
+            // console.log('handleAddReview triggered');
+            // if (currentUser && currentAirportId) {
                 showReviewForm.value = true;
                 reviewRender.value = false;
-            } else {
-                toast.warning('You must be logged in to add a review!');
-            }
+            // } 
+            // else {
+            //     toast.warning('You must be logged in to add a review!');
+            // }
         }
 
          watch(selectedLanguage, async (newLanguage) => {
@@ -206,12 +208,20 @@ export default {
                     return response.json();
                 })
                 .then(data => {
-                    console.log(data, 'review data')
+                console.log(data, 'review data')
+                if (Array.isArray(data)) {
                     reviewData.value = data.filter(element => {
-                        return element.attributes.airport_id == currentAirportId.value
+                        return element.attributes.airport_id == currentAirportId.value;
                     });
                     reviewRender.value = true;
-                });
+                    // Check if there is no review data
+                    if (reviewData.value.length === 0) {
+                        console.warn('No review data available for this airport.');
+                    }
+                } else {
+                    console.error('Invalid data format:', data);
+                }
+            })
         });
 
 

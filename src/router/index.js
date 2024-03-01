@@ -34,6 +34,7 @@ const router = createRouter({
       name: 'createAccount',
       component: CreateAccount
     }
+    // best practice: create account view and then a seaparate component to pass things in...
   ]
 })
 

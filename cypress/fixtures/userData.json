@@ -1,12 +1,12 @@
-{
-  "data": [
+[
     {
       "id": "1",
       "type": "user",
       "attributes": {
         "username": "Isadore Bell",
         "email": "denver@mueller-wilderman.test",
-        "password_digest": "$2a$12$DjWVbNbpMte4HnxMvvOVGOuR3qnYNb48MT8tnmbSSERUYvSg6JVLi"
+        "password": "mypassword",
+        "password_digest": "pbkdf2_sha256$720000$QDGwaabqN52j3F5LjLyJPk$O/dK8N24F8aMHwFVQ6Kew7eMFi9/XYU3J3u8MdZelAI="
       },
       "relationships": {
         "reviews": {
@@ -64,8 +64,9 @@
       "type": "user",
       "attributes": {
         "username": "Jeanette Akenja Nearing",
-        "email": "matt@crist-armstrong.example",
-        "password_digest": "$2a$12$0EhXvY8u12yBUdE/QLdkHuzBMQmRTXmJb25FWNSoysvQfk1FVnNUq"
+        "email": "matt@crist-armstrong.example", 
+        "password": "mypassword",
+        "password_digest": "pbkdf2_sha256$720000$u836wmmL7vmEL1eGA4Q7Jd$Q8ikKGnGIcZ+li6cOqXUwA06+IxQOPvFN0L3e4nTNyE="
       },
       "relationships": {
         "reviews": {
@@ -104,7 +105,8 @@
       "attributes": {
         "username": "Phil Graves",
         "email": "darrick.parker@lindgren-abshire.test",
-        "password_digest": "$2a$12$HYJAGwRBlkIxVyZkCI8/deBIrfO6u.A37SEEiHV17UsCQ9gzQwo5W"
+        "password": "password12",
+        "password_digest": "pbkdf2_sha256$720000$Y1rd0vaTONevD5fJUotpml$T9QC/KCafZKHWYoUfJLFUVR7clRthFB6agWNAKvXmLY="
       },
       "relationships": {
         "reviews": {
@@ -147,7 +149,8 @@
       "attributes": {
         "username": "Olive Branch",
         "email": "melodee@connelly-littel.example",
-        "password_digest": "$2a$12$Ma4armDo5YIeYkUUZbp4x.zySC1JLA7nRKxyCVTpe4HJbHGE7Qe6C"
+        "password": "password",
+        "password_digest": "pbkdf2_sha256$720000$nJOFgdU4ciqUKb54rWfxH3$4xpwwKNTzBRhIAaxcJ9tOXlLvZQBhPfgLzMab+xdNco="
       },
       "relationships": {
         "reviews": {
@@ -194,7 +197,8 @@
       "attributes": {
         "username": "Rusty Fossat",
         "email": "karl@wisozk.test",
-        "password_digest": "$2a$12$mZeRMpnubdnBBuBBOGhIjevQaLck64qi/eZMW/FSGKy26jYl6rvhW"
+        "password": "password",
+        "password_digest": "pbkdf2_sha256$720000$nJOFgdU4ciqUKb54rWfxH3$4xpwwKNTzBRhIAaxcJ9tOXlLvZQBhPfgLzMab+xdNco="
       },
       "relationships": {
         "reviews": {
@@ -241,7 +245,8 @@
       "attributes": {
         "username": "Jim Shorts",
         "email": "bud@jones.test",
-        "password_digest": "$2a$12$CnbmEYyLkb3.7ey8kNlOK.Z.UrN8xGBkDiGvHsk3.SpSPZsuWWng2"
+        "password": "password",
+        "password_digest": "pbkdf2_sha256$720000$nJOFgdU4ciqUKb54rWfxH3$4xpwwKNTzBRhIAaxcJ9tOXlLvZQBhPfgLzMab+xdNco="
       },
       "relationships": {
         "reviews": {
@@ -255,7 +260,8 @@
       "attributes": {
         "username": "Barry D. Hatchett",
         "email": "andreas.okon@corwin.example",
-        "password_digest": "$2a$12$YZEkOcfmGb5F7K.ovTXvZOT594jNspcSrMhqpy8oSE6nQwysfrF9C"
+        "password": "password",
+        "password_digest": "pbkdf2_sha256$720000$nJOFgdU4ciqUKb54rWfxH3$4xpwwKNTzBRhIAaxcJ9tOXlLvZQBhPfgLzMab+xdNco="
       },
       "relationships": {
         "reviews": {
@@ -269,7 +275,8 @@
       "attributes": {
         "username": "Olive Green",
         "email": "kasandra@wunsch-jakubowski.example",
-        "password_digest": "$2a$12$1x6rla3MLGEJYN2u96YG2eA35ftCUhvjn/ILieiVNniMAXKbbHYGC"
+        "password": "password",
+        "password_digest": "pbkdf2_sha256$720000$nJOFgdU4ciqUKb54rWfxH3$4xpwwKNTzBRhIAaxcJ9tOXlLvZQBhPfgLzMab+xdNco="
       },
       "relationships": {
         "reviews": {
@@ -283,7 +290,8 @@
       "attributes": {
         "username": "Kent Cook",
         "email": "jayson.hirthe@waters.example",
-        "password_digest": "$2a$12$gZnhksRic3sbXrY0IBdbpunXgIWMnE4mfjnpobXlrrt1qjsWW2ZU."
+        "password": "password",
+        "password_digest": "pbkdf2_sha256$720000$nJOFgdU4ciqUKb54rWfxH3$4xpwwKNTzBRhIAaxcJ9tOXlLvZQBhPfgLzMab+xdNco="
       },
       "relationships": {
         "reviews": {
@@ -297,7 +305,8 @@
       "attributes": {
         "username": "Duane Pipe",
         "email": "marvin@mann-mayer.test",
-        "password_digest": "$2a$12$FfJX7lEB0AEh3mCflFeYM.5oLtSmUEYyysDs.tiPAt8mzkF78jhya"
+        "password": "password",
+        "password_digest": "pbkdf2_sha256$720000$nJOFgdU4ciqUKb54rWfxH3$4xpwwKNTzBRhIAaxcJ9tOXlLvZQBhPfgLzMab+xdNco="
       },
       "relationships": {
         "reviews": {
@@ -306,4 +315,4 @@
       }
     }
   ]
-}
+

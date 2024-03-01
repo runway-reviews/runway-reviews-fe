@@ -11,7 +11,6 @@
   <script setup>
     import { ref, defineProps, onMounted } from 'vue';
     import { useRouter } from 'vue-router';
-
   
     const airports = ref([]);
     const selectedAirport = ref('');
@@ -22,7 +21,6 @@
             required: false
         }
     })
-
 
 const fetchAirports = async () => {
     try {

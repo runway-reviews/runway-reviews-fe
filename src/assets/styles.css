@@ -24,10 +24,11 @@ header {
     padding-bottom: 60px;
     font-family: 'great vibes', 'sans-serif';
     color: rgb(255, 255, 255);
-    background-color: rgb(22, 21, 21);
-    /* opacity: .8; */
-    width: 100%;
+    background-color: #CA2446;
+    /* width: 100%; */
+    width: 100vw;
     height: 5%;
+    text-align: center;
 }
 
 .airport-name {
@@ -46,17 +47,13 @@ header {
     margin-top: 30px;
     font-size: 18px;
     color: black;
-    /* background-color: #F8F7F4; */
-    /* position: fixed; */
     top: 10px;
     right: 50px;
     cursor: pointer;
-    /* height: 3.5vh;
-    width: 8vw; */
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 9em;
+    width: 7.5em;
     height: 3em;
 }
 
@@ -99,50 +96,108 @@ header {
     height: auto; 
 }
 
-@media(max-width: 900px) {
-    #app {
-        background-position: top 50% left 60%;
+@media(max-width: 1216px) {
+    .logo {
+        width: 128px;
+    }
+}
+
+@media(max-width: 1175px) {
+    header {
+        font-size: 60px;
+        padding: 50px 90px;
+        text-align: left;
+        padding-left: 120px;
     }
     
-    @media(max-width: 850px) {
-        .login-button {
-            right: 40px;
-            margin-right: 0;
+    #app {
+        /* background-position: top 50% left 60%; */
+        height: 100vh;
+        width: 100vw;
+    }
+
+    .login-button, .createaccount-button {
+        right: 40px;
+        margin-right: 43px;
         }
+    .logo {
+        width: 103px;
+    }
+    }
+
+    @media(max-width: 1175px) {
         #app {
             background-position: top 80% left 60%;
         }
-    }
     
-    @media (max-width: 827px) {
+    @media (max-width: 830px) {
         header {
             font-size: 60px;
             padding: 50px 90px;
             text-align: left;
+            padding-left: 120px;
         }
         
-        .login-button {
+        .login-button, .createaccount-button {
             width: 14vw;
-            right: 200px; 
+            margin-left: auto; 
+            text-align: center; 
+            /* margin-right: 43px; */
+            font-size: 13px;
+        }
+
+        .login-button {
+            margin-right: 10px;  
+        }
+        .createaccount-button {
+            margin-right: 43px;  
+        }
+
+        .home-sentence {
+            font-size: 30px;
         }
     }
     
-    
+    @media (max-width: 631px) {
+        .login-button, .createaccount-button {
+            width: 15vw;
+            margin-left: auto; 
+            text-align: center; 
+            font-size: 9px;
+            margin-top: 1px
+        }
+    }
+
     @media (max-width: 430px) {
         header {
             font-size: 50px;
             padding: 50px 20px;
             text-align: left;
+            padding-left: 120px;
         }
-        .login-button {
-            margin-right: 10px;
+        /* .createaccount-button {
+            margin-right: 196px;
             width: 14vw;
             font-size: 13px;
             right: 90px;
             top: 2px;
+        } */
+        .login-button, .createaccount-button {
+            width: 16vw;
+            text-align: center; 
+            font-size: 8px;
+            margin-top: 1px
         }
         #app {
             background-position: top 50% left 55%;
+        }
+    }
+    @media (max-width: 365px) {
+        .login-button, .createaccount-button {
+            width: 17vw;
+            text-align: center; 
+            font-size: 6.5px;
+            margin-top: 1px
         }
     }
     

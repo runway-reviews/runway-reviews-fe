@@ -9,7 +9,6 @@
 
 <script setup>
 import { ref } from 'vue'
-
 const airportName = ref('');
 
 </script>
