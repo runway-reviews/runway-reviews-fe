@@ -201,18 +201,6 @@ export default {
 </script>
 
 <style setup>
-.language-dropdown {
-    font-size: 1.4em;
-    border: 0;
-    background-color: white;
-    margin: 10px;
-}
-
-.change-language {
-    color: gray;
-    font-size: 10px;
-}
-
   .details-container {
     display: flex;
     flex-direction: column;
@@ -228,13 +216,12 @@ export default {
 
   .link {
     font-size: 1.4em;
+    border: 0;
     font-size: 1.3em;
-    border: none;
-    background-color: rgb(228, 78, 106);
+    background-color: white;
     margin: 10px;
     border-radius: 10px;
     width: 10vw;
-    box-shadow: 4px 5px 17px 1px rgba(0, 0, 0, 0.5);
   }
  
 .buttons-container {
@@ -249,24 +236,22 @@ export default {
 .link:hover {
   cursor: pointer;   
   background-color: green;
-
-  box-shadow: 0px 0px 17px 1px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 10px 3px rgba(248, 246, 246, 0.5);
 }
 
 .airport-reviews {
     display: flex;
     flex-direction: column;
     font-size: 20px;
-    background-color: rgb(0, 0, 0);
+    background-color: white;
     width: 80vw;
     margin: auto;
     margin-top: 40px;
     height: 40vh;
-    opacity: .8;   
+    opacity: .7;   
     overflow-y: auto;
     font-family: 'Nunito Sans', sans-serif;
     padding-left: 20px;
-    color: white;
 }
 
 .add-icon {
@@ -281,15 +266,13 @@ export default {
     text-align: left;
 }
 
-
 .user-info {
     position: absolute;
     top: 30px;
     right: 30px;
     display: flex;
     align-items: center;
-    background-color: rgb(68, 111, 204);
-    font-family: 'Nunito Sans', sans-serif;
+    background-color: rgb(187, 81, 63);
     color: rgb(0, 0, 0);
     width: 15vw;
     height: 5vh;
@@ -315,6 +298,11 @@ export default {
     color: white;
     padding: 4px;
     border-radius: 5px;
+}
+
+.must-login-review {
+    color: black;
+    font-family: 'Nunito Sans', sans-serif;
 }
 
 @media  screen and (max-width: 375px) {
