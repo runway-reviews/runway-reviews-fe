@@ -26,6 +26,13 @@ Back-End:
 
 </div>
 
+## 🎥 Preview 
+
+
+[Runway Reviews](https://github.com/runway-reviews/runway-reviews-fe/assets/116819092/41e2d7a8-02d4-4678-803c-beadda079207)
+
+
+
 ## 💭 Abstract
 The goal of this project is to create an application that allows users to travel with more comfort and be more prepared, knowing the amenities an airport contains, and how clean their bathrooms are, along with the options for food at the restaurant, security, and additional information provided by other travelers. It's useful for those who travel and valuable to have on hand. For example, knowing the security and time it takes is helpful, or food options for dietary restrictions, planning to get food ahead of time, and bathroom cleanliness and other amenities is useful.
 
@@ -81,9 +88,6 @@ To be able to add a review, the user must be logged in. Use the above username a
 ## 📝  Context
 We are a group of 2 front-end developers and 3 back-end developers who worked together remotely via Zoom and asynchronously through the GitHub project board to complete this application. This project was completed from week 1 to week 3 in Mod 4 at Turing School of Software & Design. It was our first time using the Vue framework.
 
-## 🎥 Preview 
-
-![Runway Reviews](runway-reviews.gif)
 
 ## 🔌 Server Setup
 1. Clone the repository: Open a terminal window. Navigate to the directory where you want to clone the repository. Run the following command: git clone 
