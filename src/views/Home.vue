@@ -2,10 +2,16 @@
     <AirportHeader/>
       <img src="/Screenshot 2024-02-27 at 4.07.11 PM.png" alt="runway-logo" class="logo"/>
       <div class='buttons'>
-          <button class="login-button" v-if="!showLoginForm && !showCreateAccountForm" @click="showLoginForm = true" style="text-decoration: none;">Login</button>
+          <button class="login-button" v-if="!showLoginForm && !showCreateAccountForm && !currentUser" @click="showLoginForm = true" style="text-decoration: none;">Login</button>
           <button class="createaccount-button" v-if="!showCreateAccountForm && !showLoginForm" @click='handleNewAccount' style="text-decoration: none;">Create New Account</button>
-          <button  class="createaccount-button" @click="logout">Log Out</button>
+          <button v-if="currentUser" class="logout-button" @click="logout">Log Out</button>
        </div>
+       <div v-if="currentUser" class="user-info">
+            <div class="user-logo">
+                <img src="/user.png" alt="User Logo" />
+            </div>
+            <p v-if="currentUser" class="current-user-info"> {{ currentUser.attributes.username }}</p>
+        </div>
       <h2 class="home-sentence">Authentic reviews from the nation's leading airports.</h2>
       <p>Discover Your Oasis: Choose Your Destination of Comfort</p>
       <Login class="login-words" v-if="showLoginForm" @handleLogin="onHandleLogin" @close="closeLoginForm" />
@@ -40,7 +46,7 @@
   const logout = () => {
       currentUser.value = null; // or currentUser.value = {}
       localStorage.removeItem('currentUser'); // Remove the user info from localStorage
-      // Additional logic if needed after logout
+      toast.success('You have been successfully logged out');
   }
   
   const onHandleLogin = (userInputtedValues) => {
