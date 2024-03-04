@@ -1,16 +1,12 @@
-{
-  "data": [
-    {
+[
+  {
       "id": "1",
-      "type": "airport",
       "attributes": {
-        "name": "Lowell Field",
-        "id": 1
+        "name": "Lowell Field"
       }
     },
     {
       "id": "2",
-      "type": "airport",
       "attributes": {
         "name": "Epps Airpark",
         "id": 2
@@ -18,227 +14,170 @@
     },
     {
       "id": "3",
-      "type": "airport",
       "attributes": {
-        "name": "Cordes Airport",
-        "id": 3
+        "name": "Cordes Airport"
       }
     },
     {
       "id": "4",
-      "type": "airport",
       "attributes": {
-        "name": "Goldstone /Gts/ Airport",
-        "id": 4
+        "name": "Goldstone /Gts/ Airport"
       }
     },
     {
       "id": "5",
-      "type": "airport",
       "attributes": {
-        "name": "Cass Field",
-        "id": 5
+        "name": "Cass Field"
       }
     },
     {
       "id": "6",
-      "type": "airport",
       "attributes": {
-        "name": "Grass Patch Airport",
-        "id": 6
+        "name": "Grass Patch Airport"
       }
     },
     {
       "id": "7",
-      "type": "airport",
       "attributes": {
-        "name": "River Oak Airport",
-        "id": 7
+        "name": "River Oak Airport"
       }
     },
     {
       "id": "8",
-      "type": "airport",
       "attributes": {
-        "name": "Lt World Airport",
-        "id": 8
+        "name": "Lt World Airport"
       }
     },
     {
       "id": "9",
-      "type": "airport",
       "attributes": {
-        "name": "Delta Shores Airport",
-        "id": 9
+        "name": "Delta Shores Airport"
       }
     },
     {
       "id": "10",
-      "type": "airport",
       "attributes": {
-        "name": "Hammer Airport",
-        "id": 10
+        "name": "Hammer Airport"
       }
     },
     {
       "id": "11",
-      "type": "airport",
       "attributes": {
-        "name": "Hayenga's Cant Find Farms Airport",
-        "id": 11
+        "name": "Hayenga's Cant Find Farms Airport"
       }
     },
     {
       "id": "12",
-      "type": "airport",
       "attributes": {
-        "name": "Hayden Farm Airport",
-        "id": 12
+        "name": "Hayden Farm Airport"
       }
     },
     {
       "id": "13",
-      "type": "airport",
       "attributes": {
-        "name": "Robbins Roost Airport",
-        "id": 13
+        "name": "Robbins Roost Airport"
       }
     },
     {
       "id": "14",
-      "type": "airport",
       "attributes": {
-        "name": "Lejeune Airport",
-        "id": 14
+        "name": "Lejeune Airport"
       }
     },
     {
       "id": "15",
-      "type": "airport",
       "attributes": {
-        "name": "Slater Field",
-        "id": 15
+        "name": "Slater Field"
       }
     },
     {
       "id": "16",
-      "type": "airport",
       "attributes": {
-        "name": "Battle Lake Municipal Airport",
-        "id": 16
+        "name": "Battle Lake Municipal Airport"
       }
     },
     {
       "id": "17",
-      "type": "airport",
       "attributes": {
-        "name": "Cooper Flying Service Airport",
-        "id": 17
-      }
+        "name": "Cooper Flying Service Airport"
+    }
     },
     {
       "id": "18",
-      "type": "airport",
       "attributes": {
-        "name": "Sands Ranch Airport",
-        "id": 18
+        "name": "Sands Ranch Airport"
       }
     },
     {
       "id": "19",
-      "type": "airport",
       "attributes": {
-        "name": "North Raleigh Airport",
-        "id": 19
+        "name": "North Raleigh Airport"
       }
     },
     {
       "id": "20",
-      "type": "airport",
       "attributes": {
-        "name": "Weiss Airfield",
-        "id": 20
+        "name": "Weiss Airfield"
       }
     },
     {
       "id": "21",
-      "type": "airport",
       "attributes": {
-        "name": "Exit 3 Airport",
-        "id": 21
+        "name": "Exit 3 Airport"
       }
     },
     {
       "id": "22",
-      "type": "airport",
       "attributes": {
-        "name": "Ferrell Field",
-        "id": 22
+        "name": "Ferrell Field"
       }
     },
     {
       "id": "23",
-      "type": "airport",
       "attributes": {
-        "name": "Thomas Field",
-        "id": 23
+        "name": "Thomas Field"
       }
     },
     {
       "id": "24",
-      "type": "airport",
       "attributes": {
-        "name": "Flying O Airport",
-        "id": 24
+        "name": "Flying O Airport"
       }
     },
     {
       "id": "25",
-      "type": "airport",
       "attributes": {
-        "name": "Ragsdale Road Airport",
-        "id": 25
+        "name": "Ragsdale Road Airport"
       }
     },
     {
       "id": "26",
-      "type": "airport",
       "attributes": {
-        "name": "Alpine Range Airport",
-        "id": 26
+        "name": "Alpine Range Airport"
       }
     },
     {
       "id": "27",
-      "type": "airport",
       "attributes": {
-        "name": "Vaughan Airport",
-        "id": 27
+        "name": "Vaughan Airport"
       }
     },
     {
       "id": "28",
-      "type": "airport",
       "attributes": {
-        "name": "Groundhog Mountain Airport",
-        "id": 28
+        "name": "Groundhog Mountain Airport"
       }
     },
     {
       "id": "29",
-      "type": "airport",
       "attributes": {
-        "name": "Howell Airport",
-        "id": 29
+        "name": "Howell Airport"
       }
     },
     {
       "id": "30",
-      "type": "airport",
       "attributes": {
-        "name": "Northern Lite Airport",
-        "id": 30
+        "name": "Northern Lite Airport"
       }
     }
   ]
-}

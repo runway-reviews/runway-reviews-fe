@@ -284,8 +284,8 @@ export default {
 
 .user-info {
     position: absolute;
-    top: 30px;
-    right: 30px;
+    top: 107px;
+    right: 52px;
     display: flex;
     align-items: center;
     background-color: rgb(68, 111, 204);

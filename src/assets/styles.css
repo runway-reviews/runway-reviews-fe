@@ -39,7 +39,7 @@ header {
     padding-top: 30px;
 }
 
-.login-button, .createaccount-button, .submit-account-button {
+.login-button, .createaccount-button, .logout-button, .submit-account-button {
     background-color: #F8F7F4;
     border-radius: 5px;
     border: none;
@@ -56,7 +56,7 @@ header {
     height: 3em;
 }
 
-.login-button:hover, .createaccount-button:hover, .submit-account-button:hover {
+.login-button:hover, .createaccount-button:hover, .logout-button:hover, .submit-account-button:hover {
     background-color: green;
     color: #F8F7F4;
     transform:scale(1.3); 
@@ -115,7 +115,7 @@ header {
         width: 100vw;
     }
 
-    .login-button, .createaccount-button {
+    .login-button, .createaccount-button, .logout-button {
         right: 40px;
         margin-right: 43px;
         }
@@ -129,7 +129,7 @@ header {
             background-position: top 80% left 60%;
         }
     
-    @media (max-width: 830px) {
+    @media (max-width: 967px) {
         header {
             font-size: 60px;
             padding: 50px 90px;
@@ -137,33 +137,39 @@ header {
             padding-left: 120px;
         }
         
-        .login-button, .createaccount-button {
+        .login-button, .createaccount-button, .logout-button {
             width: 14vw;
             margin-left: auto; 
             text-align: center; 
-            /* margin-right: 43px; */
             font-size: 13px;
         }
 
-        .login-button {
+        .login-button, .createaccount-button {
             margin-right: 10px;  
         }
-        .createaccount-button {
+
+        .logout-button {
             margin-right: 43px;  
         }
 
         .home-sentence {
             font-size: 30px;
         }
+        .buttons {
+            gap: 0px;
+        }
     }
     
-    @media (max-width: 631px) {
-        .login-button, .createaccount-button {
+    @media (max-width: 895px) {
+        .login-button, .createaccount-button, .logout-button {
             width: 15vw;
-            margin-left: auto; 
+            margin-left: 5px; 
             text-align: center; 
             font-size: 9px;
             margin-top: 1px
+        }
+        .buttons {
+            gap: 0px;
         }
     }
 
@@ -174,25 +180,22 @@ header {
             text-align: left;
             padding-left: 120px;
         }
-        /* .createaccount-button {
-            margin-right: 196px;
-            width: 14vw;
-            font-size: 13px;
-            right: 90px;
-            top: 2px;
-        } */
-        .login-button, .createaccount-button {
+        .login-button, .createaccount-button, .logout-button {
             width: 16vw;
             text-align: center; 
             font-size: 8px;
             margin-top: 1px
         }
+        .buttons {
+            gap: 0px;
+        }
+
         #app {
             background-position: top 50% left 55%;
         }
     }
     @media (max-width: 365px) {
-        .login-button, .createaccount-button {
+        .login-button, .createaccount-button, .logout-button {
             width: 17vw;
             text-align: center; 
             font-size: 6.5px;
