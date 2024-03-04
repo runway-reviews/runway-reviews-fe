@@ -51,7 +51,7 @@
 
 
 <script setup>
-import { ref, defineEmits, defineProps } from 'vue'
+import { ref } from 'vue'
     import { useToast } from 'vue-toastification'
     import 'vue-toastification/dist/index.css'
     const newUsername = ref('')

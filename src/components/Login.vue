@@ -18,19 +18,17 @@
                 />
         </div>
         <div class="password-container">
-            <div class="password-label-container">
-                <label>Password</label>
-            </div>
-             <!-- :type: shorthand syntax for v-bind:type. It is used for dynamic binding of attributes in Vue.js. :type binds type attribute to the result of the expression on the right side of the equal sign. -->
-            <!-- If showPassword is true, the type is set to 'text', revealing the actual characters in the password. If showPassword is false, the type is set to 'password', hiding the actual characters with asterisks. -->
-            <input 
-                :type="showPassword ? 'text' : 'password'"
-                placeholder="Enter password..."
-                name="password"
-                v-model="password"
-                id="password"
-                class="input-box"
-            />
+          <div class="password-label-container">
+              <label>Password</label>
+          </div>
+          <input 
+              :type="showPassword ? 'text' : 'password'"
+              placeholder="Enter password..."
+              name="password"
+              v-model="password"
+              id="password"
+              class="input-box"
+          />
         </div>
             <button @click.prevent="login" class="login-on-page" style="text-decoration: none;">Log In</button>
             <button @click.prevent='toggleShowPassword' class="login-on-page">Show Password</button>
@@ -68,7 +66,6 @@ const closeLogin = () => {
     emit('close')
 }
 
-//when clicked, changes boolean value
 const toggleShowPassword = () => {
   showPassword.value = !showPassword.value;
 }

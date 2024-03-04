@@ -26,11 +26,8 @@
   import AirportHeader from '../components/AirportHeader.vue'
   import AirportDropdown from '../components/AirportDropdown.vue'
   import Login from '../components/Login.vue'
-  
   import CreateAccount from './CreateAccount.vue'
-  
   import CarouselImages from '../components/CarouselImages.vue'
-  
   import { useToast } from 'vue-toastification'
   import 'vue-toastification/dist/index.css'
   import { ref, computed } from 'vue'
@@ -44,9 +41,9 @@
   const showAirportDropdown = computed(() => !showLoginForm.value);
   
   const logout = () => {
-      currentUser.value = null; // or currentUser.value = {}
-      localStorage.removeItem('currentUser'); // Remove the user info from localStorage
-      toast.success('You have been successfully logged out');
+      localStorage.removeItem('currentUser')
+      currentUser.value = null; 
+      toast.success
   }
   
   const onHandleLogin = (userInputtedValues) => {
@@ -97,7 +94,7 @@
           top: 10px;
           right: 50px;
           display: flex;
-          gap: 10px; /* Adjust the gap between buttons as needed */
+          gap: 10px; 
       }
       p {
           font-family: 'Source Serif 4', serif;
@@ -106,7 +103,6 @@
   </style>
   
   <style scoped>
-  /* scoped - means it only apply on this component */
       button, h2 {
           font-family: 'Source Serif 4', serif;
           font-weight: 500;
