@@ -23,7 +23,6 @@
         id="review"
         v-model="reviewValue"
       />
-      <!-- <router-link :to="`/airport/${$route.params.airportName}?id=${currentAirportId}`"> -->
       <router-link to="/">
         <button class="submit-review" style="text-decoration: none;" @click="addNewReview">Submit</button>
       </router-link>
@@ -34,7 +33,7 @@
 
 
 <script setup>
-import { defineEmits, defineProps, ref } from 'vue'
+import { ref } from 'vue'
 
 const props = defineProps({
     showReviewForm: {

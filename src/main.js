@@ -8,7 +8,6 @@ import Toast, { POSITION } from "vue-toastification";
 const app = createApp(App)
 app.use(router)
 app.use(Toast, {
-    // Setting the global default position
     position: POSITION.BOTTOM_LEFT
 });
 app.mount('#app')

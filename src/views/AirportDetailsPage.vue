@@ -58,9 +58,8 @@ export default {
     },
     setup() {
         const router = useRouter();
-
         const showReviewForm = ref(false);
-        const currentUser = ref(JSON.parse(localStorage.getItem('currentUser')));
+        const currentUser = ref(JSON.parse(localStorage.getItem('currentUser')) || null);
         const toast = useToast();
         const currentAirportId = ref(null);
         const reviewData = ref([])
@@ -82,7 +81,8 @@ export default {
         }
         
         const handleAddReview = () => {
-            if (currentUser && currentAirportId) {
+            console.log(currentUser, 'current user in handle review')
+            if (currentUser.value && currentAirportId) {
                 showReviewForm.value = true;
                 reviewRender.value = false;
             } else {

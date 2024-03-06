@@ -4,17 +4,12 @@
       <Slide v-for="(image, index) in images" :key="index" >
         <img :src="image.src" :alt="image.alt" class="carousel-images" style="object-fit: cover;">
       </Slide>
-
-      <!-- <template #addons> -->
-        <!-- <Pagination /> -->
-      <!-- </template> -->
     </Carousel>
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue';
-//even though it's grayed out, it won't work if you comment it out (for the import carousel line)
 import { Carousel, Slide } from 'vue3-carousel'
 import 'vue3-carousel/dist/carousel.css'
 
@@ -29,14 +24,12 @@ const images = [
 ];
 const autoplayInterval = ref(2000);
 const slidesPerPage = ref(4); 
-// const slidesPerPage = ref([[0, 3], [768, 2], [1024, 3]]);
 
 </script>
 
-<style scoped>
 
+<style scoped>
 .carousel-images {
-  /* opacity: .8; */
   border-radius: 10px;
   width: 300px;
   height: 30vh;
