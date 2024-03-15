@@ -83,6 +83,7 @@
   }
   
   </script>
+
   
   <style scoped>
       button, h2 {
@@ -93,26 +94,7 @@
           position: fixed;
           top: 10px;
           right: 50px;
-          display: flex;
-          gap: 10px; 
-      }
-      p {
-          font-family: 'Source Serif 4', serif;
-          font-size: 20px;
-      }
-  </style>
-  
-  <style scoped>
-      button, h2 {
-          font-family: 'Source Serif 4', serif;
-          font-weight: 500;
-      }
-      .buttons {
-          position: fixed;
-          top: 10px;
-          right: 50px;
-          display: flex;
-          gap: 50px    
+          display: flex;  
           }
       p {
           font-family: 'Source Serif 4', serif;
