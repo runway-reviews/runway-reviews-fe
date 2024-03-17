@@ -12,6 +12,9 @@ Runway Reviews
 ![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)
 ![Cypress](https://img.shields.io/badge/Cypress-yellow)
 
+## Deployed Link: 
+[Runway Reviews](https://runway-reviews.github.io/runway-reviews-fe/)
+
 ## 👩‍💻 👩‍💻 👨‍💻 👩‍💻 Collaborators
 Front-End :
 [Emalee Poellot](https://github.com/em2396)  | 
