@@ -31,7 +31,6 @@ Back-End:
 
 ## Note: 
 The 'Add Review' function is currently not working. As we continually work on it to make the user experience better, we had an issue when switching over the backend from rails to Django. 
-We are also having issues with deployment. So to view the full application, git clone git@github.com:runway-reviews/runway-reviews-fe.git and run npm i and npm run dev to view the application
 
 ## 🎥 Preview 
 
