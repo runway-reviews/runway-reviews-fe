@@ -30,8 +30,12 @@
               class="input-box"
           />
         </div>
+        <div id="showPasswordContainer">
+          <input type="checkbox" id="showPassword" v-model="showPassword">
+          <label for="showPassword">Show Password</label>
+        </div>
             <button @click.prevent="login" class="login-on-page" style="text-decoration: none;">Log In</button>
-            <button @click.prevent='toggleShowPassword' class="login-on-page">Show Password</button>
+            <!-- <button @click.prevent='toggleShowPassword' class="login-on-page">Show Password</button> -->
         </form>
     </div>
 </template>
