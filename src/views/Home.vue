@@ -118,4 +118,5 @@
         border-radius: 10px;
         box-shadow: 0px 0px 10px 3px rgba(248, 246, 246, 0.5);
 }
+
   </style>
