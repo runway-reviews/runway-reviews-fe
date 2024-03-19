@@ -41,17 +41,21 @@
           class="input-box"
         />
       </div>
+      <div id="showPasswordContainer">
+        <input type="checkbox" id="showPassword" v-model="showPassword">
+        <label for="showPassword">Show Password</label>
+      </div>
       <router-link to="/">
         <button class="submit-account-button" style="text-decoration: none; cursor: pointer;" @click="addNewAccount">Submit</button>
         </router-link>
-        <button @click.prevent='toggleShowPassword' class="show-password-button">Show Password</button>
+        <!-- <button @click.prevent='toggleShowPassword' class="show-password-button">Show Password</button> -->
     </form>
   </div>
 </template>
 
 
 <script setup>
-import { ref } from 'vue'
+import { ref, defineEmits } from 'vue'
     import { useToast } from 'vue-toastification'
     import 'vue-toastification/dist/index.css'
     const newUsername = ref('')
@@ -103,6 +107,13 @@ import { ref } from 'vue'
 </script>
 
 <style>
+
+  #showPasswordContainer {
+    margin-left: 50px;
+    display: flex;
+    align-items: center;
+  }
+
     .create-login-container {
         display: flex;
         justify-content: center;
@@ -117,7 +128,7 @@ import { ref } from 'vue'
       font-size: 1.6em;
       height: 2em;
       width: 2em;
-      background-color: white;
+      background-color: rgb(34, 33, 33);
       border: 0;
       text-decoration: none;
   }
@@ -165,6 +176,10 @@ import { ref } from 'vue'
     .input-box {
       width: 15em;
       height: 2em;
+    }
+
+    button {
+      margin-left: 100px;
     }
 
     .show-password-button, .submit-account-button {
