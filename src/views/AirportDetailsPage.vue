@@ -3,11 +3,11 @@
     <img src="/Screenshot 2024-02-27 at 4.07.11 PM.png" alt="runway-logo" class="logo"/>
     <div class="airport-details-page">
         <h1 class="airport-name">{{ $route.params.airportName }} </h1>
-        <div v-if="currentUser" class="user-info">
+        <div v-if="currentUser" class="airport-details-user">
             <div class="user-logo">
                 <img src="/user.png" alt="User Logo" />
             </div>
-            <p v-if="currentUser" class="current-user-info"> {{ currentUser.attributes.username }}</p>
+            <p v-if="currentUser"> {{ currentUser.attributes.username }}</p>
         </div>
         <div class="details-container" :style="{height: showReviewForm ? '0vh' : '5em' }">
             <div class="buttons-container" v-if="!showReviewForm" >
@@ -201,6 +201,7 @@ export default {
 </script>
 
 <style setup>
+
 .language-dropdown {
     font-size: 1.4em;
     border: 0;
@@ -249,7 +250,6 @@ export default {
 .link:hover {
   cursor: pointer;   
   background-color: green;
-
   box-shadow: 0px 0px 17px 1px rgba(0, 0, 0, 0.5);
 }
 
@@ -282,10 +282,10 @@ export default {
 }
 
 
-.user-info {
+.airport-details-user {
     position: absolute;
-    top: 107px;
-    right: 52px;
+    top: 50px;
+    right: 30px;
     display: flex;
     align-items: center;
     background-color: rgb(68, 111, 204);

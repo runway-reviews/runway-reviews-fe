@@ -1,19 +1,19 @@
 <template >
     <AirportHeader/>
       <img src="/Screenshot 2024-02-27 at 4.07.11 PM.png" alt="runway-logo" class="logo"/>
+      <div v-if="currentUser" class="user-info">
+           <div class="user-logo">
+               <img src="/user.png" alt="User Logo" />
+           </div>
+           <p v-if="currentUser" class="current-user-info"> {{ currentUser.attributes.username }}</p>
+       </div>
       <div class='buttons'>
           <button class="login-button" v-if="!showLoginForm && !showCreateAccountForm && !currentUser" @click="showLoginForm = true" style="text-decoration: none;">Login</button>
-          <button class="createaccount-button" v-if="!showCreateAccountForm && !showLoginForm" @click='handleNewAccount' style="text-decoration: none;">Create New Account</button>
+          <button class="createaccount-button" v-if="!showCreateAccountForm && !showLoginForm && currentUser === null" @click='handleNewAccount' style="text-decoration: none;">Create New Account</button>
           <button v-if="currentUser" class="logout-button" @click="logout">Log Out</button>
        </div>
-       <div v-if="currentUser" class="user-info">
-            <div class="user-logo">
-                <img src="/user.png" alt="User Logo" />
-            </div>
-            <p v-if="currentUser" class="current-user-info"> {{ currentUser.attributes.username }}</p>
-        </div>
       <h2 class="home-sentence">Authentic reviews from the nation's leading airports.</h2>
-      <p>Discover Your Oasis: Choose Your Destination of Comfort</p>
+      <p v-if="!showLoginForm && !showCreateAccountForm">Select an airport from the dropdown below: </p>
       <Login class="login-words" v-if="showLoginForm" @handleLogin="onHandleLogin" @close="closeLoginForm" />
       <CreateAccount v-if="showCreateAccountForm" @close="closeCreateAccountForm"
       />
@@ -36,11 +36,13 @@
   const showLoginForm = ref(false);
   const showCreateAccountForm = ref(false);
   const toast = useToast();
-  let currentUser = ref(JSON.parse(localStorage.getItem('currentUser')));
+  let currentUser = ref(JSON.parse(localStorage.getItem('currentUser' || null)));
+// let currentUser = ref(null)
   
   const showAirportDropdown = computed(() => !showLoginForm.value);
   
   const logout = () => {
+    console.log(currentUser, 'current')
       localStorage.removeItem('currentUser')
       currentUser.value = null; 
       toast.success
@@ -100,4 +102,21 @@
           font-family: 'Source Serif 4', serif;
           font-size: 20px;
       }
+
+
+    .user-info {
+        position: absolute;
+        top: 70px;
+        right: 60px;
+        display: flex;
+        align-items: center;
+        background-color: rgb(68, 111, 204);
+        font-family: 'Nunito Sans', sans-serif;
+        color: rgb(0, 0, 0);
+        width: 15vw;
+        height: 5vh;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px 3px rgba(248, 246, 246, 0.5);
+}
+
   </style>
