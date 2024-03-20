@@ -12,7 +12,7 @@ describe('Runway Reviews', () => {
       statusCode: 200,
       fixture: 'reviewsData.json'
     })
-    cy.visit('http://127.0.0.1:5173/runway-reviews-fe')
+    cy.visit('http://localhost:5173/runway-reviews-fe')
   })
 
   it('should display login button, app title and list of airports in dropdown menu', () => {
