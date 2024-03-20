@@ -39,7 +39,7 @@ describe('Runway Reviews', () => {
     // cy.contains('div', 'You must be logged in to add a review!').should('be.visible')
   })
   it('should navigate back to the home page', () => {
-    cy.visit('http://127.0.0.1:5173/runway-reviews-fe/airport/Flying%20O%20Airport?id=24')
+    cy.visit('http://localhost:5173/runway-reviews-fe/airport/Flying%20O%20Airport?id=24')
     cy.get('button[class="home-button-details-page link"]').click()
     cy.get('header').contains('Runway Reviews')
     cy.get('button[class="login-button"]').contains('Login')
