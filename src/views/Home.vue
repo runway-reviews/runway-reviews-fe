@@ -9,7 +9,7 @@
        </div>
       <div class='buttons'>
           <button class="login-button" v-if="!showLoginForm && !showCreateAccountForm && !currentUser" @click="showLoginForm = true" style="text-decoration: none;">Login</button>
-          <button class="createaccount-button" v-if="!showCreateAccountForm && !showLoginForm && currentUser === null" @click='handleNewAccount' style="text-decoration: none;">Create New Account</button>
+          <button class="createaccount-button" v-if="!showCreateAccountForm && !showLoginForm && !currentUser" @click='handleNewAccount' style="text-decoration: none;">Create New Account</button>
           <button v-if="currentUser" class="logout-button" @click="logout">Log Out</button>
        </div>
       <h2 class="home-sentence">Authentic reviews from the nation's leading airports.</h2>
@@ -42,10 +42,9 @@
   const showAirportDropdown = computed(() => !showLoginForm.value);
   
   const logout = () => {
-    console.log(currentUser, 'current')
-      localStorage.removeItem('currentUser')
-      currentUser.value = null; 
-      toast.success
+    localStorage.removeItem('currentUser')
+    currentUser.value = null; 
+    toast.success('Successfully logged out!')
   }
   
   const onHandleLogin = (userInputtedValues) => {
@@ -60,7 +59,7 @@
                   let loggedIn = false; 
                   userAndPasswordStorage.forEach(element => {
                       if (element.attributes.username === userInputtedValues.text && element.attributes.password === userInputtedValues.password) {
-                          currentUser = element;
+                          currentUser.value = element;
                           loggedIn = true;
                           closeLoginForm();
                           localStorage.setItem('currentUser', JSON.stringify(currentUser.value))
