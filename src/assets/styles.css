@@ -39,7 +39,7 @@ header {
     padding-top: 30px;
 }
 
-.login-button, .createaccount-button, .logout-button, .submit-account-button {
+.login-button, .createaccount-button, .submit-account-button {
     background-color: #F8F7F4;
     border-radius: 5px;
     border: none;
@@ -55,6 +55,23 @@ header {
     width: 7.5em;
     height: 3em;
 }
+
+.logout-button {
+    background-color: #F8F7F4;
+    border-radius: 5px;
+    border: none;
+    font-size: 18px;
+    color: black;
+    /* right: 90px; */
+    top: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 6.5em;
+    height: 2em;
+}
+
 
 .login-button:hover, .createaccount-button:hover, .logout-button:hover, .submit-account-button:hover {
     background-color: green;
