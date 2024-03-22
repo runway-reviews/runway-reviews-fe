@@ -184,7 +184,6 @@ export default {
                     return response.json();
                 })
                 .then(data => {
-                    console.log(data, 'review data')
                     reviewData.value = data.filter(element => {
                         return element.attributes.airport_id == currentAirportId.value
                     });
