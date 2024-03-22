@@ -5,7 +5,6 @@ body, .airport-details-page {
 }
 
 .home-sentence {
-    /* font-family: 'dancing script'; */
     font-size: 45px;
 }
 
@@ -14,18 +13,16 @@ body, .airport-details-page {
     margin: 0;
     height: 100vh;
     width: 100vw;
-    /* background-size: cover; */
     background-color: #F8F7F4;
 }
 
 header {
     font-size: 4.5em;
     padding-top: 60px;
-    padding-bottom: 60px;
+    padding-bottom: 70px;
     font-family: 'great vibes', 'sans-serif';
     color: rgb(255, 255, 255);
     background-color: #CA2446;
-    /* width: 100%; */
     width: 100vw;
     height: 5%;
     text-align: center;
@@ -62,7 +59,6 @@ header {
     border: none;
     font-size: 18px;
     color: black;
-    /* right: 90px; */
     top: 10px;
     cursor: pointer;
     display: flex;
@@ -113,6 +109,28 @@ header {
     border-radius: 80px;
 }
 
+.user-info {
+    position: absolute;
+    top: 70px;
+    right: 50px;
+    display: flex;
+    align-items: center;
+    background-color: rgb(68, 111, 204);
+    font-family: 'Nunito Sans', sans-serif;
+    color: rgb(0, 0, 0);
+    width: 13vw;
+    height: 5vh;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 3px rgba(248, 246, 246, 0.5);
+}
+
+.current-user-info {
+margin: 5px;
+font-size: 15px;
+}
+
+
+
 @media(max-width: 1216px) {
     .logo {
         width: 128px;
@@ -120,55 +138,53 @@ header {
 }
 
 @media(max-width: 1175px) {
+    #app {
+        background-position: top 80% left 60%;
+    }
+
+@media(max-width: 1000px) {
     header {
         font-size: 60px;
         padding: 50px 90px;
-        text-align: left;
-        padding-left: 120px;
     }
     
     #app {
         height: 100vh;
         width: 100vw;
     }
-
-    .login-button, .createaccount-button, .logout-button {
+    
+    .login-button, .createaccount-button {
         right: 40px;
-        margin-right: 43px;
-        }
+    }
     .logo {
         width: 103px;
     }
+    .user-info {
+        width: 12vw;
+        font-size: 15px;
     }
+}
 
-    @media(max-width: 1175px) {
-        #app {
-            background-position: top 80% left 60%;
-        }
     
     @media (max-width: 967px) {
         header {
             font-size: 60px;
-            padding: 50px 90px;
+            padding: 50px 80px;  
             text-align: left;
             padding-left: 120px;
         }
         
-        .login-button, .createaccount-button, .logout-button {
+        .login-button, .createaccount-button {
             width: 14vw;
             margin-left: auto; 
             text-align: center; 
             font-size: 13px;
         }
-
+    
         .login-button, .createaccount-button {
             margin-right: 10px;  
         }
-
-        .logout-button {
-            margin-right: 43px;  
-        }
-
+    
         .home-sentence {
             font-size: 30px;
         }
@@ -176,9 +192,12 @@ header {
             gap: 0px;
         }
     }
-    
+
+
+
+
     @media (max-width: 895px) {
-        .login-button, .createaccount-button, .logout-button {
+        .login-button, .createaccount-button {
             width: 15vw;
             margin-left: 5px; 
             text-align: center; 
@@ -188,7 +207,16 @@ header {
         .buttons {
             gap: 0px;
         }
+
+        .user-info {
+            width: 20vw;
+        }
+
+        .current-user-info {
+            font-size: 2px;
+        }
     }
+
 
     @media (max-width: 430px) {
         header {
@@ -197,7 +225,7 @@ header {
             text-align: left;
             padding-left: 120px;
         }
-        .login-button, .createaccount-button, .logout-button {
+        .login-button, .createaccount-button {
             width: 16vw;
             text-align: center; 
             font-size: 8px;
@@ -211,13 +239,31 @@ header {
             background-position: top 50% left 55%;
         }
     }
-    @media (max-width: 365px) {
-        .login-button, .createaccount-button, .logout-button {
+
+
+    @media (max-width: 375px) {
+        .login-button, .createaccount-button{
             width: 17vw;
             text-align: center; 
             font-size: 6.5px;
             margin-top: 1px
         }
+
+        header {
+            font-size: 27px;
+            padding: 30px;
+            padding-left: 90px;
+        }
+
+        .logo {
+            width: 20vw;
+        }
+
+        .user-info {
+            font-size: 3px;
+        }
+
+
     }
     
 } 

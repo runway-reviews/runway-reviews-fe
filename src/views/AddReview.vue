@@ -18,7 +18,6 @@
         <input 
         class="review-input"
         type="review"
-        placeholder="review"
         name="review"
         id="review"
         v-model="reviewValue"
@@ -77,7 +76,6 @@ const submitReview = (newReview) => {
         body: JSON.stringify(newReview)
     })
     .then(response => {
-      console.log(response, 'response from add review POST')
         if(!response.ok) {
             console.log('err')
         }
@@ -167,7 +165,7 @@ const submitReview = (newReview) => {
     font-size: 1.6em;
     height: 2em;
     width: 2em;
-    background-color: white;
+    background-color: rgb(34, 33, 33);
     border: 0;
     text-decoration: none;
   }

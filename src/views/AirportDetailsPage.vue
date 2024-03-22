@@ -81,7 +81,6 @@ export default {
         }
         
         const handleAddReview = () => {
-            console.log(currentUser, 'current user in handle review')
             if (currentUser.value && currentAirportId) {
                 showReviewForm.value = true;
                 reviewRender.value = false;
@@ -316,34 +315,6 @@ export default {
     border-radius: 5px;
 }
 
-@media  screen and (max-width: 375px) {
-  .airport-reviews {
-    display: flex;
-    flex-direction: column;
-    font-size: 20px;
-    background-color: white;
-    width: 80vw;
-    margin: auto;
-    margin-top: 40px;
-    height: 100%;
-  }
-}
-
-@media(max-width: 1400px ) {
-    .add-review {
-        width: 13vw;
-    }
-}
-
-@media(max-width: 1110px ) {
-    .add-review {
-        width: 17vw;
-    }
-    .user-info {
-        width: 21vw;
-    }
-}
-
 .must-login-review {
     color: black;
     font-family: 'Nunito Sans', sans-serif;
@@ -372,24 +343,25 @@ export default {
     .add-review {
         width: 17vw;
     }
-    .user-info {
-        width: 21vw;
-    }
+}
+
+
+@media  screen and (max-width: 375px) {
+  .airport-reviews {
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    background-color: white;
+    width: 80vw;
+    margin: auto;
+    margin-top: 40px;
+    height: 100%;
+  }
 }
 
 @media(max-width: 850px ) {
     .add-review {
         width: 21vw;
-    }
-    .user-info {
-        width: 20vw;
-    }
-}
-
-@media(max-width: 768px ) {
-    .user-info {
-        width: 25vw;
-        font-size: 14px;
     }
 }
 
@@ -397,27 +369,9 @@ export default {
     .add-review {
         width: 28vw;
     }
-    .user-info {
-        font-size: 10px;
-    }
-}
-
-@media(max-width: 720px) {
-    .user-info {
-        width: 24vw;
-    }
-    .current-user-info {
-        margin: 0;
-        font-size: 13px;
-    }
 }
 
 @media (max-width: 435px) {
-    .user-info {
-       height: 3vh;
-       width: 35vw;
- 
-    }
     .current-user-info {
         font-size: 10px;
     }
