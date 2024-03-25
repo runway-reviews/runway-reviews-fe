@@ -29,8 +29,6 @@ Back-End:
 
 </div>
 
-## Note: 
-The 'Add Review' function is currently not working. As we continually work on it to make the user experience better, we had an issue when switching over the backend from rails to Django. 
 
 ## 🎥 Preview 
 
