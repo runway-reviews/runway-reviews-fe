@@ -35,4 +35,65 @@ const slidesPerPage = ref(4);
   height: 30vh;
 }
 
+@media (max-width: 1200px) {
+  .carousel-images{
+    width: 250px;
+  }
+}
+
+@media (max-width: 1020px) {
+  .carousel-images{
+    width: 220px;
+  }
+}
+
+@media (max-width: 890px) {
+  .carousel-images{
+    width: 200px;
+    height: 25vh;
+  }
+}
+
+@media (max-width: 810px) {
+  .carousel-images{
+    width: 180px;
+    height: 23vh;
+  }
+}
+
+@media (max-width: 725px) {
+  .carousel-images{
+    width: 150px;
+    height: 23vh;
+  }
+}
+
+@media (max-width: 615px) {
+  .carousel-images{
+    width: 120px;
+    height: 20vh;
+  }
+}
+
+@media (max-width: 490px) {
+  .carousel-images{
+    width: 110px;
+    height: 18vh;
+  }
+}
+
+@media (max-width: 490px) {
+  .carousel-images{
+    width: 95px;
+    height: 15vh;
+  }
+}
+
+@media (max-width: 390px) {
+  .carousel-images{
+    width: 90px;
+    height: 13vh;
+  }
+}
+
 </style>

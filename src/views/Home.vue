@@ -13,7 +13,7 @@
           <button v-if="currentUser" class="logout-button" @click="logout">Log Out</button>
        </div>
       <h2 class="home-sentence">Authentic reviews from the nation's leading airports.</h2>
-      <p v-if="!showLoginForm && !showCreateAccountForm">Select an airport from the dropdown below: </p>
+      <p class="select-sentence" v-if="!showLoginForm && !showCreateAccountForm">Select an airport from the dropdown below: </p>
       <Login class="login-words" v-if="showLoginForm" @handleLogin="onHandleLogin" @close="closeLoginForm" />
       <CreateAccount v-if="showCreateAccountForm" @close="closeCreateAccountForm"
       />
@@ -37,7 +37,6 @@
   const showCreateAccountForm = ref(false);
   const toast = useToast();
   let currentUser = ref(JSON.parse(localStorage.getItem('currentUser' || null)));
-// let currentUser = ref(null)
   
   const showAirportDropdown = computed(() => !showLoginForm.value);
   
@@ -91,31 +90,13 @@
           font-family: 'Source Serif 4', serif;
           font-weight: 500;
       }
-      .buttons {
-          position: fixed;
-          top: 10px;
-          right: 50px;
-          display: flex;  
-          }
+
       p {
           font-family: 'Source Serif 4', serif;
           font-size: 20px;
       }
 
 
-    .user-info {
-        position: absolute;
-        top: 70px;
-        right: 60px;
-        display: flex;
-        align-items: center;
-        background-color: rgb(68, 111, 204);
-        font-family: 'Nunito Sans', sans-serif;
-        color: rgb(0, 0, 0);
-        width: 15vw;
-        height: 5vh;
-        border-radius: 10px;
-        box-shadow: 0px 0px 10px 3px rgba(248, 246, 246, 0.5);
-}
+
 
   </style>
