@@ -83,8 +83,6 @@
   }
   
   </script>
-
-  
   <style scoped>
       button, h2 {
           font-family: 'Source Serif 4', serif;
@@ -101,8 +99,4 @@
           font-family: 'Source Serif 4', serif;
           font-size: 20px;
       }
-
-
-
-
   </style>

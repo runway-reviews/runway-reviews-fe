@@ -32,7 +32,7 @@
                 </div>
           </div >
         </div>
-        <AddReview v-if="showReviewForm" @close="closeReviewForm" :currentAirportId="currentAirportId" :currentUser="currentUser && Object.keys(currentUser).length > 0 ? currentUser : null" />
+        <AddReview v-if="showReviewForm" @close="closeReviewForm" :currentAirportId="currentAirportId" :airportName="airportName" :currentUser="currentUser && Object.keys(currentUser).length > 0 ? currentUser : null" />
 
         <div class="airport-reviews" v-if="reviewRender">
             <p v-for="data in reviewData" :key="data.id" 
@@ -190,9 +190,8 @@ export default {
             });
         }
 
-
         return {
-            reviewData, reviewRender, currentUser, showReviewForm, closeReviewForm, handleAddReview, currentAirportId, translateText, selectedLanguage, en, es, vi, tl, zh, translateButtonText, renderReviews
+            reviewData, reviewRender, currentUser, showReviewForm, closeReviewForm, handleAddReview, translateText, selectedLanguage, en, es, vi, tl, zh, translateButtonText, renderReviews
         }
     }
 }

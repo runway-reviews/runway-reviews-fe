@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <form class="review-form">
+    <form class="review-form" @submit.prevent="addNewReview">
         <button class="close-button" style="text-decoration: none;" @click="closeReview">✖️</button>
       <div class="item">
         <label class="review-label">Select a category:</label>
@@ -22,9 +22,9 @@
         id="review"
         v-model="reviewValue"
       />
-      <router-link to="/">
-        <button class="submit-review" style="text-decoration: none;" @click="addNewReview">Submit</button>
-      </router-link>
+      <!-- <router-link to="/airport/:airportName"> -->
+        <button type="submit" class="submit-review" style="text-decoration: none;" @click="addNewReview">Submit</button>
+      <!-- </router-link> -->
       </div>
     </form>
   </div>
@@ -32,7 +32,9 @@
 
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+import { useRouter } from 'vue-router';
+import { defineProps, defineEmits } from 'vue'
 
 const props = defineProps({
     showReviewForm: {
@@ -46,8 +48,15 @@ const props = defineProps({
     currentUser : {
         type: Object,
         required: false
+    },
+    airportName : {
+        type: String,
+        required: true
     }
 })
+
+const router = useRouter(); // Use useRouter to access Vue Router instance
+const reviews = ref([]);
 
 const reviewValue = ref('')
 const selectedCategory = ref('')
@@ -77,14 +86,48 @@ const submitReview = (newReview) => {
     })
     .then(response => {
         if(!response.ok) {
+          //ERROR IS HERE? Not making a post?? 
             console.log('err')
         }
         return response.json()
     })
-    .then(emit('close'))
+    // .then(emit('close'))
+    .then(() => {
+       fetchReviews(); 
+       closeReview(); // Close the review form after successfully submitting the review
+    })
+    // .then(() => {
+    //   const routeParams = {
+    //         name: 'airportName', // Name of the route
+    //         params: {
+    //             airportName: props.airportName // Pass airportName as a route parameter
+    //         },
+    //         query: {
+    //             id: props.currentAirportId, // Pass currentAirportId as a query parameter
+    //             review: reviewValue.value // Pass the review as a query parameter
+    //         }
+    //     };
+    //     router.push(routeParams);
+    // })
 }
 
+  const fetchReviews = (currentAirportId) => {
+    return fetch(`https://runwayreviewsbe-4165084ad9d0.herokuapp.com/reviews`)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data, 'data in fetchReviews')
+        reviews.value = data.filter(element => {
+            return element.attributes.airport_id == currentAirportId.value
+        });
 
+        console.log(reviews, 'data in fetchReviews')
+    })
+  }
+
+  // Fetch reviews when the component is mounted
+  // onMounted(() => {
+  //   fetchReviews();
+  // });
 </script>
 
 

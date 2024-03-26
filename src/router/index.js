@@ -27,7 +27,8 @@ const router = createRouter({
     {
       path: '/add-review',
       name: 'addReview',
-      component: AddReview
+      component: AddReview,
+      props: route => ({ airportName: route.params.airportName }) // Pass airportName as a prop
     },
     {
       path: '/create-account',
